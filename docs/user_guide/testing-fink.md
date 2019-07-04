@@ -137,3 +137,23 @@ source $FINK_HOME/conf/fink.conf.travis
 ```
 
 A custom configuration file can be given as an argument `fink_test -c /path/to/custom.conf`
+
+## Debugging using the Fink shell
+
+We have a service to launch a pyspark shell (ipython or jupyter) with Fink configuration pre-loaded:
+
+```
+Launch pyspark shell with Fink configuration pre-loaded
+
+ Usage:
+ 	fink_shell [option]
+
+ Option:
+ 	-c <CONFIGURATION_FILE>
+ 		Specify a configuration file. Default is conf/fink.conf.shell
+
+ 	-h, --help
+ 		To view this help message
+```
+
+You can configure it using the `conf/fink.conf.shell` configuration file provided.
