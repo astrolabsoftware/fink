@@ -18,6 +18,7 @@ nav:
       - Collecting alerts: tutorials/raw_db.md
       - Applying quality cuts: tutorials/bogus_filtering.md
       - Processing alerts: tutorials/processing_alerts.md
+      - Redistributing alerts: tutorials/processing_alerts.md
     - About:
       - Release Notes: release-notes.md
       - Contributing: contributing.md
