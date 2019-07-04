@@ -148,45 +148,47 @@ import io
 import gzip
 import aplpy
 
-def plot_cutout(stamp, fig=None, subplot=None, **kwargs):
-    """ Plot square FITS image stores in the ZTF alert.
-    Borrowed from the ZTF repo:
-    https://github.com/ZwickyTransientFacility/ztf-avro-alert/
+def plot_cutout(stamp: bytes, fig=None, subplot=None, **kwargs) -> FITSFigure:
+  """ Plot square FITS image stores in the ZTF alert.
 
-    Parameters
-    ----------
-    stamp: bytes
-        Binary image data
+  Borrowed from the ZTF repo:
+  https://github.com/ZwickyTransientFacility/ztf-avro-alert/
 
-    Returns
-    ----------
-    ffig: FITSFigure
-    """
-    with gzip.open(io.BytesIO(stamp), 'rb') as f:
-        with fits.open(io.BytesIO(f.read())) as hdul:
-            if fig is None:
-                fig = plt.figure(figsize=(4,4))
-            if subplot is None:
-                subplot = (1,1,1)
-            ffig = aplpy.FITSFigure(
-                hdul[0], figure=fig, subplot=subplot, **kwargs)
-            ffig.show_grayscale(stretch='arcsinh')
-    return ffig
+  Parameters
+  ----------
+  stamp: bytes
+    Binary image data
+
+  Returns
+  ----------
+  ffig: FITSFigure
+  """
+  with gzip.open(io.BytesIO(stamp), 'rb') as f:
+    with fits.open(io.BytesIO(f.read())) as hdul:
+      if fig is None:
+        fig = plt.figure(figsize=(4, 4))
+      if subplot is None:
+        subplot = (1, 1, 1)
+      ffig = aplpy.FITSFigure(
+        hdul[0], figure=fig,
+        subplot=subplot, **kwargs)
+      ffig.show_grayscale(stretch='arcsinh')
+  return ffig
 
 # Take a few alerts
 alerts = df.select("decoded.*").take(3)
 
+cutoutnames = ["cutoutScience", "cutoutTemplate", "cutoutDifference"]
 fig = plt.figure(figsize=(10, 10))
 for index_alert, alert in enumerate(alerts):
-    for index_cutout, cutout in enumerate(
-            ["cutoutScience", "cutoutTemplate", "cutoutDifference"]):
-        o = plot_cutout(
-            alert[cutout]["stampData"],
-            fig=fig, subplot=(3, 3, 3*index_alert+index_cutout+1))
-        if index_alert == 0:
-            o.set_title(cutout)
-        if index_cutout == 0:
-            o.add_label(30, 5, "{}".format(alert["objectId"]), color="white")
+  for index_cutout, cutout in enumerate(cutoutnames):
+      o = plot_cutout(
+        alert[cutout]["stampData"], fig=fig,
+        subplot=(3, 3, 3 * index_alert + index_cutout + 1))
+      if index_alert == 0:
+        o.set_title(cutout)
+      if index_cutout == 0:
+        o.add_label(30, 5, "{}".format(alert["objectId"]), color="white")
 plt.show()
 ```
 
