@@ -15,8 +15,9 @@ nav:
       - Redistributing alerts: user_guide/streaming-out.md
       - Howto: user_guide/howto.md
     - Tutorials:
-      - Building the Raw Database: tutorials/raw_db.md
-      - Bogus filtering: tutorials/bogus_filtering.md
+      - Collecting alerts: tutorials/raw_db.md
+      - Applying quality cuts: tutorials/bogus_filtering.md
+      - Processing alerts: tutorials/processing_alerts.md
     - About:
       - Release Notes: release-notes.md
       - Contributing: contributing.md

@@ -1,4 +1,4 @@
-# Tutorial: Building the Raw Database
+# Tutorial: Collecting alerts
 
 **Context**
 
