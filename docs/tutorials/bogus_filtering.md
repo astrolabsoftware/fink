@@ -19,7 +19,7 @@ See [Getting started](../index.md) for more information.
 To build the raw database, follow the [Tutorial 1](raw_db.md). We recap the main steps here:
 
 ```bash
-# Connect to the Kafka cluster on one Tab
+# Connect to the Kafka cluster
 fink start stream2raw -c conf/fink.conf.tutorial2 --simulator
 
 # Send stream of data
