@@ -47,6 +47,12 @@ The name of the HBase table can be set in the configuration file:
 SCIENCE_DB_NAME="test_catalog"
 ```
 
+To start the service, just execute:
+
+```bash
+$HBASE_HOME/bin/start-hbase.sh
+```
+
 ## Filtering data from the raw database
 
 Once the raw database is initialised (i.e. contains at least one alert) and hbase started, you can stream data from it and apply filters and use your scientific modules. We focus here only on the first filtering part, called level one. Filters to be applied to the data can be found under `${FINK_HOME}/userfilters/levelone.py`. We provide a default filter for reference, but you can edit it or add more if wanted. The procedure for adding filters is the following:
