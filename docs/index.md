@@ -53,6 +53,12 @@ export HBASE_HOME=/usr/local/hbase
 export PATH=$PATH:$HBASE_HOME/bin
 ```
 
+and start the service:
+
+```bash
+$HBASE_HOME/bin/start-hbase.sh
+```
+
 Clone the repository:
 
 ```bash
