@@ -2,7 +2,7 @@
 
 **Context**
 
-This tutorial illustrates the basics of connecting to the raw database (Parquet), filtering out alerts that do not satisfy quality criteria, and pushing remaining alerts to the science database (HBase).
+This tutorial illustrates the basics of connecting to the raw database (Parquet), filtering out alerts that do not satisfy quality criteria, and pushing remaining alerts to the science database (Apache HBase).
 
 **Before starting**
 
@@ -28,13 +28,13 @@ fink start simulator
 
 where `conf/fink.conf.tutorial2` is a copy of `conf/fink.conf` updated with your configuration.
 
-## Starting the HBase service
+## Starting the Apache HBase service
 
 The scientific alerts are stored in an HBase table. You need first to get HBase installed, and start the service. See the `${FINK_HOME}/conf/install_hbase.sh` script for a local installation.
 
 ```plain
 /!\ If started with bin/start-hbase.sh, the service often disconnects itself,
-making the raw2science service to hang. Check if hbase is running by
+making the raw2science service to hang. Check if HBase is running by
 executing ps aux | grep hbase.
 ```
 
@@ -55,7 +55,7 @@ $HBASE_HOME/bin/start-hbase.sh
 
 ## Filtering data from the raw database
 
-Once the raw database is initialised (i.e. contains at least one alert) and hbase started, you can stream data from it and apply filters and use your scientific modules. We focus here only on the first filtering part, called level one. Filters to be applied to the data can be found under `${FINK_HOME}/userfilters/levelone.py`. We provide a default filter for reference, but you can edit it or add more if wanted. The procedure for adding filters is the following:
+Once the raw database is initialised (i.e. contains at least one alert) and HBase started, you can stream data from it and apply filters and use your scientific modules. We focus here only on the first filtering part, called level one. Filters to be applied to the data can be found under `${FINK_HOME}/userfilters/levelone.py`. We provide a default filter for reference, but you can edit it or add more if wanted. The procedure for adding filters is the following:
 
 ### Create a filter in levelone.py
 
@@ -97,7 +97,7 @@ fink start raw2science -c conf/fink.conf.tutorial2
 fink start simulator
 ```
 
-You can check that the table has been updated with new alerts by using the HBase shell for example:
+You can check that the table has been updated with new alerts by using the Apache HBase shell for example:
 
 ```hbase
 # hbase shell
