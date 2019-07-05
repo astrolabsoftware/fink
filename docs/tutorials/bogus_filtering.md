@@ -64,13 +64,15 @@ The skeleton of a filter is always the same:
 ```python
 @pandas_udf(BooleanType(), PandasUDFType.SCALAR)
 def my_great_filter_name(colname1: Any, colname2: Any, ...) -> pd.Series:
-    """ The documentation
-    """
-    # Your logic based on the input columns
-    column_of_booleans = ...
+  """ The documentation
+  """
+  # Your logic based on the input columns
+  column_of_booleans = ...
 
-    return pd.Series(column_of_booleans)
+  return pd.Series(column_of_booleans)
 ```
+
+`${FINK_HOME}/userfilters/levelone.py` contains an example of filter applying quality cuts.
 
 ### Register the filter
 
@@ -114,8 +116,7 @@ Took 0.1316 seconds
 Alternatively, you can also use Apache Spark to explore the science database:
 
 ```python
-# Launch pyspark shell with
-# pyspark --jars $FINK_JARS --packages $FINK_PACKAGES
+# Launch pyspark shell with fink_shell
 from fink_broker.sparkUtils import init_sparksession
 import json
 
