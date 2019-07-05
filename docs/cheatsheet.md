@@ -1,5 +1,12 @@
 ## Fink broker main commands
 
+Users will find here main commands to use Fink:
+
+- Launch full Fink pipeline
+- Produce local stream of alerts
+- Launch pyspark shell with Fink configuration pre-loaded
+- Test Fink
+
 ### Fink broker pipeline
 
 ```bash
@@ -65,5 +72,3 @@ fink_shell -c conf/fink.conf.shell
 ```bash
 fink_test
 ```
-
-###
