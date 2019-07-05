@@ -2,7 +2,7 @@
 
 **Context**
 
-This tutorial illustrates the basics of connecting to the raw database (Parquet), filtering out alerts that do not satisfy quality criteria, and processing alerts before pushing them to the science database (HBase).
+This tutorial illustrates the basics of connecting to the raw database (Parquet), filtering out alerts that do not satisfy quality criteria, and processing alerts before pushing them to the science database (Apache HBase).
 
 **Before starting**
 
@@ -11,7 +11,7 @@ For this tutorial, make sure:
 * Fink is installed on your computer.
 * Apache Spark (2.4+) is installed on your computer.
 * Docker is installed on your computer.
-* HBase is installed on your computer.
+* Apache HBase is installed on your computer.
 
 See [Getting started](../index.md) for more information.
 
@@ -115,6 +115,7 @@ Alternatively, you can also use Apache Spark to explore the science database:
 
 ```python
 # Launch pyspark shell with fink_shell
+from pyspark.sql import functions as F
 from fink_broker.sparkUtils import init_sparksession
 import json
 
@@ -136,25 +137,26 @@ print("Number of entries in {}: ".format(
   catalog_dic["table"]["name"]), df.count())
 # Number of entries in test_catalog:  489
 
-# Match statistics
-df.groupBy("cross_match_alerts_per_batch").count().show()
-# +----------------------------+-----+
-# |cross_match_alerts_per_batch|count|
-# +----------------------------+-----+
-# |                       RRLyr|   61|
-# |                     EB*WUMa|   16|
-# |                  PulsV*WVir|    1|
-# |                        Blue|    1|
-# |               Candidate_EB*|    1|
-# |                         QSO|    2|
-# |                       AMHer|    1|
-# |                     Unknown|  369|
-# |                         HB*|    4|
-# |                   Seyfert_1|    3|
-# |                   EB*betLyr|    1|
-# |                         AGN|    1|
-# |                        Star|   25|
-# |                       BLLac|    2|
-# |               AGN_Candidate|    1|
-# +----------------------------+-----+
+# Matched statistics
+df_ = df.groupBy("cross_match_alerts_per_batch").agg(F.collect_list("objectId"))
+df_grouped = df_.withColumn("count", F.size("collect_list(objectId)")).show()
++----------------------------+----------------------+-----+
+|cross_match_alerts_per_batch|collect_list(objectId)|count|
++----------------------------+----------------------+-----+
+|                       RRLyr|  [ZTF17aabuwws, ZT...|   61|
+|                     EB*WUMa|  [ZTF17aabuxmy, ZT...|   16|
+|                  PulsV*WVir|        [ZTF17aaddztd]|    1|
+|                        Blue|        [ZTF18abotviw]|    1|
+|               Candidate_EB*|        [ZTF18abryrxw]|    1|
+|                         QSO|  [ZTF18abuvcff, ZT...|    2|
+|                       AMHer|        [ZTF18abwpsyj]|    1|
+|                     Unknown|  [ZTF17aabvdbf, ZT...|  369|
+|                         HB*|  [ZTF18abodpsh, ZT...|    4|
+|                   Seyfert_1|  [ZTF18abodptn, ZT...|    3|
+|                   EB*betLyr|        [ZTF18abosdwb]|    1|
+|                         AGN|        [ZTF18abqzldr]|    1|
+|                        Star|  [ZTF18abqzzce, ZT...|   25|
+|                       BLLac|  [ZTF18abscgic, ZT...|    2|
+|               AGN_Candidate|        [ZTF18achjgdb]|    1|
++----------------------------+----------------------+-----+
 ```
