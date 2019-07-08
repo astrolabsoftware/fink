@@ -140,7 +140,7 @@ fink stop dashboard
 To get help about `fink`, just type:
 
 ```shell
-fink
+$ fink
 Handle Kafka stream received by Apache Spark
 
  Usage:
@@ -153,9 +153,12 @@ Handle Kafka stream received by Apache Spark
  To get help for a service:
  	fink start <service> -h
 
- To see the running processes:
-  fink show
-
  Available services are: dashboard, checkstream, stream2raw, raw2science, distribution
- Typical configuration would be ${FINK_HOME}/conf/fink.conf
+ Typical configuration would be /Users/julien/Documents/workspace/myrepos/fink/conf/fink.conf
+
+ To see the running processes:
+ 	fink show
+
+ To stop a service or all running processes:
+ 	fink stop <service or all>
 ```
