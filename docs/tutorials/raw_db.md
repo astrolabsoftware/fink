@@ -119,7 +119,7 @@ df.select("decoded.*").show(5)
 # +---------+--------------------+------------+------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
 ```
 
-You can keep accessing the fields but going deeper in the nested structure:
+You can keep accessing the fields by going deeper in the nested structure:
 
 ```python
 df.select("decoded.candidate.*").select(["ra", "dec"]).show(5)
