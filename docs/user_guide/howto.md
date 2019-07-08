@@ -104,7 +104,7 @@ fink start <service>
 If you want to know which services are available:
 
 ```bash
-fink
+$ fink
 Handle Kafka stream received by Apache Spark
 
  Usage:
@@ -117,11 +117,14 @@ Handle Kafka stream received by Apache Spark
  To get help for a service:
  	fink start <service> -h
 
- To see the running processes:
-  fink show
+ Available services are: dashboard, checkstream, stream2raw, raw2science, distribution
+ Typical configuration would be /Users/julien/Documents/workspace/myrepos/fink/conf/fink.conf
 
- Available services are: dashboard, checkstream, stream2raw, raw2science
- Typical configuration would be ${FINK_HOME}/conf/fink.conf
+ To see the running processes:
+ 	fink show
+
+ To stop a service or all running processes:
+ 	fink stop <service or all>
 ```
 
 ### How do I stop a service?
@@ -172,10 +175,15 @@ usage: stream2raw.py [-h] [-servers SERVERS] [-topic TOPIC] [-schema SCHEMA]
                      [-checkpointpath_raw CHECKPOINTPATH_RAW]
                      [-checkpointpath_sci CHECKPOINTPATH_SCI]
                      [-science_db_name SCIENCE_DB_NAME]
+                     [-science_db_catalog SCIENCE_DB_CATALOG]
                      [-finkwebpath FINKWEBPATH] [-tinterval TINTERVAL]
                      [-tinterval_kafka TINTERVAL_KAFKA]
                      [-exit_after EXIT_AFTER] [-datasimpath DATASIMPATH]
                      [-poolsize POOLSIZE]
+                     [-distribution_schema DISTRIBUTION_SCHEMA]
+                     [-startingOffset_dist STARTINGOFFSET_DIST]
+                     [-checkpointpath_dist CHECKPOINTPATH_DIST]
+                     [-distribution_rules_xml DISTRIBUTION_RULES_XML]
 
 Store live stream data on disk. The output can be local FS or distributed FS
 (e.g. HDFS). Be careful though to have enough disk space! For some output
@@ -218,6 +226,8 @@ optional arguments:
                         queries [FINK_ALERT_CHECKPOINT_SCI]
   -science_db_name SCIENCE_DB_NAME
                         The name of the HBase table [SCIENCE_DB_NAME]
+  -science_db_catalog SCIENCE_DB_CATALOG
+                        The path of HBase catalog [SCIENCE_DB_CATALOG]
   -finkwebpath FINKWEBPATH
                         Folder to store UI data for display. [FINK_UI_PATH]
   -tinterval TINTERVAL  Time interval between two monitoring. In seconds.
@@ -236,6 +246,23 @@ optional arguments:
   -poolsize POOLSIZE    Maximum number of alerts to send. If the poolsize is
                         bigger than the number of alerts in `datapath`, then
                         we replicate the alerts. Default is 5. [POOLSIZE]
+  -distribution_schema DISTRIBUTION_SCHEMA
+                        The path where the avro schema for alert distribution
+                        is stored [DISTRIBUTION_SCHEMA]
+  -startingOffset_dist STARTINGOFFSET_DIST
+                        From which offset(timestamp) you want to start the
+                        distribution service. Options are: latest, earliest or
+                        a custom timestamp [DISTRIBUTION_OFFSET]
+  -checkpointpath_dist CHECKPOINTPATH_DIST
+                        The path of file in which to store the offset for
+                        distribution service. This file will store the
+                        timestamp up-till which the science db is scanned and
+                        alerts have been distributed.
+                        [DISTRIBUTION_OFFSET_FILE]
+  -distribution_rules_xml DISTRIBUTION_RULES_XML
+                        The path to distribution-rules.xml which stores user
+                        defined rules to filter the distribution stream
+                        [DISTRIBUTION_RULES_XML]
 ```
 
 ### How do I see how many services are running?
