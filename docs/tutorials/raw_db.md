@@ -73,15 +73,12 @@ Now go to the dashboard live tab, and see the alerts coming! The tab should auto
 
 ## Retrieving archived alert data
 
-The `stream2raw` service connects to the stream, decode the alert data (Apache Avro file format), and archive on disk (Apache Parquet file format). You can easily access it in a pyspark shell:
+The `stream2raw` service connects to the stream, decode the alert data (Apache Avro file format), and archive on disk (Apache Parquet file format). You can easily access the archived data using the `fink_shell`:
 
 ```bash
-# Launch a pyspark shell with fink dependencies loaded
-source conf/fink.conf.tutorial1
-PYSPARK_DRIVER_PYTHON=ipython pyspark --jars $FINK_JARS --packages $FINK_PACKAGES
-
-# You can also use jupyter-notebook
-PYSPARK_DRIVER_PYTHON=jupyter-notebook pyspark --jars $FINK_JARS --packages $FINK_PACKAGES
+# Launch a pyspark shell with fink dependencies loaded.
+# Note you can also use jupyter-notebook (see the configuration options)
+fink_shell -c conf/fink.conf.shell
 ```
 
 and type:
