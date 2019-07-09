@@ -24,7 +24,7 @@ export KAFKA_HOME=/usr/local/kafka
 We provide a script `fink_kafka` to efficiently manage the Kafka Cluster for Redistribution. The help message shows the available
 services:
 
-```bash
+```plain
 Manage Finks Kafka Server for Alert Distribution
 
  Usage:
