@@ -25,7 +25,7 @@ We provide a script `fink_kafka` to efficiently manage the Kafka Cluster for Red
 services:
 
 ```plain
-Manage Finks Kafka Server for Alert Distribution
+Manage Fink's Kafka Server for Alert Distribution
 
  Usage:
  	fink_kafka [option]
@@ -51,6 +51,12 @@ Manage Finks Kafka Server for Alert Distribution
 
  	--list-topics
  		Lists all the topics
+
+ 	--authentication [-a] [-d] [-u user] [-p password] [-h]
+ 		Authenticate users on Fink's Kafka Cluster (use -h for more help)
+
+ 	--authorization [-a] [-d] [-u user] [-H host] [-c consumer-group] [-p] [-t topic] [-h]
+ 		Authorize permissions on Fink's Kafka Cluster (use -h for more help)
 ```
 
 ## Spark process
@@ -58,7 +64,7 @@ The Spark process is responsible for reading the alert data from the [Science Da
 converting the data into avro packets and publishing them to Kafka topic(s).
 <br>
 To see the working of the distribution system, first start Fink's Kafka Cluster
-and create the topic "fink_outstream":
+and create a topic "fink_outstream":
 
 ```bash
 # Start the Kafka Cluster
@@ -68,6 +74,10 @@ fink_kafka --create-topic fink_outstream
 ```
 
 This will start the Kafka Cluster and create a topic "fink_outstream" if it didn't already exist.
+Set the topic in the [configuration](configuration.md).
+```
+DISTRIBUTION_TOPIC=fink_outstream
+```
 Now, start the distribution service:
 
 ```bash
@@ -88,7 +98,8 @@ DISTRIBUTION_SCHEMA=${FINK_HOME}/schemas/distribution_schema
 This schema can be used by a consumer service to read and decode the Kafka messages. To learn more about configuring Fink see [configuration](configuration.md).
 <br><br>
 To check the working of the distribution pipelline we provide a Spark Consumer that reads the messages published
-on the topic "fink_outstream" and uses the schema above to convert them back to Spark DataFrame. This can be run using:
+on the topic given in configuration (here `fink_outstream`) and uses the schema
+above to convert them back to a Spark DataFrame. This can be run using:
 
 ```bash
 fink start distribution_test
@@ -100,8 +111,71 @@ the resulting DataFrame on console.
 ## Filtering alerts before distribution
 It is expensive (resource-wise) to redistribute the whole stream of alerts
 received from telescopes. Hence Fink adds value to the alerts and distribute a
-filtered stream of alerts. <br>
-Simple rules based on key-value can be defined using
-an xml file. See `conf/distribution-rules.xml` for more details. These rules
-are applied to obtain a filtered stream which is then distributed on the Kafka topic
-`fink_outstream`.
+filtered stream of alerts. This filtering service for redistribution is called level two (level one operates in between the stream and the database, see [Tutorial2](bogus_filtering.md)). Currently there are two ways for user to specify their filters:
+
+- Simple rules based on key-value can be defined using an xml file. See `conf/distribution-rules.xml` for more details. These rules are applied to obtain a filtered stream which is then distributed on Kafka topic(s).
+- Python function stored under `${FINK_HOME}/userfilters/leveltwo.py`.
+
+## Security
+To prevent unauthorized access of resources, it is important to add a layer of security
+to the Kafka Cluster used for Alert Redistribution. More about Kafka security can be
+learnt from Apache Kafka's official [documentation](https://kafka.apache.org/documentation/#security).
+
+The security measures used for Fink's Kafka Cluster are:
+
+1. Authentication of connections to brokers from clients (producers and consumers)
+   and other brokers.
+2. Authorization of read / write permissions to clients.
+
+**Authentication**
+
+Currently, Fink uses SASL/SCRAM-SHA-512 as the mechanism for authentication of
+clients and brokers on the Kafka Cluster. SCRAM stands for
+Salted Challenge Response Authentication Mechanism. The SCRAM credentials for
+clients and brokers are stored in Zookeeper in non human-readable format. To ensure
+security, Zookeeper must be in a secured network.
+
+The credentials for a client can be added using the `--authentication` option
+of `fink_kafka`.
+
+Execute `fink_kafka --authentication -h` to get the help message:
+```plain
+Usage:
+       fink_kafka --authentication [-a] [-d] [-u user] [-p password] [-h]
+
+Add/delete credentials for user's authentication
+       -a: add user's credentials (default)
+       -d: delete user's credentials (optional)
+       -u: username
+       -p: password (not required for delete)
+       -h: to view this help message
+```
+
+**Authorization**
+
+Simple ACL authorizer that is shipped with Kafka is used for authorization of clients
+and brokers on the Kafka Cluster. To learn more about Authorization and ACLs
+in Kafka, refer to the official [documentation](https://kafka.apache.org/documentation/#security_authz).
+
+The Access Control Lists (ACLs) are stored in Zookeeper.
+Again, to ensure security, Zookeeper must be in secured network.
+
+The most common use of Authorization and ACLs is to give permissions to clients
+to act as consumer / producer. This can be achieved by using the `--authorization`
+option of `fink_kafka`.
+
+Execute `fink_kafka --authorization -h` to get the help message:
+```plain
+Usage:
+       fink_kafka --authorization [-a] [-d] [-u user] [-H host] [-c consumer-group] [-p] [-t topic] [-h]
+
+Add/delete ACLs for authorization on Fink's Kafka Cluster
+       -a: add Acl
+       -d: delete/remove Acl
+       -u: username (Principal)
+       -H: IP address from which Principal will have access (using hostname is not supported)
+       -c: give access rights for a consumer (argument required: consumer-group)
+       -p: give access rights for a producer
+       -t: topic
+       -h: to view this help message
+```
