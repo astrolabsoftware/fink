@@ -32,7 +32,7 @@ export KAFKA_HOME=/usr/local/kafka
 We provide a script `fink_kafka` to efficiently manage the Kafka Cluster for Redistribution. The help message shows the available services:
 
 ```plain
-Manage Finks Kafka Server for Alert Distribution
+Manage Fink's Kafka Server for Alert Distribution
 
  Usage:
  	fink_kafka [option]
@@ -58,6 +58,12 @@ Manage Finks Kafka Server for Alert Distribution
 
  	--list-topics
  		Lists all the topics
+
+ 	--authentication [-a] [-d] [-u user] [-p password] [-h]
+ 		Authenticate users on Fink's Kafka Cluster (use -h for more help)
+
+ 	--authorization [-a] [-d] [-u user] [-H host] [-c consumer-group] [-p] [-t topic] [-h]
+ 		Authorize permissions on Fink's Kafka Cluster (use -h for more help)
 ```
 
 Finally start Fink's Kafka Cluster:
@@ -73,7 +79,7 @@ It is expensive (resource-wise) to redistribute the whole stream of alerts
 received from telescopes. Hence Fink adds value to the alerts and distribute a
 filtered stream of alerts. This filtering service for redistribution is called level two (level one operates in between the stream and the database, see [Tutorial2](bogus_filtering.md)). Currently there are two ways for user to specify their filters:
 
-- Simple rules based on key-value can be defined using an xml file. See `conf/distribution-rules.xml` for more details. These rules are applied to obtain a filtered stream which is then distributed on the Kafka topic `fink_outstream`.
+- Simple rules based on key-value can be defined using an xml file. See `conf/distribution-rules.xml` for more details. These rules are applied to obtain a filtered stream which is then distributed on Kafka topic(s).
 - Python function stored under `${FINK_HOME}/userfilters/leveltwo.py`.
 
 We will focus here on the first kind. Let's imagine we want to redirect all alerts flagged as RRlyr by the cross-match service running downstream (see [Tutorial3](processing_alerts.md)). The first step is to create such filter. Create a file `conf/distribution-rules_rrlyr.xml` with inside:
@@ -173,11 +179,13 @@ We will focus here on the first kind. Let's imagine we want to redirect all aler
 </distribution-rules>
 ```
 
-and register it in the configuration file for this tutorial:
+and register it in the configuration file for this tutorial.
+Also set the Kafka topic in the configuration:
 
 ```bash
 # in conf/fink.conf.tutorial4
 DISTRIBUTION_RULES_XML=${FINK_HOME}/conf/distribution-rules_rrlyr.xml
+DISTRIBUTION_TOPIC="fink_RRLyr"
 ```
 
 Then create the Kafka topic "fink_RRLyr":
