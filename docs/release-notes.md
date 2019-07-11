@@ -1,23 +1,23 @@
 # 0.2.0 -> 0.2.1
 
-### General
+**General**
 
 - Transfer documentation outside of the repo (#223 )
 - New service: Fink shell (#227 )
 
-### Raw database to science database
+**Raw database to science database**
 
 - Add capability to manipulate the data (level one) from generic modules (#209)
 - Make optional the use of cross-match in raw2science (#222 )
 - Add the path to the HBase configuration file when running raw2science (#195 )
 
-### Alert redistribution
+**Alert redistribution**
 
 - Add timestamp-based streaming to Alert distribution service (#201 )
 - Filtering alerts before distribution (#206 )
 - Add level two generic filter (#216 )
 
-### Other minor fixes
+**Other minor fixes**
 
 - several typo and bug fixes:
   - fix typo in checkstream (#202 )
