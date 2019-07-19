@@ -42,7 +42,7 @@ fink_kafka --create-topic test_topic
 ### Authentication
 
 Credentials for Authentication can be added / removed using `fink_kafka --authentication`.
-Execute `fink_kafka --authentication -h` to get the help message:
+To get he help message, Execute `fink_kafka --authentication -h`:
 ```plain
 Usage:
        fink_kafka --authentication [-a] [-d] [-u user] [-p password] [-h]
@@ -65,7 +65,7 @@ fink_kafka --authentication -a -u Alice -p Alice-secret
 ### Authorization
 
 ACLs which are stored in Zookeeper can be modified (add / remove) using `fink_kafka --authorization`.
-Execute `fink_kafka --authorization -h` to get the help message:
+To get the help message, Execute `fink_kafka --authorization -h`:
 ```plain
 Usage:
        fink_kafka --authorization [-a] [-d] [-u user] [-H host] [-c consumer-group] [-p] [-t topic] [-h]
@@ -169,3 +169,7 @@ Received message: Hi from Bob: 3
 Received message: Hi from Bob: 4
 ...
 ```
+## Connecting to Fink (WIP)
+We are currrently working on developing a client API for securely connecting
+to Fink. Such a client API would enable users to subscribe to topics for receiving
+Fink's outstream of alerts, search Fink's database and submit queries.
