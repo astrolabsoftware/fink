@@ -169,7 +169,9 @@ Received message: Hi from Bob: 3
 Received message: Hi from Bob: 4
 ...
 ```
-## Connecting to Fink (WIP)
-We are currrently working on developing a client API for securely connecting
-to Fink. Such a client API would enable users to subscribe to topics for receiving
-Fink's outstream of alerts, search Fink's database and submit queries.
+## Connecting to Fink
+Fink provides a light weight package for receiving fink-broker's alert stream.
+
+Credentials for new users can be added by using `--authentication` and `--authorization` services of `fink_kafka` as shown above.
+
+Then the users can securely access the stream of alerts using [`fink-client`](https://github.com/astrolabsoftware/fink-client)
