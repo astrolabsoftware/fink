@@ -4,14 +4,19 @@ One goal of the broker is to redistribute alert packets to the community. Theref
 
 ## Components
 
-The two major components of Fink's distribution system are:
+The major components of Fink's distribution system are:
 
-1. Kafka Cluster
-2. Spark Process (which acts as the Producer)
+1. **Fink's Alert Stream**
+2. **Slack Alerts**
+3. **Fink Client**
 
-## Kafka Cluster
+## Fink's Alert Stream
+
+Fink redistributes the alerts it receive from telescopes via Kafka topics. These topics are based on classification done while processing the alerts. The main components of alert stream are:
+
+### Kafka Cluster
 The Kafka Cluster consists of one or more Kafka broker(s) and a Zookeeper server that monitors and manages the Kafka brokers.
-It is important to note that the Kafka Cluster for Redistribution of alerts is different from the one used in [simulator](simulator.md).
+It is important to note that the Kafka Cluster for redistribution of alerts is different from the one used in [simulator](simulator.md).
 <br>
 You will need [Apache Kafka](https://kafka.apache.org/) 2.2+ installed. You can run the install script at `conf/install_kafka.sh`. Once installed, define `KAFKA_HOME` as per your installation in your ~/.bash_profile.
 
@@ -21,7 +26,7 @@ You will need [Apache Kafka](https://kafka.apache.org/) 2.2+ installed. You can 
 export KAFKA_HOME=/usr/local/kafka
 ```
 <br>
-We provide a script `fink_kafka` to efficiently manage the Kafka Cluster for Redistribution. The help message shows the available
+We provide a script `fink_kafka` to efficiently manage the Kafka Cluster for redistribution. The help message shows the available
 services:
 
 ```plain
@@ -59,7 +64,7 @@ Manage Fink's Kafka Server for Alert Distribution
  		Authorize permissions on Fink's Kafka Cluster (use -h for more help)
 ```
 
-## Spark process
+### Spark process
 The Spark process is responsible for reading the alert data from the [Science Database](database.md#science-database-structure),
 converting the data into avro packets and publishing them to Kafka topic(s).
 <br>
@@ -108,7 +113,7 @@ This starts a Spark streaming process that reads the Kafka messages
 published by the above distribution service, decodes them and print
 the resulting DataFrame on console.
 
-## Filtering alerts before distribution
+### Filtering of alerts before distribution
 It is expensive (resource-wise) to redistribute the whole stream of alerts
 received from telescopes. Hence Fink adds value to the alerts and distribute a
 filtered stream of alerts. This filtering service for redistribution is called level two (level one operates in between the stream and the database, see [Tutorial2](bogus_filtering.md)). Currently there are two ways for user to specify their filters:
@@ -116,7 +121,7 @@ filtered stream of alerts. This filtering service for redistribution is called l
 - Simple rules based on key-value can be defined using an xml file. See `conf/distribution-rules.xml` for more details. These rules are applied to obtain a filtered stream which is then distributed on Kafka topic(s).
 - Python function stored under `${FINK_HOME}/userfilters/leveltwo.py`.
 
-## Security
+### Security
 To prevent unauthorized access of resources, it is important to add a layer of security
 to the Kafka Cluster used for Alert Redistribution. More about Kafka security can be
 learnt from Apache Kafka's official [documentation](https://kafka.apache.org/documentation/#security).
@@ -179,3 +184,73 @@ Add/delete ACLs for authorization on Fink's Kafka Cluster
        -t: topic
        -h: to view this help message
 ```
+
+## Slack Alerts
+
+Fink provides a utility to send out notifications and alert information via slack to the users' community. This is provided in the module `fink_broker.slackUtils`.
+
+Usage:
+
+First, set `SLACK_API_TOKEN` in the configuration file.
+
+Sending messages to slack channels or individual users:
+```python
+from fink_broker.slackUtils import get_slack_client
+finkSlack = get_slack_client()
+
+# Sending message to a channel
+channel = "#newsletter"
+message = "New version of Fink is released"
+finkSlack.send_message(channel, message)
+
+# Sending message to individual user
+user = "Bob"
+message = "Your submitted query is complete"
+finkSlack.send_message(user, message)
+```
+
+Along with sending out alerts via Kafka stream, slack can also be used to send out information about the classification of alerts. For example, to send slack alerts with information of coordinates and the classified type the method `send_slack_alerts` can be used:
+
+```python
+from fink_broker.slackUtils import send_slack_alerts
+
+# DataFrame with alerts read from science db
+df = read_science_db()
+df.show()
+send_slack_alerts(df)
+```
+This will result in alerts being sent to different channels corresponding to the classification type. For example if the dataframe contains the alert data as folllowing (output of `df.show()`):
+```plain
++------------+------------------+----------------------------+-------------+------------+-------------+
+|    objectId|            candid|cross_match_alerts_per_batch|candidate_pid|candidate_ra|candidate_dec|
++------------+------------------+----------------------------+-------------+------------+-------------+
+|ZTF17aabuwws|697252840615015002|                       RRLyr| 697252840615|  12.5901418|  -13.2635671|
+|ZTF17aabuxzj|697252841215010003|                     EB*WUMa| 697252841215|   9.8194532|   -12.512629|
+|ZTF18abosdxh|697252845515010007|                       RRLyr| 697252845515|  13.8237084|   -7.6134186|
+|ZTF18acsbtwe|697252844515015002|                     Unknown| 697252844515|    8.717752|   -8.2367741|
++------------+------------------+----------------------------+-------------+------------+-------------+
+```
+`send_slack_alerts` will result in alerts being sent to correspondig slack channel.
+
+channel: `rrlyr` on slack:
+```plain
++------------+------------+-------------+----------------------------+
+|objectId    |candidate_ra|candidate_dec|cross_match_alerts_per_batch|
++------------+------------+-------------+----------------------------+
+|ZTF17aabuwws|12.5901418  |-13.2635671  |RRLyr                       |
+|ZTF18abosdxh|13.8237084  |-7.6134186   |RRLyr                       |
++------------+------------+-------------+----------------------------+
+```
+
+channel: `ebwuma` on slack:
+```plain
++------------+------------+-------------+----------------------------+
+|objectId    |candidate_ra|candidate_dec|cross_match_alerts_per_batch|
++------------+------------+-------------+----------------------------+
+|ZTF17aabuxzj|9.8194532   |-12.512629   |EB*WUMa                     |
++------------+------------+-------------+----------------------------+
+```
+
+## Fink Client
+
+Fink provides a light weight package to connect to the fink broker and receive the alert stream. See [`fink-client`](https://github.com/astrolabsoftware/fink-client) for more details.
