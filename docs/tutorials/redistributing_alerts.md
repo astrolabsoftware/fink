@@ -64,6 +64,9 @@ Manage Fink's Kafka Server for Alert Distribution
 
  	--authorization [-a] [-d] [-u user] [-H host] [-c consumer-group] [-p] [-t topic] [-h]
  		Authorize permissions on Fink's Kafka Cluster (use -h for more help)
+
+ 	--list-acl
+ 		Lists the current ACL
 ```
 
 Finally start Fink's Kafka Cluster:
