@@ -62,6 +62,9 @@ Manage Fink's Kafka Server for Alert Distribution
 
  	--authorization [-a] [-d] [-u user] [-H host] [-c consumer-group] [-p] [-t topic] [-h]
  		Authorize permissions on Fink's Kafka Cluster (use -h for more help)
+
+ 	--list-acl
+ 		Lists the current ACL
 ```
 
 ### Spark process
@@ -184,6 +187,8 @@ Add/delete ACLs for authorization on Fink's Kafka Cluster
        -t: topic
        -h: to view this help message
 ```
+
+To quickly view the current ACL execute `fink_kafka --list-acl`
 
 ## Slack Alerts
 
