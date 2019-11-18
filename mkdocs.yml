@@ -4,27 +4,36 @@ edit_uri: ""
 
 nav:
     - Home: index.md
-    - User Guide:
-      - Welcome: user_guide/infrastructure.md
-      - Configuration: user_guide/configuration.md
-      - Databases: user_guide/database.md
-      - Services: user_guide/available-services.md
-      - Dashboard: user_guide/dashboard.md
-      - Simulating streams: user_guide/simulator.md
-      - Testing Fink: user_guide/testing-fink.md
-      - Redistributing alerts: user_guide/streaming-out.md
-      - Howto: user_guide/howto.md
+    - Technology:
+      - Welcome: broker/introduction.md
+      - Configuration: broker/configuration.md
+      - Databases: broker/database.md
+      - Services: broker/available-services.md
+      - Dashboard: broker/dashboard.md
+      - Simulating streams: broker/simulator.md
+      - Testing Fink: broker/testing-fink.md
+      - Redistributing alerts: broker/streaming-out.md
+      - Howto: broker/howto.md
+    - Science: science/introduction.md
+    - Distribution: distribution/introduction.md
     - Tutorials:
-      - Collecting alerts: tutorials/raw_db.md
-      - Applying quality cuts: tutorials/bogus_filtering.md
-      - Processing alerts: tutorials/processing_alerts.md
-      - Redistributing alerts: tutorials/redistributing_alerts.md
-      - Kafka Security: tutorials/secured_kafka.md
+      - Deploy the broker (local & cloud): toto.md
+      - Create your Science module: toto.md
+      - Create your Fink filter: toto.md
+      - Collect Fink alerts: toto.md
+    # - Tutorials:
+    #   - Collecting alerts: tutorials/raw_db.md
+    #   - Applying quality cuts: tutorials/bogus_filtering.md
+    #   - Processing alerts: tutorials/processing_alerts.md
+    #   - Redistributing alerts: tutorials/redistributing_alerts.md
+    #   - Kafka Security: tutorials/secured_kafka.md
     - About:
+      - Why Fink: why-fink.md
+      - Who we are: fink-team.md
       - Release Notes: release-notes.md
       - Contributing: contributing.md
       - License: license.md
-    - Cheatsheet: cheatsheet.md
+    # - Cheatsheet: cheatsheet.md
 
 # theme: readthedocs
 
