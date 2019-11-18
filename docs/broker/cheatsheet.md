@@ -70,7 +70,7 @@ The Fink shell is a pyspark shell with all dependencies for Fink loaded. It allo
 fink_shell -c conf/fink.conf.shell
 ```
 
-### Testing Fink
+## Testing Fink
 
 To launch the full test suite of the broker, just execute:
 
