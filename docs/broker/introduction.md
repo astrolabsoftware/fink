@@ -7,6 +7,17 @@
 Fink is mainly based on the recent [Spark Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) module introduced in Spark 2.0 (see [paper](https://cs.stanford.edu/~matei/papers/2018/sigmod_structured_streaming.pdf)), and especially its integration with Apache Kafka (see [here](https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html)). Structured streaming is a stream processing engine built on the Spark SQL engine, hence it combines the best of the two worlds.
 The idea behind it is to process data streams as a series of small batch jobs, called micro-batch processing. As anything in Spark, it provides fast, scalable, fault-tolerant processing, plus end-to-end exactly-once stream processing.
 
+## Broker structure
+
+The broker is made of 4 modules:
+
+* **stream2raw**: connect to incoming stream of alerts, and archive data on disk.
+* **raw2science**: filter out bad quality alerts, and add values to remaining alerts using the user-defined science modules.
+* **distribution**: redistribute alerts to users based on user-defined filters (Kafka topics).
+* **archive**: store alerts containing scientific added values.
+
+On the production platform, we typically have several medium-size clusters spun-up: Apache Spark, Apache Kafka, Apache HBase, ... but you can install and test all of these components in local mode, with moderate resources required.
+
 ## Installation (local mode)
 
 You need Python 3.6+, Apache Spark 2.4+, and docker-compose (latest) installed.

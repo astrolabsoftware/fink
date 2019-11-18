@@ -5,15 +5,16 @@ edit_uri: ""
 nav:
     - Home: index.md
     - Technology:
-      - Welcome: broker/introduction.md
-      - Configuration: broker/configuration.md
-      - Databases: broker/database.md
-      - Services: broker/available-services.md
-      - Dashboard: broker/dashboard.md
+      - Getting started: broker/introduction.md
+      - Broker commands: broker/cheatsheet.md
+      # - Configuration: broker/configuration.md
+      # - Databases: broker/database.md
+      # - Services: broker/available-services.md
+      # - Dashboard: broker/dashboard.md
       - Simulating streams: broker/simulator.md
-      - Testing Fink: broker/testing-fink.md
-      - Redistributing alerts: broker/streaming-out.md
-      - Howto: broker/howto.md
+      - Testing Fink broker: broker/testing-fink.md
+      - Redistributing alerts using Kafka: broker/streaming-out.md
+      # - Howto: broker/howto.md
     - Science: science/introduction.md
     - Distribution: distribution/introduction.md
     - Tutorials:
