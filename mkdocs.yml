@@ -18,6 +18,7 @@ nav:
       - Filtering the stream: distribution/introduction.md
       - Communication protocols: distribution/communication.md
     - Tutorials:
+      - Before starting: tutorials/introduction.md
       - Deploy the broker: tutorials/deployment.md
       - Create your Science module: tutorials/create-science-module.md
       - Create your Fink filter: tutorials/create-filters.md
