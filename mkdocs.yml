@@ -15,13 +15,23 @@ nav:
       - Testing Fink broker: broker/testing-fink.md
       - Redistributing alerts using Kafka: broker/streaming-out.md
       # - Howto: broker/howto.md
-    - Science: science/introduction.md
-    - Distribution: distribution/introduction.md
+    - Science:
+      - Sience in Fink: science/introduction.md
+      - ZTF alert stream: science/ztf_alerts.md
+      - LSST alert stream: science/lsst_alerts.md
+    - Distribution:
+      - Filtering the stream: distribution/introduction.md
+      - Communication protocols: distribution/communication.md
     - Tutorials:
-      - Deploy the broker (local & cloud): toto.md
-      - Create your Science module: toto.md
-      - Create your Fink filter: toto.md
-      - Collect Fink alerts: toto.md
+      - Deploy the broker: tutorials/deployment.md
+      - Create your Science module: tutorials/create-science-module.md
+      - Create your Fink filter: tutorials/create-filters.md
+      - Collect Fink alerts [Kafka]: tutorials/using-fink-client.md
+    - Ecosystem:
+        - fink-broker &rarr;: https://github.com/astrolabsoftware/fink-broker
+        - fink-science &rarr;: https://github.com/astrolabsoftware/fink-science
+        - fink-filters &rarr;: https://github.com/astrolabsoftware/fink-filters
+        - fink-client &rarr;: https://github.com/astrolabsoftware/fink-client
     # - Tutorials:
     #   - Collecting alerts: tutorials/raw_db.md
     #   - Applying quality cuts: tutorials/bogus_filtering.md
