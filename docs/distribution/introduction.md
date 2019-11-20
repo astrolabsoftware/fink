@@ -1,4 +1,4 @@
-## Redistributing alerts using Kafka
+# Redistributing alerts using Kafka
 
 **Distribution**: [![pypi](https://img.shields.io/pypi/v/fink-filters.svg)](https://pypi.python.org/pypi/fink-filters)
 

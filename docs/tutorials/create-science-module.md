@@ -1,12 +1,12 @@
-## Create your science module for Fink
+# Create your science module for Fink
 
 This tutorial goes step-by-step for creating a science modules used to generate added values to ZTF alert collected by the [Fink broker](https://github.com/astrolabsoftware/fink-broker).
 
-### Step 0: Fork the fink-science repository
+## Step 0: Fork the fink-science repository
 
 Fork and clone the [fink-science](https://github.com/astrolabsoftware/fink-science) repository, and create a new folder in `fink_science/`. The name of the folder does not matter much, but try to make it meaningful as much as possible! Let's call it `xmatch` for the sake of this example.
 
-### Step 1: Define your science module
+## Step 1: Define your science module
 
 A module contains necessary routines and classes to process the data, and add values. Typically, you will receive alerts in input, and output the same alerts with additional information. Input alert information contains position, flux, telescope properties, ... You can find what information is available in an alert [here](../science/ztf_alerts.md), or check the current Fink [added values](../science/added_values.md).
 
@@ -96,7 +96,7 @@ Remarks:
 
 Do not forget to include the `__init__.py` file in your new folder to make it a package.
 
-### Step 3: Open a pull request
+## Step 3: Open a pull request
 
 Once your filter is done, we will review it. The criteria for acceptance are:
 
@@ -105,6 +105,6 @@ Once your filter is done, we will review it. The criteria for acceptance are:
 
 We want to process data as fast as possible, and long running times add delay for further follow-up observations. What execution time is acceptable? It depends, but in any case communicate early the extra time overhead, and we can have a look together on how to speed-up the process if needed.
 
-### Step 4: Play!
+## Step 4: Play!
 
 If your module is accepted, it will be plugged in the broker, and outgoing alerts will contain new information! Define your filter using [fink-filters](https://github.com/astrolabsoftware/fink-filters), and you will then be able to receive these alerts in (near) real-time using the [fink-client](https://github.com/astrolabsoftware/fink-client). Note that we do not keep alerts forever available in the broker. While the retention period is not yet defined, you can expect emitted alerts to be available no longer than one week.

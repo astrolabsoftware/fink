@@ -2,11 +2,11 @@
 
 This tutorial goes step-by-step for creating a filters used to define which information will be sent to you by the [Fink broker](https://github.com/astrolabsoftware/fink-broker).
 
-### Step 0: Fork the fink-filters repository
+## Step 0: Fork the fink-filters repository
 
 Fork and clone the [fink-filters](https://github.com/astrolabsoftware/fink-filters) repository, and create a new folder in `fink_filters`. The name of the new folder does not matter much, but try to make it meaningful as much as possible! Let's call it `filter_rrlyr` for the sake of this example.
 
-### Step 1: Define your filter
+## Step 1: Define your filter
 
 A filter is typically a Python routine that selects which alerts need to be sent based on user-defined criteria. Criteria are based on the alert entries: position, flux, properties, ... You can find what's in alert here [link to be added].
 
@@ -52,7 +52,7 @@ def filter_w_several_input(acol: Any, anothercol: Any) -> pd.Series:
 
 Do not forget to include the `__init__.py` file in your new folder to make it a package.
 
-### Step 3: Open a pull request
+## Step 3: Open a pull request
 
 Once your filter is done, we will review it. The criteria for acceptance are:
 
@@ -61,6 +61,6 @@ Once your filter is done, we will review it. The criteria for acceptance are:
 
 Keep in mind, LSST incoming stream is 10 million alerts per night, or ~1TB/night. Hence your filter must focus on a specific aspect of the stream, to reduce the outgoing volume of alerts. Based on your submission, we will provide estimate of the volume to be transferred.
 
-### Step 4: Play!
+## Step 4: Play!
 
 If your filter is accepted, it will be plugged in the broker, and you will be able to receive your alerts in real-time using the [fink-client](https://github.com/astrolabsoftware/fink-client). Note that we do not keep alerts forever available in the broker. While the retention period is not yet defined, you can expect emitted alerts to be available no longer than one week.

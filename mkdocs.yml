@@ -6,7 +6,6 @@ nav:
     - Home: index.md
     - Technology:
       - Getting started: broker/introduction.md
-      - Broker commands: broker/cheatsheet.md
       - Simulating streams: broker/simulator.md
       - Testing Fink broker: broker/testing-fink.md
       - Redistributing alerts using Kafka: broker/streaming-out.md

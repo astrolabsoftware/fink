@@ -1,4 +1,4 @@
-# Tutorial: Fink broker main commands
+# Fink broker tutorial
 
 We expose here the main commands to use the Fink broker:
 
