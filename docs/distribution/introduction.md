@@ -12,9 +12,9 @@ Note that if the filters reduce the size of the stream, they do not filter the c
 
 ## How to include your filter in Fink?
 
-In Fink, the distribution is provided by the broker filtering services. A filter is typically a Python routine that selects which alerts need to be sent based on user-defined criteria. Criteria are based on the alert entries: position, flux, properties, ... You can find what's in alert [here](../science/ztf_alerts.md).
+In Fink, the distribution is provided by the broker filtering services. A filter is typically a Python routine that selects which alerts need to be sent based on user-defined criteria. Criteria are based on the alert entries: position, flux, properties, ... You can find what is available in ZTF raw alerts [here](../science/ztf_alerts.md), and Fink added values [here](../science/added_values.md).
 
-First let [us](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr) know about your interest to access particular part of the stream! If you already have a working filter, we would be super happy to make the integration within the broker, otherwise we will design it together. The procedure is described in the [fink-filters](https://github.com/astrolabsoftware/fink-filters) repository or you can follow the [tutorial](../tutorials/create-filters.md) on creating filters. To help the design, you can find what information is available in an alert [here](ztf_alerts.md). Keep in mind, the criteria for acceptance are:
+Let [us](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr) know about your interest to access particular part of the stream! If you already have a working filter, we would be super happy to make the integration within the broker, otherwise we will design it together. The procedure is described in the [fink-filters](https://github.com/astrolabsoftware/fink-filters) repository or you can follow the [tutorial](../tutorials/create-filters.md) on creating filters. To help the design, you can find what information is available in an alert [here](ztf_alerts.md). Keep in mind, the criteria for acceptance are:
 
 * The filter works ;-)
 * The volume of data to be transferred is tractable on our side.
