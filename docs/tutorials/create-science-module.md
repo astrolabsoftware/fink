@@ -1,4 +1,4 @@
-## Create your own science module
+## Create your science module for Fink
 
 This tutorial goes step-by-step for creating a science modules used to generate added values to ZTF alert collected by the [Fink broker](https://github.com/astrolabsoftware/fink-broker).
 
