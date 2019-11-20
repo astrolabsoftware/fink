@@ -1,4 +1,4 @@
-# Redistributing Alerts
+# Redistributing Alerts using Kafka
 
 One goal of the broker is to redistribute alert packets to the community. Therefore we have developed a service for streaming out alerts from the database to the world.
 
@@ -7,7 +7,7 @@ One goal of the broker is to redistribute alert packets to the community. Theref
 The major components of Fink's distribution system are:
 
 1. **Fink's Alert Stream**
-2. **Slack Alerts**
+2. **Slack Alerts (experimental)**
 3. **Fink Client**
 
 ## Fink's Alert Stream
@@ -15,10 +15,11 @@ The major components of Fink's distribution system are:
 Fink redistributes the alerts it receive from telescopes via Kafka topics. These topics are based on classification done while processing the alerts. The main components of alert stream are:
 
 ### Kafka Cluster
+
 The Kafka Cluster consists of one or more Kafka broker(s) and a Zookeeper server that monitors and manages the Kafka brokers.
 It is important to note that the Kafka Cluster for redistribution of alerts is different from the one used in [simulator](simulator.md).
 <br>
-You will need [Apache Kafka](https://kafka.apache.org/) 2.2+ installed. You can run the install script at `conf/install_kafka.sh`. Once installed, define `KAFKA_HOME` as per your installation in your ~/.bash_profile.
+You will need [Apache Kafka](https://kafka.apache.org/) 2.2+ installed. For testing purposes, you can run the install script at `conf/install_kafka.sh`. Once installed, define `KAFKA_HOME` as per your installation in your ~/.bash_profile.
 
 ```bash
 # in ~/.bash_profile
@@ -68,7 +69,8 @@ Manage Fink's Kafka Server for Alert Distribution
 ```
 
 ### Spark process
-The Spark process is responsible for reading the alert data from the [Science Database](database.md#science-database-structure),
+
+A Spark process is responsible for reading the alert data from the Science Database,
 converting the data into avro packets and publishing them to Kafka topic(s).
 <br>
 To see the working of the distribution system, first start Fink's Kafka Cluster
@@ -105,7 +107,7 @@ DISTRIBUTION_SCHEMA=${FINK_HOME}/schemas/distribution_schema
 
 This schema can be used by a consumer service to read and decode the Kafka messages. To learn more about configuring Fink see [configuration](configuration.md).
 <br><br>
-To check the working of the distribution pipelline we provide a Spark Consumer that reads the messages published
+To check the working of the distribution pipeline we provide a Spark Consumer that reads the messages published
 on the topic given in configuration (here `fink_outstream`) and uses the schema
 above to convert them back to a Spark DataFrame. This can be run using:
 
@@ -117,14 +119,13 @@ published by the above distribution service, decodes them and print
 the resulting DataFrame on console.
 
 ### Filtering of alerts before distribution
+
 It is expensive (resource-wise) to redistribute the whole stream of alerts
 received from telescopes. Hence Fink adds value to the alerts and distribute a
-filtered stream of alerts. This filtering service for redistribution is called level two (level one operates in between the stream and the database, see [Tutorial2](bogus_filtering.md)). Currently there are two ways for user to specify their filters:
-
-- Simple rules based on key-value can be defined using an xml file. See `conf/distribution-rules.xml` for more details. These rules are applied to obtain a filtered stream which is then distributed on Kafka topic(s).
-- Python function stored under `${FINK_HOME}/userfilters/leveltwo.py`.
+filtered stream of alerts. to learn more about this filtering service for redistribution, see the See the [distribution](../distribution/introduction.md) page or [`fink-filters`](https://github.com/astrolabsoftware/fink-filters) for more details.
 
 ### Security
+
 To prevent unauthorized access of resources, it is important to add a layer of security
 to the Kafka Cluster used for Alert Redistribution. More about Kafka security can be
 learnt from Apache Kafka's official [documentation](https://kafka.apache.org/documentation/#security).
@@ -190,7 +191,7 @@ Add/delete ACLs for authorization on Fink's Kafka Cluster
 
 To quickly view the current ACL execute `fink_kafka --list-acl`
 
-## Slack Alerts
+## Slack Alerts (experimental)
 
 Fink provides a utility to send out notifications and alert information via slack to the users' community. This is provided in the module `fink_broker.slackUtils`.
 
@@ -258,4 +259,4 @@ channel: `ebwuma` on slack:
 
 ## Fink Client
 
-Fink provides a light weight package to connect to the fink broker and receive the alert stream. See [`fink-client`](https://github.com/astrolabsoftware/fink-client) for more details.
+Fink provides a light weight package to connect to the fink broker and receive the alert stream. See the [distribution](../distribution/introduction.md) page or [`fink-client`](https://github.com/astrolabsoftware/fink-client) for more details.

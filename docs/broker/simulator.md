@@ -2,6 +2,8 @@
 
 For testing purposes, Fink includes a service to simulate incoming streams. With this stream simulator part, you can easily develop applications locally and deploy at scale only when you are ready!
 
+## Using ZTF data
+
 The service is provided through docker-compose, and include Kafka and Zookeeper clusters. The simulator generates the stream from alerts stored on disk. We provide a script to download a subset of ZTF alerts that will be used to generate streams:
 
 ```bash
@@ -18,6 +20,8 @@ FINK_ALERT_SCHEMA=...
 FINK_DATA_SIM=...
 ```
 
+## Sending alerts to the broker
+
 By default alerts will be published on the port 29092 (localhost), but you can change it in the [configuration](configuration.md). To start the simulator and send alerts, just execute:
 
 ```bash
@@ -33,7 +37,7 @@ fink start <service> --simulator
 For example for demo purposing, you can easily start the monitoring service on the simulated stream with:
 
 ```bash
-fink start monitor --simulator > live_sim.log &
+fink start checkstream --simulator > live_sim.log &
 ```
 
-and watch the stream at [http://localhost:5000/live.html](http://localhost:5000/live.html) (change the port with the one in your configuration file).
+and watch the incoming stream after sending alerts (`fink start simulator`).

@@ -4,27 +4,35 @@ edit_uri: ""
 
 nav:
     - Home: index.md
-    - User Guide:
-      - Welcome: user_guide/infrastructure.md
-      - Configuration: user_guide/configuration.md
-      - Databases: user_guide/database.md
-      - Services: user_guide/available-services.md
-      - Dashboard: user_guide/dashboard.md
-      - Simulating streams: user_guide/simulator.md
-      - Testing Fink: user_guide/testing-fink.md
-      - Redistributing alerts: user_guide/streaming-out.md
-      - Howto: user_guide/howto.md
+    - Technology:
+      - Getting started: broker/introduction.md
+      - Simulating streams: broker/simulator.md
+      - Testing Fink broker: broker/testing-fink.md
+      - Redistributing alerts using Kafka: broker/streaming-out.md
+    - Science:
+      - Sience in Fink: science/introduction.md
+      - ZTF alert stream: science/ztf_alerts.md
+      - LSST alert stream: science/lsst_alerts.md
+      - Fink alert added values: science/added_values.md
+    - Distribution:
+      - Filtering the stream: distribution/introduction.md
+      - Communication protocols: distribution/communication.md
     - Tutorials:
-      - Collecting alerts: tutorials/raw_db.md
-      - Applying quality cuts: tutorials/bogus_filtering.md
-      - Processing alerts: tutorials/processing_alerts.md
-      - Redistributing alerts: tutorials/redistributing_alerts.md
-      - Kafka Security: tutorials/secured_kafka.md
+      - Deploy the broker: tutorials/deployment.md
+      - Create your Science module: tutorials/create-science-module.md
+      - Create your Fink filter: tutorials/create-filters.md
+      - Collect Fink alerts [Kafka]: tutorials/using-fink-client.md
+    - Ecosystem:
+      - fink-broker &rarr;: https://github.com/astrolabsoftware/fink-broker
+      - fink-science &rarr;: https://github.com/astrolabsoftware/fink-science
+      - fink-filters &rarr;: https://github.com/astrolabsoftware/fink-filters
+      - fink-client &rarr;: https://github.com/astrolabsoftware/fink-client
     - About:
+      - Why Fink: why-fink.md
+      - Who we are: fink-team.md
       - Release Notes: release-notes.md
       - Contributing: contributing.md
       - License: license.md
-    - Cheatsheet: cheatsheet.md
 
 # theme: readthedocs
 

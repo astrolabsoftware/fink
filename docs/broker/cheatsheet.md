@@ -1,13 +1,15 @@
-## Fink broker main commands
+# Fink broker main commands
 
-Users will find here main commands to use Fink:
+We expose here the main commands to use the Fink broker:
 
-- Launch full Fink pipeline
+- Launch a Fink pipeline
 - Produce local stream of alerts
 - Launch pyspark shell with Fink configuration pre-loaded
 - Test Fink
 
-### Fink broker pipeline
+## Fink broker pipeline
+
+An example to instantiate a simple version of the broker:
 
 ```bash
 #!/bin/bash
@@ -24,6 +26,9 @@ fi
 # Select a configuration file
 CONF=conf/fink.conf
 
+# Initialise paths
+fink_init
+
 # Redirect (driver) logs here
 mkdir -p logs
 
@@ -32,42 +37,42 @@ fink start stream2raw -c $CONF --simulator > logs/stream2raw.log &
 
 sleep 5
 
-# raw DB to science DB (incl. filtering and processing)
+# raw DB to science DB (incl. quality cuts and science modules)
 fink start raw2science -c $CONF --simulator > logs/raw2science.log &
 
 sleep 5
 
-# Start kafka cluster for redirection
-fink_kafka start
-
-# Create fake topic for redistribution
-fink_kafka --create-topic my_favourite_topic
-
 # Redistribute data (incl. filtering)
 fink start distribution -c $CONF > logs/distribution.log &
 
-sleep 5
-
-# Read redistributed data to check it works
+# EXTRA: Read redistributed data to check it works
 # Make sure you are using the same topic as was defined above
-fink start distribution_test -c $CONF
+# fink start distribution_test -c $CONF
 ```
 
-### Launching alerts (locally)
+## Launching stream of alerts (locally)
+
+To launch a stream of alerts, just execute:
 
 ```bash
 # Make sure you use the same configuration to read the stream
 fink start simulator -c conf/fink.conf
 ```
 
-### Fink shell
+The topic name is specified in the `conf/fink.conf` configuration file.
+
+## Debugging using the Fink shell
+
+The Fink shell is a pyspark shell with all dependencies for Fink loaded. It allows developers to get their environment set up directly for debugging:
 
 ```bash
 # Default is pyspark shell with ipython as driver
 fink_shell -c conf/fink.conf.shell
 ```
 
-### Testing Fink
+## Testing Fink
+
+To launch the full test suite of the broker, just execute:
 
 ```bash
 fink_test
