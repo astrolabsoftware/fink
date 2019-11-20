@@ -1,6 +1,6 @@
 # ZTF alert stream
 
-To design the broker and test the science modules while waiting for LSST data, we use the [ZTF](https://www.ztf.caltech.edu/) alert stream. The ZTF alert data is publicly available through their [web portal](https://ztf.uw.edu/alerts/public/).
+To design the broker and test the science modules while waiting for LSST data, we use the [ZTF](https://www.ztf.caltech.edu/) alert stream. The ZTF alert data (full, unfiltered, 5-sigma alert stream) is publicly available through their [web portal](https://ztf.uw.edu/alerts/public/).
 
 ## Alert format
 
