@@ -12,10 +12,10 @@ cd fink-client && export FINK_CLIENT_HOME=$(PWD) >> ~/.bash_profile
 The above expression will place the environment variable for `$FINK_CLIENT_HOME`
 into your `~/.bash_profile` such that this variable should not be required to be set again.
 
-Install `fink_client` and it's dependencies
+Install `fink_client` dependencies
 ```bash
 pip install --upgrade pip setuptools wheel
-pip install -e .
+pip install -r requirements.txt
 ```
 
 Run integration test to verify everything is working properly.
