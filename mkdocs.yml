@@ -30,7 +30,7 @@ nav:
       - fink-client &rarr;: https://github.com/astrolabsoftware/fink-client
     - About:
       - Why Fink: why-fink.md
-      - Who we are: fink-team.md
+      # - Who we are: fink-team.md
       - Release Notes: release-notes.md
       - Contributing: contributing.md
       - License: license.md
