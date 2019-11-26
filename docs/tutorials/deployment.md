@@ -59,10 +59,10 @@ To launch a stream of alerts, just execute:
 
 ```bash
 # Make sure you use the same configuration to read the stream
-fink start simulator -c conf/fink.conf
+fink_simulator --docker
 ```
 
-The topic name is specified in the `conf/fink.conf` configuration file.
+All arguments are specified in the `conf/fink-alert-simulator.conf` configuration file (producer). See the [simulator](simulator.md) tutorial for more information.
 
 ## Debugging using the Fink shell
 

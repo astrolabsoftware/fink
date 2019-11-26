@@ -113,7 +113,7 @@ You should see plenty of Spark logs (and yet we have shut most of them!), but no
 Then let's test some functionalities of Fink by simulating a stream of alert, and monitoring it. In a terminal tab, connect the checkstream service to the stream:
 
 ```bash
-fink start checkstream --simulator > live.log &
+fink start checkstream --simulator
 ```
 
 in a second terminal tab, send a small burst of alerts (see `fink-alert-simulator` installation above):
