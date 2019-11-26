@@ -17,7 +17,7 @@ Fink redistributes the alerts it receive from telescopes via Kafka topics. These
 ### Kafka Cluster
 
 The Kafka Cluster consists of one or more Kafka broker(s) and a Zookeeper server that monitors and manages the Kafka brokers.
-It is important to note that the Kafka Cluster for redistribution of alerts is different from the one used in [simulator](simulator.md).
+It is important to note that the Kafka Cluster for redistribution of alerts is different from the one used in [simulator](../tutorial/simulator.md).
 <br>
 You will need [Apache Kafka](https://kafka.apache.org/) 2.2+ installed. For testing purposes, you can run the install script at `conf/install_kafka.sh`. Once installed, define `KAFKA_HOME` as per your installation in your ~/.bash_profile.
 

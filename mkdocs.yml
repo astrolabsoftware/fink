@@ -6,7 +6,6 @@ nav:
     - Home: index.md
     - Technology:
       - Getting started: broker/introduction.md
-      - Simulating streams: broker/simulator.md
       - Testing Fink broker: broker/testing-fink.md
       - Redistributing alerts using Kafka: broker/streaming-out.md
     - Science:
@@ -20,6 +19,7 @@ nav:
     - Tutorials:
       - Before starting: tutorials/introduction.md
       - Deploy the broker: tutorials/deployment.md
+      - Simulating streams: broker/simulator.md
       - Create your Science module: tutorials/create-science-module.md
       - Create your Fink filter: tutorials/create-filters.md
       - Collect Fink alerts [Kafka]: tutorials/using-fink-client.md
