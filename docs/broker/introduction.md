@@ -20,8 +20,10 @@ On the production platform, we typically have several medium-size clusters spun-
 
 ## Installation (local mode)
 
-You need Python 3.6+, Apache Spark 2.4+, and docker-compose (latest) installed.
-Define `SPARK_HOME`  as per your Spark installation (typically, `/usr/local/spark`) and add the path to the Spark binaries in `.bash_profile`:
+### fink-broker
+
+You need Python 3.6+ and Apache Spark 2.4+ installed.
+Define `SPARK_HOME` as per your Spark installation (typically, `/usr/local/spark`) and add the path to the Spark binaries in `~/.bash_profile` (assuming you are using `bash`...):
 
 ```bash
 # in ~/.bash_profile
@@ -32,7 +34,8 @@ export PYTHONPATH=${SPARKLIB}:$PYTHONPATH
 export PATH=${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}
 ```
 
-Set the path to HBase
+Set the path to HBase (see `conf/install_hbase.sh` if needed):
+
 ```bash
 # in ~/.bash_profile
 # as per your hbase installation directory (eg. /usr/local/hbase)
@@ -60,7 +63,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Finally, define `FINK_HOME` and add the path to the Fink binaries and modules in your `.bash_profile` (assuming you are using `bash`...):
+Finally, define `FINK_HOME` and add the path to the Fink binaries and modules in your `~/.bash_profile`:
 
 ```bash
 # in ~/.bash_profile
@@ -69,7 +72,24 @@ export PYTHONPATH=$FINK_HOME:$PYTHONPATH
 export PATH=$FINK_HOME/bin:$PATH
 ```
 
-The [simulator](user_guide/simulator.md) relies on docker-compose.
+### fink-alert-simulator
+
+To test the broker, you need to install the [Fink alert simulator](https://github.com/astrolabsoftware/fink-alert-simulator). This package is external to fink-broker to ease its use outside the broker. The simulator is based on Apache Kafka, and can be used via docker (you would need docker-compose installed). First clone the repo somewhere on your machine:
+
+```bash
+git clone https://github.com/astrolabsoftware/fink-alert-simulator.git
+```
+
+and update your `PYTHONPATH` and `PATH` to use the tools:
+
+```bash
+# in your ~/.bash_profile
+export FINK_ALERT_SIMULATOR=/path/to/fink-alert-simulator
+export PYTHONPATH=$FINK_ALERT_SIMULATOR:$PYTHONPATH
+export PATH=$FINK_ALERT_SIMULATOR/bin:$PATH
+```
+
+Its usage is detailed in the simulator [tutorial](../tutorials/simulator.md).
 
 ## Getting started
 
@@ -91,14 +111,17 @@ You should see plenty of Spark logs (and yet we have shut most of them!), but no
 
 
 Then let's test some functionalities of Fink by simulating a stream of alert, and monitoring it. In a terminal tab, connect the checkstream service to the stream:
+
 ```bash
 fink start checkstream --simulator > live.log &
 ```
 
-in a second terminal tab, send a small burst of alerts:
+in a second terminal tab, send a small burst of alerts (see `fink-alert-simulator` installation above):
+
 ```bash
-fink start simulator
+fink_simulator --docker
 ```
+
 and see the alerts coming on your first terminal tab screen! You can easily see which service is running by using:
 
 ```bash
@@ -133,8 +156,8 @@ Handle Kafka stream received by Apache Spark
  To get help for a service:
  	fink start <service> -h
 
- Available services are: dashboard, checkstream, stream2raw, raw2science, distribution
- Typical configuration would be /Users/julien/Documents/workspace/myrepos/fink/docs/conf/fink.conf
+ Available services are: checkstream, stream2raw, raw2science, distribution
+ Typical configuration would be /Users/julien/Documents/workspace/myrepos/fink/conf/fink.conf
 
  To see the running processes:
  	fink show
@@ -146,4 +169,4 @@ Handle Kafka stream received by Apache Spark
  	fink stop <service or all>
 ```
 
-More information can be found in the [tutorial](../tutorials/deployment.md).
+More information can be found in the deployment [tutorial](../tutorials/deployment.md).

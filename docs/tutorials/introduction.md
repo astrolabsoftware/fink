@@ -2,14 +2,20 @@
 
 This series of tutorials will teach you how to use the broker or how to contribute. They are designed for beginners/intermediate users, but do not hesitate to raise an issue if they are not clear enough.
 
+* Simulate incoming alert streams to feed Fink: [tutorial 1](simulator.md)
+* Deploy an instance of the Fink broker: [tutorial 2](deployment.md)
+* Create and integrate your science module: [tutorial 3](create-science-module.md)
+* Create and integrate your filter: [tutorial 4](create-filters.md)
+* Connect to and receive outgoing Fink streams: [tutorial 5](using-fink-client.md)
+
 For all the tutorials, you would need:
 
-* python 3.6+ installed
+* Python 3.6+ installed
 * Fink's package dependencies installed (see the requirements.txt in each repo)
 
 ## Install Apache Spark
 
-In addition, if you want to deep test your developments (all but fink-client), you would need to install Apache Spark. No panic, this is (super) straightforward.
+In addition, if you want to deep test your developments (all but fink-client and fink-alert-simulator), you would need to install Apache Spark. No panic, this is (super) straightforward.
 
 **Download Apache Spark**
 

@@ -6,7 +6,6 @@ nav:
     - Home: index.md
     - Technology:
       - Getting started: broker/introduction.md
-      - Simulating streams: broker/simulator.md
       - Testing Fink broker: broker/testing-fink.md
       - Redistributing alerts using Kafka: broker/streaming-out.md
     - Science:
@@ -19,11 +18,13 @@ nav:
       - Communication protocols: distribution/communication.md
     - Tutorials:
       - Before starting: tutorials/introduction.md
+      - Simulating streams: tutorials/simulator.md
       - Deploy the broker: tutorials/deployment.md
       - Create your Science module: tutorials/create-science-module.md
       - Create your Fink filter: tutorials/create-filters.md
       - Collect Fink alerts [Kafka]: tutorials/using-fink-client.md
     - Ecosystem:
+      - fink-alert-simulator &rarr;: https://github.com/astrolabsoftware/fink-alert-simulator
       - fink-broker &rarr;: https://github.com/astrolabsoftware/fink-broker
       - fink-science &rarr;: https://github.com/astrolabsoftware/fink-science
       - fink-filters &rarr;: https://github.com/astrolabsoftware/fink-filters

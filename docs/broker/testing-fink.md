@@ -9,7 +9,7 @@ Fink is based on the recent [Spark Structured Streaming](https://spark.apache.or
 The test suite must take into account that Fink is using distributing computing and works with streams. Therefore we develop a test environment that is able to:
 
 - test the code in a distributed environment, and report code coverage on *all* players (driver and executors). This is achieved by running Spark inside all tests, and generating code coverage in headless mode using daemons to ensure full coverage.
-- manipulate streams while testing the code. This is achieved using the [simulator](simulator.md) service.
+- manipulate streams while testing the code. This is achieved using the [simulator](../tutorial/simulator.md) service.
 
 ## Configuration
 
@@ -119,11 +119,11 @@ if __name__ == "__main__":
     spark_unit_tests(globals(), withstreaming=True)
 ```
 
-Streams can be used also in tests (as shown above). just make sure you started the simulator before running the test suite:
+Streams can be used also in tests (as shown above). just make sure you installed (see [Getting Started](introduction.md)) and started the simulator before running the test suite:
 
 ```bash
 # Publish few alerts at topic `zt-stream-sim`
-fink start simulator -c conf/fink.conf.travis
+fink_simulator --docker
 fink_test
 ```
 
@@ -136,7 +136,7 @@ source $FINK_HOME/conf/fink.conf.travis
 ...
 ```
 
-A custom configuration file can be given as an argument `fink_test -c /path/to/custom.conf`
+A custom configuration file can be given as an argument `fink_test -c /path/to/custom.conf`, but make sure you use the kafka properties in the simulator configuration file (such that producer and consumer write/read from the same location).
 
 ## Debugging using the Fink shell
 
