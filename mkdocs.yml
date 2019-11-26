@@ -24,6 +24,7 @@ nav:
       - Create your Fink filter: tutorials/create-filters.md
       - Collect Fink alerts [Kafka]: tutorials/using-fink-client.md
     - Ecosystem:
+      - fink-alert-simulator &rarr;: https://github.com/astrolabsoftware/fink-alert-simulator
       - fink-broker &rarr;: https://github.com/astrolabsoftware/fink-broker
       - fink-science &rarr;: https://github.com/astrolabsoftware/fink-science
       - fink-filters &rarr;: https://github.com/astrolabsoftware/fink-filters
