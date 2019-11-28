@@ -2,11 +2,22 @@
 
 This tutorial goes step-by-step for creating a science modules used to generate added values to ZTF alert collected by the [Fink broker](https://github.com/astrolabsoftware/fink-broker).
 
-## Step 0: Fork the fink-science repository
+## Step 0: Set up your development environment
 
-Fork and clone the [fink-science](https://github.com/astrolabsoftware/fink-science) repository, and create a new folder in `fink_science/`. The name of the folder does not matter much, but try to make it meaningful as much as possible! Let's call it `xmatch` for the sake of this example.
+### fink-science
 
-## Step 1: Define your science module
+Fork and clone the [fink-science](https://github.com/astrolabsoftware/fink-science) repository, and create a new folder in `fink_science/`. The name of the folder does not matter much, but try to make it meaningful as much as possible! Let's call it `xmatch` for the sake of this example. This is where we will put our science module.
+
+### fink-broker
+
+If you want to be able to test your science module inside the broker, you will need to install it. You have two options:
+
+* Local installation: see [Local use](../broker/introduction.md#installation-local-mode)
+* Docker installation: see [Docker use](../broker/introduction.md#use-with-docker)
+
+Note that we will also test your science module before launching it in production.
+
+## Step 1: Develop your science module
 
 A module contains necessary routines and classes to process the data, and add values. Typically, you will receive alerts in input, and output the same alerts with additional information. Input alert information contains position, flux, telescope properties, ... You can find what information is available in an alert [here](../science/ztf_alerts.md), or check the current Fink [added values](../science/added_values.md).
 
@@ -96,9 +107,53 @@ Remarks:
 
 Do not forget to include the `__init__.py` file in your new folder to make it a package.
 
+## Step 2: Test your science module in the broker
+
+Once your science module is written, it is time to test it on mock data! First of all, make sure you installed fink-broker correctly (see above) and fink-science is in your `PYTHONPATH`. Edit the `bin/raw2science.py` file to register the path of your science module:
+
+```python
+processors = [
+    'fink_science.xmatch.processor.cdsxmatch'
+]
+```
+
+Since your science module adds new values (i.e. new field in the alert data), the alert outgoing schema needs to be updated. Open the `schemas/distribution_schema.avsc` avro schema (JSON), and add information about your new field in the correct level (root or root.candidate, ...). In our case, `cdsxmatch` is at the root (same level as `topic` or `publisher`) and it is a string:
+
+```json
+...
+{
+  "name": "topic",
+  "type": [
+    "string",
+    "null"
+  ]
+},
+{
+  "name": "cdsxmatch",
+  "type": [
+    "string",
+    "null"
+  ]
+},
+{
+  "name": "publisher",
+  "type": "string"
+}
+...
+```
+
+Finally deploy the broker (see the [tutorial](deployment.md)). Note that when launching the raw2science service, you must see the following lines at the end of the log:
+
+```bash
+19/11/28 14:35:52 INFO main (raw2science.py line 67): ['fink_science.xmatch.processor.cdsxmatch']
+19/11/28 14:35:56 INFO apply_user_defined_processors (filters.py line 325): new processor registered: cdsxmatch from fink_science.xmatch.processor
+```
+
+It means your science module is taken into account by the broker!
+
 ## Step 3: Open a pull request
 
-Once your filter is done, we will review it. The criteria for acceptance are:
+Once your science module is done, we will review it. The criteria for acceptance are:
 
 - The science module works ;-)
 - The execution time is not too long.
