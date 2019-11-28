@@ -20,43 +20,14 @@ On the production platform, we typically have several medium-size clusters spun-
 
 ## Installation (local mode)
 
-### fink-broker
-
-You need Python 3.6+ and Apache Spark 2.4+ installed.
-Define `SPARK_HOME` as per your Spark installation (typically, `/usr/local/spark`) and add the path to the Spark binaries in `~/.bash_profile` (assuming you are using `bash`...):
-
-```bash
-# in ~/.bash_profile
-# as per your spark installation directory (eg. /usr/local/spark)
-export SPARK_HOME=/usr/local/spark
-export SPARKLIB=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.7-src.zip
-export PYTHONPATH=${SPARKLIB}:$PYTHONPATH
-export PATH=${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}
-```
-
-Set the path to HBase (see `conf/install_hbase.sh` if needed):
-
-```bash
-# in ~/.bash_profile
-# as per your hbase installation directory (eg. /usr/local/hbase)
-export HBASE_HOME=/usr/local/hbase
-export PATH=$PATH:$HBASE_HOME/bin
-```
-
-and start the service:
-
-```bash
-$HBASE_HOME/bin/start-hbase.sh
-```
-
-Clone the repository:
+To use the broker on your laptop, you need Python 3.6+ and Apache Spark 2.4+ installed (see the [Spark installation](../tutorials/introduction.md#install-apache-spark)). Then clone the repository:
 
 ```bash
 git clone https://github.com/astrolabsoftware/fink-broker.git
 cd fink-broker
 ```
 
-Then install the required python dependencies:
+and install the required python dependencies:
 
 ```bash
 pip install --upgrade pip
@@ -72,9 +43,7 @@ export PYTHONPATH=$FINK_HOME:$PYTHONPATH
 export PATH=$FINK_HOME/bin:$PATH
 ```
 
-### fink-alert-simulator
-
-To test the broker, you need to install the [Fink alert simulator](https://github.com/astrolabsoftware/fink-alert-simulator). This package is external to fink-broker to ease its use outside the broker. The simulator is based on Apache Kafka, and can be used via docker (you would need docker-compose installed). First clone the repo somewhere on your machine:
+To test the broker, you also need to install the [Fink alert simulator](https://github.com/astrolabsoftware/fink-alert-simulator). This package is external to fink-broker to ease its use outside the broker. The simulator is based on Apache Kafka, and can be used via docker (you would need docker-compose installed). First clone the repo somewhere on your machine:
 
 ```bash
 git clone https://github.com/astrolabsoftware/fink-alert-simulator.git
@@ -90,6 +59,50 @@ export PATH=$FINK_ALERT_SIMULATOR/bin:$PATH
 ```
 
 Its usage is detailed in the simulator [tutorial](../tutorials/simulator.md).
+
+## Use with docker
+
+If you prefer using docker to test or make developments, we provide a Dockerfile of the broker. The image is based on ubuntu 16.04 and contains:
+
+- java 8, kafka 2.2.0, spark 2.4.4, python 3.7
+- fink-alert-simulator (cloned and on the master branch)
+
+To build the image from the root of the repo, execute
+
+```bash
+docker build -t fink-broker .
+```
+
+and check the images are correctly built:
+
+```
+docker image ls
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+fink-broker                 latest              0220a667160c        2 hours ago         2.32GB
+ubuntu                      16.04               56bab49eef2e        36 hours ago        123MB
+confluentinc/cp-kafka       latest              be6286eb3417        2 months ago        590MB
+confluentinc/cp-zookeeper   latest              711eb38827f6        2 months ago        590MB
+```
+
+Except the Fink alert simulator, the container does not contain other packages from the Fink ecosystem and you will need to mount them on run. This is to allow their edition from the host machine:
+
+```bash
+# Run the container
+docker run --rm --tty --interactive \
+  -v $FINK_HOME:/home/fink-broker \
+  -v $FINK_SCIENCE:/home/fink-science \
+  -v $FINK_FILTERS:/home/fink-filters \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  --net host \
+  fink-broker bash
+```
+
+Remarks:
+
+* `FINK_SCIENCE` and `FINK_FILTERS` correspond to the paths to fink-science and fink-filters respectively in the host machine.
+* For the mounted volumes, it is important to respect the container path scheme `/home/fink-*` as the container variables `PYTHONPATH` and `PATH` rely on it (otherwise use [--env](https://docs.docker.com/engine/reference/commandline/run/) to overwrite them).
+* fink-science and fink-filters are optional and you could also just `pip install` them once inside the container.
+* Finally note that the container does not run its own Docker daemon, but connects to the Docker daemon of the host system (`-v /var/run/docker.sock:/var/run/docker.sock`), and we specify the `host` network for the docker-compose of the container to work properly.
 
 ## Getting started
 
@@ -107,8 +120,7 @@ Make sure the test suite is running fine. Just execute:
 fink_test [--without-integration] [-h]
 ```
 
-You should see plenty of Spark logs (and yet we have shut most of them!), but no failures hopefully! Success is silent, and the coverage is printed on screen at the end. You can disable integration tests by specifying the argument `--without-integration`.
-
+You should see plenty of Spark logs (and yet we have shut most of them!), but no failures hopefully! Success is silent, and the coverage is printed on screen at the end. You can disable integration tests by specifying the argument `--without-integration`. Note for docker users: you need to install fink-science and fink-filters (either mounted inside the container, or installed via pip) prior running the test suite. See above for more information.
 
 Then let's test some functionalities of Fink by simulating a stream of alert, and monitoring it. In a terminal tab, connect the checkstream service to the stream:
 
