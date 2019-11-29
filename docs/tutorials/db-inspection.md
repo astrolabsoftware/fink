@@ -48,7 +48,7 @@ dfsci = spark.read.format('parquet').load('ztf-simulator/alerts_store_tmp')
 dfsci.count()
 # 64501
 ```
-We can see that only 43% of raw alerts entered the scientific pipelines. Others have been flagged out by _quality cuts_. You can inspect alerts by using the `show` method, but unless you know exactly what you want it will not be very telling (more than 85,000 in one night!). Instead let's group alerts by their SIMBAD identification obtained from a cross-match between the stream of alerts and the SIMBAD database (this is performed by one of the Fink module):
+We can see that only 43% of raw alerts entered the scientific pipelines. Others have been flagged out by _quality cuts_. You can inspect alerts by using the `show` method, but unless you know exactly what you want it will not be very telling (more than 60,000 in one night!). Instead let's group alerts by their SIMBAD identification obtained from a cross-match between the stream of alerts and the SIMBAD database (this is performed by one of the Fink module):
 
 ```python
 # Grouped DataFrame
@@ -113,10 +113,10 @@ df_group_per_match.filter('count > 100').show()
 
 and the winner is... `Unknown` (~30% of the incoming alerts, or ~78% of the alerts entering the science pipelines)! That is alerts that do not have counter-part in the SIMBAD database. These are very good candidates for new and unidentified objects, for which we would need further processing.
 
-For a given type, you can also retrieve alerts information. Let's see all the type containing only one alert, and display alert information:
+For a given type, you can also retrieve alerts information. Let's see all the types containing only one alert, and display alert information:
 
 ```python
-# Take only type with 1 alert candidate
+# Take only types with 1 alert candidate
 dfone = df_group_per_match.filter(df_group_per_match['count'] == 1)
 
 # Join initial and grouped+filtered dataframes
