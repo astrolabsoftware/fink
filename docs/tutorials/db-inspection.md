@@ -193,6 +193,7 @@ only showing top 7 rows
 ```
 
 In this run, the `rfscore` should be read `1 - rfscore` (just a convention bug), hence the lower the more probable to be a SN Ia. Among the list above:
+
 - ZTF19acgjohb (1st): SN Ia ([TNS](https://wis-tns.weizmann.ac.il/object/2019tjc), [Lasair](https://lasair.roe.ac.uk/object/ZTF19acgjohb))
 - ZTF19abdkgwo (4th): SN II ([TNS](https://wis-tns.weizmann.ac.il/object/2019khb), [Lasair](https://lasair.roe.ac.uk/object/ZTF19abdkgwo/))
 - ZTF19acetxvq (6th): SN IIn ([TNS](https://wis-tns.weizmann.ac.il/object/2019sxv), [Lasair](https://lasair.roe.ac.uk/object/ZTF19acftude/))
