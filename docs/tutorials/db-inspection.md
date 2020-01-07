@@ -161,7 +161,7 @@ df.count()
 # 93963
 ```
 
-We have nearly 100,000 alerts processed and we want to know which ones are good supernova candidates. The classification score `rfscore` is a good indicator, but to increase our confidence we also want to take into account other factors: alerts without close counterpart in Gaia or PS1 (at least 5 arcseconds), without known counterpart in Simbad ('Unknown') and with a non-zero `rfscore` (zero means not enough measurements to perform the fit). All combined, the 100,000 alerts are reduced to 95 alerts! Among those 95, let's take the top 7 in terms of `rfscore`:
+We have nearly 100,000 alerts processed and we want to know which ones are good supernova candidates. The classification score `rfscore` is a good indicator, but to increase our confidence we also want to take into account other factors: alerts without close counterpart in Gaia or PS1 (at least 5 arcseconds), without known counterpart in Simbad (`Unknown`) and with a non-zero `rfscore` (zero means not enough measurements to perform the fit). All combined, the 100,000 alerts are reduced to 95 alerts! Among those 95, let's take the top 7 in terms of `rfscore`:
 
 ```python
 from pyspark.sql.functions import asc
@@ -192,7 +192,7 @@ df.select(fields).filter(df['rfscore'] > 0.0)\
 only showing top 7 rows
 ```
 
-In this run, the `rfscore` should be read `1 - rfscore` (just a convention bug), hence the lower the more probable to be a SN Ia. Among the list above:
+In this run, the `rfscore` should be read `1 - rfscore` (just a convention bug), hence the lower the more probable to be a SN Ia. In the list above:
 
 - ZTF19acgjohb (1st): SN Ia ([TNS](https://wis-tns.weizmann.ac.il/object/2019tjc), [Lasair](https://lasair.roe.ac.uk/object/ZTF19acgjohb))
 - ZTF19abdkgwo (4th): SN II ([TNS](https://wis-tns.weizmann.ac.il/object/2019khb), [Lasair](https://lasair.roe.ac.uk/object/ZTF19abdkgwo/))
