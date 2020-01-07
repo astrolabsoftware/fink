@@ -9,3 +9,4 @@ Below we summarise the fields added by the Fink science modules:
 | Field | Type | Contents |
 |:--------|:-------|:--------|
 | `cdsxmatch` | string | Counterpart (cross-match) in the Simbad database |
+| `rfscore` | float | Probability to be a SN Ia based on Random Forest classifier (1 is SN Ia). Based on https://arxiv.org/abs/1804.03765 |
