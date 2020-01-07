@@ -148,7 +148,59 @@ dfsci_one.select([
 +------------+----------------+-----------+----------+---------+
 ```
 
-## Example 2: Forecasting the yield of a science filter
+## Example 2: Checking for supernovae
+
+From `fink-science@0.1.8`, Fink computes the probability of an alert to be a SN Ia. The classification is based on the Machine Learning Random Forest algorithm (see https://arxiv.org/abs/1804.03765), and more details on the implementation can be found [here](https://github.com/astrolabsoftware/fink-science/tree/master/fink_science/random_forest_snia).
+
+Let's load the alerts from the scientific database (4th November 2019), that is alerts that have been processed and enriched by the broker:
+
+```python
+# The path to the data is $FINK_ALERT_PATH_SCI_TMP in your config
+df = spark.read.format('parquet').load('ztf-simulator/alerts_store_tmp')
+df.count()
+# 93963
+```
+
+We have nearly 100,000 alerts processed and we want to know which ones are good supernova candidates. The classification score `rfscore` is a good indicator, but to increase our confidence we also want to take into account other factors: alerts without close counterpart in Gaia or PS1 (at least 5 arcseconds), without known counterpart in Simbad ('Unknown') and with a non-zero `rfscore` (zero means not enough measurements to perform the fit). All combined, the 100,000 alerts are reduced to 95 alerts! Among those 95, let's take the top 7 in terms of `rfscore`:
+
+```python
+from pyspark.sql.functions import asc
+
+fields = [
+  'objectId', 'rfscore', 'cdsxmatch',
+  'candidate.classtar', 'candidate.neargaia',
+  'candidate.distpsnr1'
+]
+
+df.select(fields).filter(df['rfscore'] > 0.0)\
+  .filter(df['cdsxmatch'] == 'Unknown')\
+  .filter(df['candidate.neargaia'] > 5)\
+  .filter(df['candidate.distpsnr1'] > 5)\
+  .orderBy(asc("rfscore"))\
+  .show(7)
++------------+-------+---------+--------+---------+---------+
+|    objectId|rfscore|cdsxmatch|classtar| neargaia|distpsnr1|
++------------+-------+---------+--------+---------+---------+
+|ZTF19acgjohb|  0.276|  Unknown|   0.982|56.919067|21.207327|
+|ZTF19acdytef|  0.303|  Unknown|   0.977|5.6352506|5.6259537|
+|ZTF18aaznglt|   0.31|  Unknown|   0.973|5.8049145|  5.81257|
+|ZTF19abdkgwo|  0.318|  Unknown|   0.981|10.498369|10.511302|
+|ZTF18abilnyi|  0.346|  Unknown|   0.802|51.238014|11.833536|
+|ZTF19acftude|  0.354|  Unknown|   0.983|12.321621| 6.009926|
+|ZTF19acetxvq|  0.359|  Unknown|   0.983|23.463406| 5.048062|
++------------+-------+---------+--------+---------+---------+
+only showing top 7 rows
+```
+
+In this run, the `rfscore` should be read `1 - rfscore` (just a convention bug), hence the lower the more probable to be a SN Ia. Among the list above:
+- ZTF19acgjohb (1st): SN Ia ([TNS](https://wis-tns.weizmann.ac.il/object/2019tjc), [Lasair](https://lasair.roe.ac.uk/object/ZTF19acgjohb))
+- ZTF19abdkgwo (4th): SN II ([TNS](https://wis-tns.weizmann.ac.il/object/2019khb), [Lasair](https://lasair.roe.ac.uk/object/ZTF19abdkgwo/))
+- ZTF19acetxvq (6th): SN IIn ([TNS](https://wis-tns.weizmann.ac.il/object/2019sxv), [Lasair](https://lasair.roe.ac.uk/object/ZTF19acftude/))
+- ZTF19acetxvq (7th): SN Ia ([TNS](https://wis-tns.weizmann.ac.il/object/2019soh), [Lasair](https://lasair.roe.ac.uk/object/ZTF19acetxvq/))
+
+The others have been classified as orphans SN. Not bad! Note that the model used to train the algorithm is not very powerful due to lack of good input data (hence the score are not so good). We expect to get even better scores once retrained with more realistic alert data.
+
+## Example 3: Forecasting the yield of a science filter
 
 Often you want to know the yield of a filter (current or new one), that is the percentage of alerts flagged by a particular filter (in Fink, filters are used to redistribute streams based on user-defined criteria). You can simply do it by comparing the raw database (containing all incoming alerts) and the science database (containing scientifically enriched alerts):
 

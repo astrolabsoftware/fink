@@ -109,12 +109,21 @@ Do not forget to include the `__init__.py` file in your new folder to make it a 
 
 ## Step 2: Test your science module in the broker
 
-Once your science module is written, it is time to test it on mock data! First of all, make sure you installed fink-broker correctly (see above) and fink-science is in your `PYTHONPATH`. Edit the `bin/raw2science.py` file to register the path of your science module:
+Once your science module is written, it is time to test it on mock data! First of all, make sure you installed fink-broker correctly (see above) and fink-science is in your `PYTHONPATH`. Edit the `bin/raw2science.py` file and call your science module:
 
 ```python
-processors = [
-    'fink_science.xmatch.processor.cdsxmatch'
+from fink_science.xmatch.processor import cdsxmatch
+
+...
+
+# Apply level one processor: cdsxmatch
+logger.info("New processor: cdsxmatch")
+colnames = [
+    df['objectId'],
+    df['candidate.ra'],
+    df['candidate.dec']
 ]
+df = df.withColumn(cdsxmatch.__name__, cdsxmatch(*colnames))
 ```
 
 Since your science module adds new values (i.e. new field in the alert data), the alert outgoing schema needs to be updated. Open the `schemas/distribution_schema.avsc` avro schema (JSON), and add information about your new field in the correct level (root or root.candidate, ...). In our case, `cdsxmatch` is at the root (same level as `topic` or `publisher`) and it is a string:
@@ -145,8 +154,7 @@ Since your science module adds new values (i.e. new field in the alert data), th
 Finally deploy the broker (see the [tutorial](deployment.md)). Note that when launching the raw2science service, you must see the following lines at the end of the log:
 
 ```bash
-19/11/28 14:35:52 INFO main (raw2science.py line 67): ['fink_science.xmatch.processor.cdsxmatch']
-19/11/28 14:35:56 INFO apply_user_defined_processors (filters.py line 325): new processor registered: cdsxmatch from fink_science.xmatch.processor
+20/01/07 13:10:08 INFO main (raw2science.py line 66): New processor: cdsxmatch
 ```
 
 It means your science module is taken into account by the broker!
