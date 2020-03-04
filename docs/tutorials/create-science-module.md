@@ -19,7 +19,7 @@ Note that we will also test your science module before launching it in productio
 
 ## Step 1: Develop your science module
 
-A module contains necessary routines and classes to process the data, and add values. Typically, you will receive alerts in input, and output the same alerts with additional information. Input alert information contains position, flux, telescope properties, ... You can find what information is available in an alert [here](../science/ztf_alerts.md), or check the current Fink [added values](../science/added_values.md).
+A module contains necessary routines and classes to process the data, and add values. Typically, you will receive alerts in input, and output the same alerts with additional information. Input alert information contains position, flux, telescope properties, ... You can find what information is available in an alert [here]([ZTF alerts schema](https://zwickytransientfacility.github.io/ztf-avro-alert/)), or check the current Fink [added values](../science/added_values.md).
 
 In this example, let's imagine you want to know if alerts have counterpart (cross-match) in the Simbad database based on their localisation on the sky. We wrote a small library containing all the routines (see the [fink_science/xmatch](https://github.com/astrolabsoftware/fink-science/tree/master/fink_science/xmatch) folder), and we now write the `processor` in `processor.py` (name of the file needs to be `processor.py`):
 

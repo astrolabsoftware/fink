@@ -23,7 +23,7 @@ Better than a long speech, here is a list of common questions you might have abo
 
 Learning Fink is easy whether you are a developer or a scientist:
 
-* Learn about the [broker technology](broker/introduction.md), the [science](science/introduction.md) we do, and how to [receive](distribution/introduction.md) alerts.
+* Learn about the [broker technology](broker/introduction.md), the [science](science/introduction.md) we do, and how to [receive](fink-client.md) alerts.
 * Learn how to use the broker or how to contribute following the different [tutorials](tutorials/introduction.md).
 * Explore the different components:
     * [fink-alert-simulator](https://github.com/astrolabsoftware/fink-alert-simulator): Simulate alert streams for the Fink broker.
