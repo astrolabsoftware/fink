@@ -4,7 +4,9 @@
 [![Build Status](https://travis-ci.org/astrolabsoftware/fink-client.svg?branch=master)](https://travis-ci.org/astrolabsoftware/fink-client)
 [![codecov](https://codecov.io/gh/astrolabsoftware/fink-client/branch/master/graph/badge.svg)](https://codecov.io/gh/astrolabsoftware/fink-client)
 
-[fink client](https://github.com/astrolabsoftware/fink-client) is a light package to manipulate catalogs and alerts issued from the [fink broker](https://github.com/astrolabsoftware/fink-broker) programmatically.
+[fink client](https://github.com/astrolabsoftware/fink-client) is a light package to manipulate catalogs and alerts issued from the [fink broker](https://github.com/astrolabsoftware/fink-broker) programmatically. It is intended primarily to be installed on laptops, for daily analyses.
+
+![Screenshot](../img/output_10_5.png)
 
 ## Fink's distribution stream
 
