@@ -27,7 +27,7 @@ To design the broker and test the science modules while waiting for LSST data, w
 
 ## How to include your science case in Fink?
 
-First let [us](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr) know about your science proposal! If you already have a working scientific module, we would be super happy to make the integration within the broker, otherwise we will design it together. The procedure is described in the [fink-science](https://github.com/astrolabsoftware/fink-science) repository or you can follow the [tutorial](../tutorials/create-science-module.md) on creating a science module. To help the design, you can find what information is available in an alert [here](ztf_alerts.md), or check the current Fink [added values](added_values.md). Keep in mind, the criteria for acceptance are:
+First let [us](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr) know about your science proposal! If you already have a working scientific module, we would be super happy to make the integration within the broker, otherwise we will design it together. The procedure is described in the [fink-science](https://github.com/astrolabsoftware/fink-science) repository or you can follow the [tutorial](../tutorials/create-science-module.md) on creating a science module. Keep in mind, the criteria for acceptance are:
 
 * The science module works ;-)
 * The execution time is not too long.

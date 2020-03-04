@@ -11,13 +11,12 @@ nav:
       - Available Fink topics: topics.md
       - Tutorials: tutorials/introduction.md
     - Client:
-      - Connect to Fink streams: topics.md
-      - Tutorial: https://github.com/astrolabsoftware/fink-tutorials
+      - Connect to Fink streams: fink-client.md
+      - Subscribe &#9889;: https://forms.gle/2td4jysT4e9pkf889
     - About:
       - Who is behind Fink?: who-is-fink.md
       - Release Notes: release-notes.md
       - Contributing: contributing.md
-    - Connect &#9889;: https://forms.gle/2td4jysT4e9pkf889
 
 # theme: readthedocs
 
