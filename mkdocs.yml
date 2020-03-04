@@ -19,13 +19,6 @@ nav:
       - Contributing: contributing.md
     - Connect &#9889;: https://forms.gle/2td4jysT4e9pkf889
 
-theme:
-  name: readthedocs
-  collapse_navigation: True
-  titles_only: True
-  navigation_depth: 0
-# theme:
-#     name: mkdocs
-#     nav_style: dark
+# theme: readthedocs
 
 copyright: Copyright &copy; 2018-20 <a href="https://astrolabsoftware.github.io/">AstroLab Software</a>.
