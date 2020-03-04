@@ -7,7 +7,6 @@ This series of tutorials will teach you how to use the broker or how to contribu
 * Create and integrate your science module: [tutorial 3](create-science-module.md)
 * Create and integrate your filter: [tutorial 4](create-filters.md)
 * Explore the Fink databases: [tutorial 5](db-inspection.md)
-* Connect to and receive outgoing Fink streams: [tutorial 6](using-fink-client.md)
 
 For all the tutorials, you need:
 
