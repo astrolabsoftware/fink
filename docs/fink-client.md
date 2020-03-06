@@ -16,4 +16,4 @@ You can connect to one or more of these topics using fink-client's APIs and rece
 
 ## Tutorial
 
-In order to familiarise with the client, we invite users to follow the dedicated tutorial: https://github.com/astrolabsoftware/fink-tutorials. Note that you need your credentials to play the tutorial.
+In order to familiarise with the client, we invite users to follow the dedicated tutorial: [https://github.com/astrolabsoftware/fink-client-tutorial](https://github.com/astrolabsoftware/fink-client-tutorial). Note that you need your credentials to play the tutorial.
