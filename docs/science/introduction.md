@@ -21,9 +21,13 @@ There are several modules under construction to probe these science cases, to an
 
 We are open to contributions in those science cases, but also to new contributions that are not listed here. If you have a science proposal and you would like to integrate it with the broker, contact [us](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr).
 
+## ZTF alert stream
+
+To design the broker and test the science modules while waiting for LSST data, we use the [ZTF](https://www.ztf.caltech.edu/) alert stream. The ZTF alert data (full, unfiltered, 5-sigma alert stream) is publicly available through their [web portal](https://ztf.uw.edu/alerts/public/), and you can find all information about ZTF alerts [here](https://zwickytransientfacility.github.io/ztf-avro-alert/).
+
 ## How to include your science case in Fink?
 
-First let [us](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr) know about your science proposal! If you already have a working scientific module, we would be super happy to make the integration within the broker, otherwise we will design it together. The procedure is described in the [fink-science](https://github.com/astrolabsoftware/fink-science) repository or you can follow the [tutorial](../tutorials/create-science-module.md) on creating a science module. To help the design, you can find what information is available in an alert [here](ztf_alerts.md), or check the current Fink [added values](added_values.md). Keep in mind, the criteria for acceptance are:
+First let [us](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr) know about your science proposal! If you already have a working scientific module, we would be super happy to make the integration within the broker, otherwise we will design it together. The procedure is described in the [fink-science](https://github.com/astrolabsoftware/fink-science) repository or you can follow the [tutorial](../tutorials/create-science-module.md) on creating a science module. Keep in mind, the criteria for acceptance are:
 
 * The science module works ;-)
 * The execution time is not too long.

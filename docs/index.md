@@ -1,27 +1,29 @@
 # Welcome to Fink's documentation!
 
-<!-- **Broker:** [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=finkbroker&metric=alert_status)](https://sonarcloud.io/dashboard?id=finkbroker) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=finkbroker&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=finkbroker)
-[![Build Status](https://travis-ci.org/astrolabsoftware/fink-broker.svg?branch=master)](https://travis-ci.org/astrolabsoftware/fink-broker)
-[![codecov](https://codecov.io/gh/astrolabsoftware/fink-broker/branch/master/graph/badge.svg)](https://codecov.io/gh/astrolabsoftware/fink-broker) [![Documentation Status](https://readthedocs.org/projects/fink-broker/badge/?version=latest)](https://fink-broker.readthedocs.io/en/latest/?badge=latest)
-
-**Science**: [![pypi](https://img.shields.io/pypi/v/fink-science.svg)](https://pypi.python.org/pypi/fink-science) [![Build Status](https://travis-ci.org/astrolabsoftware/fink-science.svg?branch=master)](https://travis-ci.org/astrolabsoftware/fink-science) [![codecov](https://codecov.io/gh/astrolabsoftware/fink-science/branch/master/graph/badge.svg)](https://codecov.io/gh/astrolabsoftware/fink-science)
-**Distribution**: [![pypi](https://img.shields.io/pypi/v/fink-filters.svg)](https://pypi.python.org/pypi/fink-filters)
-
-**Client**: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=astrolabsoftware_fink-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=astrolabsoftware_fink-client) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=astrolabsoftware_fink-client&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=astrolabsoftware_fink-client)
-[![Build Status](https://travis-ci.org/astrolabsoftware/fink-client.svg?branch=master)](https://travis-ci.org/astrolabsoftware/fink-client)
-[![codecov](https://codecov.io/gh/astrolabsoftware/fink-client/branch/master/graph/badge.svg)](https://codecov.io/gh/astrolabsoftware/fink-client) [![Documentation Status](https://readthedocs.org/projects/fink-broker/badge/?version=latest)](https://fink-broker.readthedocs.io/en/latest/?badge=latest) -->
-
 ## Overview
 
-Fink is a broker infrastructure enabling a wide range of applications and services to connect to large streams of alerts issued from telescopes all over the world. Fink core is based on the [Apache Spark](http://spark.apache.org/) framework, and more specifically it uses the [Structured Streaming processing engine](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). The language chosen for the API is Python, which is widely used in the astronomy community, has a large scientific ecosystem and easily connects with existing tools.
+Better than a long speech, here is a list of common questions you might have about Fink!
 
-Fink's goal is twofold: providing a robust infrastructure and state-of-the-art streaming services to LSST scientists, and enabling user-defined science cases in a big data context. Fink decouples resources needed for listening to the stream (online, critical), and resources used for services: scalable, robust, and modular!
+- **What is Fink?**
+    - Fink is a broker infrastructure enabling a wide range of applications and services to connect to and scientifically enrich large streams of alerts issued from telescopes all over the world.
+- **What are Fink goals?**
+    - Fink's main scientific objective is to optimize the scientific impact of LSST alerts for a set of science cases: supernovae, microlensing, multi-messenger astronomy and anomaly detection. On the technological side, Fink aims at providing a robust infrastructure and state-of-the-art streaming services to LSST scientists, to seamlessly enable user-defined science cases in a big data context.
+- **What is the technology behind Fink?**
+    - Fink core is based on the [Apache Spark](http://spark.apache.org/) framework, and more specifically it uses the [Structured Streaming processing engine](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). The language chosen for the API is Python, which is widely used in the astronomy community, has a large scientific ecosystem and easily connects with existing tools.
+- **How Fink is different from other brokers?**
+    - Although Fink has many common features with other brokers, it is community-driven, fully open-source and includes latest big data and machine learning developments.
+- **How to join Fink?**
+    - The collaboration is currently under a more formal construction, and there are rooms for everybody! Just drop us an [email](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr), and we will get in touch with you.
+- **How to receive Fink alerts?**
+    - We have a client ([fink-client](https://github.com/astrolabsoftware/fink-client)) that allows you to connect to and receive Fink processed data. You will need to register first to receive your credentials ([subscribe](https://forms.gle/2td4jysT4e9pkf889)). You can also follow the tutorial to familiarise with the client:
+- **How to contribute to Fink?**
+    - We welcome scientific and technological contributions as we want Fink to be community-driven. Let's mention also Fink is completely open-source, and we welcome contributors! Make sure you read the [guidelines](contributing.md) first.
 
 ## Getting started
 
 Learning Fink is easy whether you are a developer or a scientist:
 
-* Learn about the [broker technology](broker/introduction.md), the [science](science/introduction.md) we do, and how to [receive](distribution/introduction.md) alerts.
+* Learn about the [broker technology](broker/introduction.md), the [science](science/introduction.md) we do, and how to [receive](fink-client.md) alerts.
 * Learn how to use the broker or how to contribute following the different [tutorials](tutorials/introduction.md).
 * Explore the different components:
     * [fink-alert-simulator](https://github.com/astrolabsoftware/fink-alert-simulator): Simulate alert streams for the Fink broker.

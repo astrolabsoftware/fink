@@ -4,38 +4,19 @@ edit_uri: ""
 
 nav:
     - Home: index.md
-    - Technology:
-      - Getting started: broker/introduction.md
-      - Testing Fink broker: broker/testing-fink.md
-      - Redistributing alerts using Kafka: broker/streaming-out.md
-    - Science:
+    - Broker:
       - Sience in Fink: science/introduction.md
-      - ZTF alert stream: science/ztf_alerts.md
-      - LSST alert stream: science/lsst_alerts.md
+      - Technological consideration: broker/introduction.md
       - Fink alert added values: science/added_values.md
-    - Distribution:
-      - Filtering the stream: distribution/introduction.md
-      - Communication protocols: distribution/communication.md
-    - Tutorials:
-      - Before starting: tutorials/introduction.md
-      - Simulating streams: tutorials/simulator.md
-      - Deploy the broker: tutorials/deployment.md
-      - Create your Science module: tutorials/create-science-module.md
-      - Create your Fink filter: tutorials/create-filters.md
-      - Explore the database: tutorials/db-inspection.md
-      - Collect Fink alerts [Kafka]: tutorials/using-fink-client.md
-    - Ecosystem:
-      - fink-alert-simulator &rarr;: https://github.com/astrolabsoftware/fink-alert-simulator
-      - fink-broker &rarr;: https://github.com/astrolabsoftware/fink-broker
-      - fink-science &rarr;: https://github.com/astrolabsoftware/fink-science
-      - fink-filters &rarr;: https://github.com/astrolabsoftware/fink-filters
-      - fink-client &rarr;: https://github.com/astrolabsoftware/fink-client
+      - Available Fink topics: topics.md
+      - Tutorials: tutorials/introduction.md
+    - Client:
+      - Connect to Fink streams: fink-client.md
+      - Subscribe &#9889;: https://forms.gle/2td4jysT4e9pkf889
     - About:
-      - Why Fink: why-fink.md
-      # - Who we are: fink-team.md
+      - Who is behind Fink?: who-is-fink.md
       - Release Notes: release-notes.md
       - Contributing: contributing.md
-      - License: license.md
 
 # theme: readthedocs
 
