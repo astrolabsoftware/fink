@@ -10,9 +10,21 @@
 
 ## Fink's distribution stream
 
-Fink distributes alerts via [Apache Kafka](https://kafka.apache.org/) topics based on one or several of the alert properties (label, classification, flux, ...). Topics are created via user-defined filters (see [available topics](topics.md)). You can connect to existing stream, and if you would like to create a new stream, follow the [tutorial](tutorials/create-filters.md) or raise a new issue in [fink-filters](https://github.com/astrolabsoftware/fink-filters) describing the alert properties and thresholds of interest.
+Fink distributes alerts via [Apache Kafka](https://kafka.apache.org/) topics based on one or several of the alert properties (label, classification, flux, ...). Topics are created via user-defined filters (see [available topics](topics.md)). You can connect to existing streams, and if you would like to create a new stream, follow the [tutorial](tutorials/create-filters.md) or raise a new issue in [fink-filters](https://github.com/astrolabsoftware/fink-filters) describing the alert properties and thresholds of interest.
 
-You can connect to one or more of these topics using fink-client's APIs and receive Fink's stream of alerts. To obtain security credentials for API access and authorization on kafka topics, you need to [subscribe](https://forms.gle/2td4jysT4e9pkf889).
+You can connect to one or more of these topics using fink-client's APIs and receive Fink's stream of alerts. The client can easily be installed using pip:
+
+```bash
+pip install fink-client
+```
+
+In order to connect and poll alerts from Fink, you need to get your credentials:
+
+1. Subscribe to one or more Fink streams by filling this [form](https://forms.gle/2td4jysT4e9pkf889).
+2. After filling the form, we will send your credentials. Register them on your laptop by simply running:
+  ```
+  fink_client_register -username <USERNAME> -group_id <GROUP_ID> ...
+  ```
 
 ## Tutorial
 
