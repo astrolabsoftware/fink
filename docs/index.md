@@ -15,7 +15,7 @@ Better than a long speech, here is a list of common questions you might have abo
 - **How to join Fink?**
     - The collaboration is currently under a more formal construction, and there are rooms for everybody! Just drop us an [email](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr), and we will get in touch with you.
 - **How to receive Fink alerts?**
-    - We have a client ([fink-client](https://github.com/astrolabsoftware/fink-client)) that allows you to connect to and receive Fink processed data. You will need to register first to receive your credentials ([subscribe](https://forms.gle/2td4jysT4e9pkf889)). You can also follow the tutorial to familiarise with the client:
+    - We have a client ([fink-client](https://github.com/astrolabsoftware/fink-client)) that allows you to connect to and receive Fink processed data. How to install it? `pip install fink-client`! More information, including a tutorial, in the [fink-client](fink-client.md) page!
 - **How to contribute to Fink?**
     - We welcome scientific and technological contributions as we want Fink to be community-driven. Let's mention also Fink is completely open-source, and we welcome contributors! Make sure you read the [guidelines](contributing.md) first.
 
