@@ -1,4 +1,4 @@
-# Welcome to Fink's documentation!
+# Welcome to <img src="https://fink-broker.readthedocs.io/en/latest/img/Fink_PrimaryLogo_WEB.png" width=150 />'s documentation!
 
 ## Overview
 
