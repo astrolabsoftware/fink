@@ -11,7 +11,7 @@ See [Getting Started](../broker/introduction.md) to install the simulator.
 The service is provided through docker-compose, and include Kafka and Zookeeper clusters deployment. The simulator generates the stream from alerts stored on disk. We provide a script to download a subset of ZTF alerts that will be used to generate streams:
 
 ```bash
-cd ${FINK_HOME}/datasim
+cd ${FINK_ALERT_SIMULATOR}/datasim
 ./download_ztf_alert_data.sh
 # ...download 499 alerts
 ```
