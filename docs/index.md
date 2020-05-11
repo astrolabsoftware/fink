@@ -1,3 +1,5 @@
+<img src="img/Fink_PrimaryLogo_WEB.png" width=150 />
+
 # Welcome to Fink's documentation!
 
 ## Overview
