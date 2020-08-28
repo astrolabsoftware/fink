@@ -13,7 +13,7 @@ Better than a long speech, here is a list of common questions you might have abo
 - **How Fink is different from other brokers?**
     - Although Fink has many common features with other brokers, it is community-driven, fully open-source and includes latest big data and machine learning developments.
 - **How to join Fink?**
-    - The collaboration is currently under a more formal construction, and there are rooms for everybody! Just drop us an [email](mailto:peloton@lal.in2p3.fr,emilleishida@gmail.com,anais.moller@clermont.in2p3.fr), and we will get in touch with you.
+    - The collaboration is currently under a more formal construction, and there are rooms for everybody! Contact us at contact(at)fink-broker.org, and we will get in touch with you.
 - **How to receive Fink alerts?**
     - We have a client ([fink-client](https://github.com/astrolabsoftware/fink-client)) that allows you to connect to and receive Fink processed data. How to install it? `pip install fink-client`! More information, including a tutorial, in the [fink-client](fink-client.md) page!
 - **How to contribute to Fink?**
