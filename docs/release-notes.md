@@ -3,30 +3,30 @@
 Release notes can be accessed via the links:
 
 - [aug 27 2020] [0.7.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.7.0)
-  - [HBase] structure change (#388)
-  - Broadcast microlensing models to executors (#391)
-  - Allow easy data reprocessing (#392)
-  - [Science] Update science part according to fink-science 0.3.6 (SuperNNova, asteroids, nalerthist) (#394
+    - [HBase] structure change (#388)
+    - Broadcast microlensing models to executors (#391)
+    - Allow easy data reprocessing (#392)
+    - [Science] Update science part according to fink-science 0.3.6 (SuperNNova, asteroids, nalerthist) (#394
 - [Jun 09 2020] [0.6.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.6.0)
-  - Database
-    - New partitioning strategy (#363)
-    - [Minor] Add night date in the merge job name. (#371)
-    - [Merge] Use a fix basepath and add YYYY in the partition tree (#373)
-    - Remove topic column, and rename ts_jd into timestamp (#377)
-    - [Parquet] Add library versions to the data (#382)
-  - Stream2raw
-    - Decode simulated data and ZTF data simultaneously (#367)
-    - Add support for kerberised Kafka (#369)
-  - Science module & filters
-    - [Science module] Microlensing (#358)
-    - Update raw2science with new fink-science release (#375)
-    - Add the asteroid catcher module (#379)
-  - Science portal
-    - [Science Portal] Push a schema row while updating the science portal  (#356)
-    - Remove ra_dec from the rowkey, and add new added values from the broker (#384)
-  - Misc
-    - Update the README with GSoC 2020 news (#359)
-    - Add Fink logo in the README  (#361)
+    - Database
+      - New partitioning strategy (#363)
+      - [Minor] Add night date in the merge job name. (#371)
+      - [Merge] Use a fix basepath and add YYYY in the partition tree (#373)
+      - Remove topic column, and rename ts_jd into timestamp (#377)
+      - [Parquet] Add library versions to the data (#382)
+    - Stream2raw
+      - Decode simulated data and ZTF data simultaneously (#367)
+      - Add support for kerberised Kafka (#369)
+    - Science module & filters
+      - [Science module] Microlensing (#358)
+      - Update raw2science with new fink-science release (#375)
+      - Add the asteroid catcher module (#379)
+    - Science portal
+      - [Science Portal] Push a schema row while updating the science portal  (#356)
+      - Remove ra_dec from the rowkey, and add new added values from the broker (#384)
+    - Misc
+      - Update the README with GSoC 2020 news (#359)
+      - Add Fink logo in the README  (#361)
 - [Apr 28 2020] [0.5.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.5.0)
   - General
     - Add Dockerfile (#315 )
