@@ -13,5 +13,6 @@ In addition to the information contained in the incoming raw alerts (see [ZTF al
 | `mulens.class_2` | string | predicted class by [LIA](https://github.com/dgodinez77/LIA) for filter band r |
 | `mulens.ml_score_2` | float | probability of an alert by [LIA](https://github.com/dgodinez77/LIA) (0 to 1) to be a microlensing event in filter band r using a Random Forest Classifier |
 | `roid` | int | Determine if the alert is a Solar System object |
+| `kilonova` | float | probability of an alert to be a kilonova using a Random Forest Classifier (binary classification). |
 
 Details can be found at [fink-science](https://github.com/astrolabsoftware/fink-science). Over time, there will be more added values available - and feel free to propose new modules!
