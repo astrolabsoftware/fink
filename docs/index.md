@@ -15,7 +15,7 @@ Better than a long speech, here is a list of common questions you might have abo
 - **How to join Fink?**
     - The collaboration is currently under a more formal construction, and there are rooms for everybody! Contact us at contact(at)fink-broker.org, and we will get in touch with you.
 - **Where is the official Fink website?**
-    - https://fink-broker.org
+    - [https://fink-broker.org](https://fink-broker.org)
 - **How to access the Science Portal and browse Fink processed data?**
     - The Science Portal is accessible at [http://134.158.75.151:24000/](http://134.158.75.151:24000/) (We promise that one day we will buy a domain name for this one...)
 - **How to receive Fink alerts live?**
