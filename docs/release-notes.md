@@ -2,11 +2,21 @@
 
 Release notes can be accessed via the links:
 
+### May 14 2021 [1.1](https://github.com/astrolabsoftware/fink-broker/releases/tag/1.1)
+- [Detailed change](https://github.com/astrolabsoftware/fink-broker/milestone/3?closed=1)
+### Feb 04 2021 [1.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/1.0)
+- [Dependencies] Install torch only with CPU support (#398)
+- [HBase] Scan along both time and objectId axes (#402)
+- [TNS] Push Early SN candidates to TNS nightly (#404)
+- [Schema] Add Fink distribution schema 0.3 (#406)
+- [Distribution] Add new script to automatically save schema (#407)
+- [Schedule] Towards a new Broker scheduler: nightly jobs (#410)
+- [CI] Switch to GH Actions (#415)
 ### Aug 27 2020 [0.7.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.7.0)
 - [HBase] structure change (#388)
 - Broadcast microlensing models to executors (#391)
 - Allow easy data reprocessing (#392)
-- [Science] Update science part according to fink-science 0.3.6 (SuperNNova, asteroids, nalerthist) (#394
+- [Science] Update science part according to fink-science 0.3.6 (SuperNNova, asteroids, nalerthist) (#394)
 ### Jun 09 2020 [0.6.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.6.0)
 - Database
     - New partitioning strategy (#363)
