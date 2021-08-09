@@ -8,7 +8,12 @@ Below we summarise the available Fink topics:
 
 | Name | Link | Contents |
 |:--------|:-------|:--------|
-| `snialike` | [snialike](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_snlike/filter.py) | Return alerts considered as SN-Ia candidate |
+| `early_sn_candidates` | [early_sn_candidates](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_early_sn_candidates/filter.py) | Return alerts considered as Early SN-Ia candidates |
+| `sn_candidates` | [sn_candidates](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_sn_candidates/filter.py) | Return alerts considered as SN candidates |
+| `sso_ztf_candidates` | [sso_ztf_candidates](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_sso_ztf_candidates/filter.py) | Return alerts with a counterpart in the Minor Planet Center database (Solar System Objects) |
+| `sso_fink_candidates` | [sso_fink_candidates](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_fink_ztf_candidates/filter.py) | Return alerts considered as new Solar System Object candidates |
+| `kn_candidates` | [kn_candidates](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_kn_candidates/filter.py) | Return alerts considered as Kilonova candidates based on Machine Learning |
+| `early_kn_candidates` | [early_kn_candidates](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_early_kn_candidates/filter.py) | Return alerts considered as Kilonova candidates based on crossmatch and property cuts |
 | `<simbad-type>` | Example [rrlyr](https://github.com/astrolabsoftware/fink-filters/blob/master/fink_filters/filter_rrlyr/filter.py) | See left column of http://simbad.u-strasbg.fr/simbad/sim-display?data=otypes for more information |
 
 Over time, there will be more topics available - and feel free to propose new topics! The topic data is stored for 4 days after creation (i.e. you can access alert data up to 4 days after it has been emitted).
