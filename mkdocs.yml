@@ -18,6 +18,6 @@ nav:
       - Release Notes: release-notes.md
       - Contributing: contributing.md
 
-# theme: readthedocs
+theme: readthedocs
 
 copyright: Copyright &copy; 2018-20 <a href="https://astrolabsoftware.github.io/">AstroLab Software</a>.
