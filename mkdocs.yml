@@ -9,6 +9,7 @@ nav:
       - Technological consideration: broker/introduction.md
       - Fink alert added values: science/added_values.md
       - Available Fink topics: topics.md
+      - Fink Classification: science/classification.md
       - Tutorials: tutorials/introduction.md
     - Client:
       - Connect to Fink streams: fink-client.md
