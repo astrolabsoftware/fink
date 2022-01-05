@@ -13,14 +13,16 @@ In Fink, the information is provided by the broker services (e.g. identification
 
 ## Fink science cases
 
-In Fink, we mainly focus on 4 science cases, namely we have experts onboard on:
+In Fink, we currently focus on several topics:
 
 * Detection of supernovae: Ia, but not only!
 * Multi-messenger astronomy: Gamma Ray Bursts, gamma ray, X, gravitational waves, neutrino, ...
+* Study of Solar System objects
 * Study of micro-lensing: compact objects, exoplanets, ...
+* Study of man-made objects, such as satellites or debris orbiting around the Earth
 * Anomaly detection: unravelling the unknown
 
-There are several modules under construction to probe these science cases, to annotate and flag potential sky alerts that need further attention or inspection.
+There are several modules deployed to probe these science cases, to annotate and flag potential sky alerts that need further attention or inspection.
 
 We are open to contributions in those science cases, but also to new contributions that are not listed here. If you have a science proposal and you would like to integrate it with the broker, contact [us](mailto:contact@fink-broker.org).
 
