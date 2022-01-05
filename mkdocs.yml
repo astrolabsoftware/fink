@@ -1,4 +1,4 @@
-site_name: Fink 
+site_name: Fink
 repo_url: https://github.com/astrolabsoftware/fink-broker
 edit_uri: ""
 
@@ -8,7 +8,7 @@ nav:
       - Sience in Fink: science/introduction.md
       - Technological consideration: broker/introduction.md
       - Fink alert added values: science/added_values.md
-      - Available Fink topics: topics.md
+      - Available Fink topics (filters): topics.md
       - Fink Classification: science/classification.md
       - Tutorials: tutorials/introduction.md
     - Client:

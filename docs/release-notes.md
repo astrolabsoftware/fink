@@ -1,9 +1,16 @@
 # Fink releases
 
-Release notes can be accessed via the links:
+Release notes for fink-broker can be accessed via the links:
+
+### Nov 26 2021 [1.3]()
+- [Detailed change](https://github.com/astrolabsoftware/fink-broker/milestone/4?closed=1)
+
+### Nov 19 2021 [1.2]()
+- [Detailed change](https://github.com/astrolabsoftware/fink-broker/milestone/2?closed=1)
 
 ### May 14 2021 [1.1](https://github.com/astrolabsoftware/fink-broker/releases/tag/1.1)
 - [Detailed change](https://github.com/astrolabsoftware/fink-broker/milestone/3?closed=1)
+
 ### Feb 04 2021 [1.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/1.0)
 - [Dependencies] Install torch only with CPU support (#398)
 - [HBase] Scan along both time and objectId axes (#402)
@@ -12,11 +19,13 @@ Release notes can be accessed via the links:
 - [Distribution] Add new script to automatically save schema (#407)
 - [Schedule] Towards a new Broker scheduler: nightly jobs (#410)
 - [CI] Switch to GH Actions (#415)
+
 ### Aug 27 2020 [0.7.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.7.0)
 - [HBase] structure change (#388)
 - Broadcast microlensing models to executors (#391)
 - Allow easy data reprocessing (#392)
 - [Science] Update science part according to fink-science 0.3.6 (SuperNNova, asteroids, nalerthist) (#394)
+
 ### Jun 09 2020 [0.6.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.6.0)
 - Database
     - New partitioning strategy (#363)
@@ -37,6 +46,7 @@ Release notes can be accessed via the links:
 - Misc
     - Update the README with GSoC 2020 news (#359)
     - Add Fink logo in the README  (#361)
+
 ### Apr 28 2020 [0.5.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.5.0)
 - General
     - Add Dockerfile (#315 )
@@ -56,9 +66,15 @@ Release notes can be accessed via the links:
     - Upgrade Spark versions in the travis configuration script (#335)
     - add missing ${EXTRA_SPARK_CONFIG} for the distribution job  (#337)
     - [Clean] remove unused classification module & bump HBase version (#346)
+
 ### Nov 26 2019 [0.4.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.4.0)
+
 ### Nov 25 2019 [0.3.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.3.0)
+
 ### Jul 04 2019 [0.2.1](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.2.1)
+
 ### Jun 12 2019 [0.2.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.2.0)
+
 ### Apr 30 2019 [0.1.1](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.1.1)
+
 ### Mar 25 2019 [0.1.0](https://github.com/astrolabsoftware/fink-broker/releases/tag/0.1.0)

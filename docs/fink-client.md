@@ -10,7 +10,7 @@
 
 ## Fink's distribution stream
 
-Fink distributes alerts via [Apache Kafka](https://kafka.apache.org/) topics based on one or several of the alert properties (label, classification, flux, ...). Topics are created via user-defined filters (see [available topics](topics.md)). You can connect to existing streams, and if you would like to create a new stream, follow the [tutorial](tutorials/create-filters.md) or raise a new issue in [fink-filters](https://github.com/astrolabsoftware/fink-filters) describing the alert properties and thresholds of interest.
+Fink distributes alerts via [Apache Kafka](https://kafka.apache.org/) topics based on one or several of the alert properties (label, classification, flux, ...). Topics are created via user-defined filters (see [available topics](topics.md)). You can connect to existing streams, and if you would like to create a new stream, follow the [tutorial](https://github.com/astrolabsoftware/fink-client/blob/master/docs/create_filter.md) or raise a new issue in [fink-filters](https://github.com/astrolabsoftware/fink-filters) describing the alert properties and thresholds of interest.
 
 You can connect to one or more of these topics using fink-client's APIs and receive Fink's stream of alerts. The client can easily be installed using pip:
 
@@ -28,4 +28,4 @@ In order to connect and poll alerts from Fink, you need to get your credentials:
 
 ## Tutorial
 
-In order to familiarise with the client, we invite users to follow the dedicated tutorial: [https://github.com/astrolabsoftware/fink-client-tutorial](https://github.com/astrolabsoftware/fink-client-tutorial). Note that you need your credentials to play the tutorial.
+In order to familiarise with the client, we invite users to follow the dedicated tutorial: [https://github.com/astrolabsoftware/fink-client/tree/master/docs](https://github.com/astrolabsoftware/fink-client/tree/master/docs). Note that you need your credentials to play the tutorial.
