@@ -13,11 +13,11 @@ In addition to the information contained in the incoming raw alerts (see [ZTF al
 | `rf_kn_vs_nonkn` | float | probability of an alert to be a kilonova using a Random Forest Classifier (binary classification). |
 
 !!! note
-  There has been a name change, starting from fink-science 0.5.0:
-  `rfscore` was replaced by `rf_snia_vs_nonia`, and `knscore` was replaced by `rf_kn_vs_nonkn`.
+    There has been a name change, starting from fink-science 0.5.0:
+    `rfscore` was replaced by `rf_snia_vs_nonia`, and `knscore` was replaced by `rf_kn_vs_nonkn`.
 
 !!! note
-  There has been a type change, starting from fink-science 0.5.0:
-  `mulens` is no more a struct, but a float.
+    There has been a type change, starting from fink-science 0.5.0:
+    `mulens` is no more a struct, but a float.
 
 Details can be found at [fink-science](https://github.com/astrolabsoftware/fink-science). Over time, there will be more added values available - and feel free to propose new modules!
