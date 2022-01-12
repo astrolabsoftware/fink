@@ -20,5 +20,7 @@ nav:
       - Contributing: contributing.md
 
 theme: readthedocs
+markdown_extensions:
+  - admonition
 
 copyright: Copyright &copy; 2018-22 <a href="https://astrolabsoftware.github.io/">AstroLab Software</a>.
