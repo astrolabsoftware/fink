@@ -12,8 +12,6 @@ In addition to the information contained in the incoming raw alerts (see [ZTF al
 | `roid` | int | Determine if the alert is a Solar System object |
 | `rf_kn_vs_nonkn` | float | probability of an alert to be a kilonova using a Random Forest Classifier (binary classification). |
 | `nalerthist` | int | Number of detections contained in each alert (current+history). Upper limits are not taken into account. |
-| `lc_*` | dict[int, array<double>] | Numerous [light curve features](https://arxiv.org/pdf/2012.01419.pdf#section.A1) used in astrophysics. |
-| `rf_agn_vs_nonagn` | float | Probability to be an AGN based on Random Forest classifier (1 is AGN). |
 
 !!! note
     There has been a name change, starting from fink-science 0.5.0:
@@ -24,3 +22,13 @@ In addition to the information contained in the incoming raw alerts (see [ZTF al
     `mulens` is no more a struct, but a float.
 
 Details can be found at [fink-science](https://github.com/astrolabsoftware/fink-science). Over time, there will be more added values available - and feel free to propose new modules!
+
+## Under development
+
+| Field in Fink alerts | Type | Contents |
+|:-----|:-------|:--------|
+| `t2` | array[float] | Classifier based on Transformers. Based on https://arxiv.org/abs/2105.06178 |
+| `lc_*` | dict[int, array<double>] | Numerous [light curve features](https://arxiv.org/pdf/2012.01419.pdf#section.A1) used in astrophysics. |
+| `anomaly_score` | float | Score for anomaly detection |
+| `rf_agn_vs_nonagn` | float | Probability to be an AGN based on Random Forest classifier (1 is AGN). |
+| `GRB` | dict | TBD |
