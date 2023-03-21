@@ -5,15 +5,19 @@ edit_uri: ""
 nav:
     - Home: index.md
     - Broker:
-      - Sience in Fink: science/introduction.md
+      - Science in Fink: science/introduction.md
       - Technological consideration: broker/introduction.md
-      - Fink alert added values: science/added_values.md
-      - Available Fink topics (filters): topics.md
+      - Fink science modules: science/added_values.md
+      - Fink filters: science/filters.md #topics.md
       - Fink Classification: science/classification.md
+    - Services:
+      - Livestream: services/fink-client.md
+      - Science Portal and API: services/science_portal.md
+      - Data Transfer: services/science_portal.md
       - Tutorials: tutorials/introduction.md
-    - Client:
-      - Connect to Fink streams: fink-client.md
-      - Subscribe &#9889;: https://forms.gle/2td4jysT4e9pkf889
+        #- Client:
+        #- Connect to Fink streams: fink-client.md
+        #- Subscribe &#9889;: https://forms.gle/2td4jysT4e9pkf889
     - About:
       - Who is behind Fink?: who-is-fink.md
       - Release Notes: release-notes.md
