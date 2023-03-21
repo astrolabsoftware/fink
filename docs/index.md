@@ -1,8 +1,5 @@
 # Welcome to <img src="https://fink-broker.readthedocs.io/en/latest/img/Fink_PrimaryLogo_WEB.png" width=150 />'s documentation!
 
-
-## Overview
-
 Better than a long speech, here is a list of common questions you might have about Fink!
 
 - **Where is the official Fink website?**
