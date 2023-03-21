@@ -33,12 +33,12 @@ In general, you can follow what is done for the [continuous integration](https:/
 
 ```bash
 # in your ~/.bash_profile
-export FINK_ALERT_SIMULATOR=/path/to/fink-alert-simulator
-export PYTHONPATH=$FINK_ALERT_SIMULATOR:$PYTHONPATH
-export PATH=$FINK_ALERT_SIMULATOR/bin:$PATH
+export FINK_HOME=/path/to/fink-broker
+export PYTHONPATH=$FINK_HOME:$PYTHONPATH
+export PATH=$FINK_HOME/bin:$PATH
 ```
 
-The repository contains some alerts from the ZTF experiment required for the test suite in the folder `datasim`. If you need to download more alerts data, go to the datasim directory and execute the download script:
+The fink-broker repository contains some alerts from the ZTF experiment required for the test suite in the folder `datasim`. If you need to download more alerts data, go to the datasim directory and execute the download script:
 
 ```bash
 cd datasim
