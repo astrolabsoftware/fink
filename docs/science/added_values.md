@@ -65,18 +65,6 @@ Details can be found at [fink-science](https://github.com/astrolabsoftware/fink-
 | `rf_agn_vs_nonagn` | float | Probability to be an AGN based on Random Forest classifier (1 is AGN). |
 | `GRB` | dict | TBD |
 
-## DESC-ELAsTiCC science modules
-
-These modules are being tested for Rubin era on the LSST-DESC ELAsTiCC data challenge:
-
-| Field in Fink alerts | Type | Contents |
-|:-----|:-------|:--------|
-| `rf_agn_vs_nonagn` | float | Probability to be an AGN based on Random Forest classifier (1 is AGN). |
-| `rf_snia_vs_nonia` | float | Probability to be a rising SNe Ia based on Random Forest classifier (1 is SN Ia). Based on https://arxiv.org/abs/2111.11438 |
-| `snn_snia_vs_nonia` | float | Probability to be a SNe Ia based on [SuperNNova](https://supernnova.readthedocs.io/en/latest/) classifier (1 is SN Ia). Based on https://arxiv.org/abs/1901.06384 |
-| `preds_snn` | array[float] | Broad classifier based on SNN. Returns [class, max(prob)]. |
-| `cbpf_preds` | array[float] | Fine classifier based on the CBPF Algorithm for Transient Search. Returns [class, max(prob)]. |
-
 ## Create your ZTF science module
 
 This tutorial goes step-by-step for creating a science modules used to generate added values to ZTF alerts. Running entirely Fink just for testing a module might be an overwhelming task. Fink can be a complex system, but hopefully it is highly modular such that you do not need all the parts to test one part in particular. In principle, to test a module you only need Apache Spark installed, and alert data. Spark API exposes nearly the same methods for static or streaming DataFrame. Hence, to avoid complication due to streaming (e.g. creating streams with Kafka, reading streams, managing offsets, etc...), it is always best to prototype on static DataFrame. If the logic works for static, it will work for streaming.
@@ -165,3 +153,14 @@ We want to process data as fast as possible, and long running times add delay fo
 
 Once your module is deployed, outgoing alerts will contain new information! You can then define your filter using [fink-filters](https://github.com/astrolabsoftware/fink-filters), and you will then be able to receive these alerts in (near) real-time using the [fink-client](https://github.com/astrolabsoftware/fink-client), or access them at any time in the Science Portal.
 
+## DESC-ELAsTiCC science modules
+
+These modules are being tested for Rubin era on the LSST-DESC ELAsTiCC data challenge:
+
+| Field in Fink alerts | Type | Contents |
+|:-----|:-------|:--------|
+| `rf_agn_vs_nonagn` | float | Probability to be an AGN based on Random Forest classifier (1 is AGN). |
+| `rf_snia_vs_nonia` | float | Probability to be a rising SNe Ia based on Random Forest classifier (1 is SN Ia). Based on https://arxiv.org/abs/2111.11438 |
+| `snn_snia_vs_nonia` | float | Probability to be a SNe Ia based on [SuperNNova](https://supernnova.readthedocs.io/en/latest/) classifier (1 is SN Ia). Based on https://arxiv.org/abs/1901.06384 |
+| `preds_snn` | array[float] | Broad classifier based on SNN. Returns [class, max(prob)]. |
+| `cbpf_preds` | array[float] | Fine classifier based on the CBPF Algorithm for Transient Search. Returns [class, max(prob)]. |
