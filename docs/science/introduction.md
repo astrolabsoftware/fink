@@ -26,9 +26,11 @@ We are open to contributions in those science cases, but also to new contributio
 
 ## ZTF alert stream
 
-We are currently operating on the [ZTF](https://www.ztf.caltech.edu/) public alert stream, which has constituted an excellent opportunity to engage projects with the scientific community while preparing the ground for the upcoming Rubin Observatory alert data. The ZTF alert data is an unfiltered, 5-sigma alert stream, and you can find all information about the content [here](https://zwickytransientfacility.github.io/ztf-avro-alert/).
+We are currently operating on the [ZTF](https://www.ztf.caltech.edu/) public alert stream, which has constituted an excellent opportunity to engage projects with the scientific community while preparing the ground for the upcoming Rubin Observatory alert data. The ZTF alert data is an unfiltered, 5-sigma alert stream, and you can find all information about the content [here](https://zwickytransientfacility.github.io/ztf-avro-alert/). Alerts are coming from all over the sky, and here is for example a projection on the sky of alerts from 2019 to 2021:
 
-In this context we have strong partnerships with other missions (e.g. [SVOM](https://www.svom.eu/en/home/)) or network of telescopes (e.g. [GRANDMA](https://grandma.ijclab.in2p3.fr/)).
+![Screenshot](../img/skymap.png)
+
+In this context we also have strong partnerships with other missions (e.g. [SVOM](https://www.svom.eu/en/home/)) or network of telescopes (e.g. [GRANDMA](https://grandma.ijclab.in2p3.fr/)).
 
 ## Rubin Observatory
 
