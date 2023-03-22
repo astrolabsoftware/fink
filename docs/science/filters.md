@@ -70,7 +70,7 @@ export PYTHONPATH=$PYTHONPATH:$SPARK_HOME/python
 
 Fork and clone the [fink-filters](https://github.com/astrolabsoftware/fink-filters) repository, and create a new folder in `fink_filters`. The name of the new folder does not matter much, but try to make it meaningful as much as possible!
 
-## Define your filter
+### Define your filter
 
 A filter is typically a Python routine that selects which alerts need to be sent based on user-defined criteria. Criteria are based on the alert entries: position, flux, properties, ... plus all the added-values from the Fink science modules. A full example can be found at [https://github.com/astrolabsoftware/fink-filters/tree/master/tutorial](https://github.com/astrolabsoftware/fink-filters/tree/master/tutorial) where we focus on alerts with a counterpart in the SIMBAD database and a magnitude above 20.5.
 
@@ -85,6 +85,6 @@ Once your filter is done, open a Pull Request on the fink-filters repository on 
 
 Keep in mind, LSST incoming stream is 10 million alerts per night, or ~1TB/night. Hence your filter must focus on a specific aspect of the stream, to reduce the outgoing volume of alerts. Based on your submission, we will also provide estimate of the volume to be transferred.
 
-## Step 4: Play!
+### Step 4: Play!
 
 If your filter is accepted, it will be plugged in the broker, and you will be able to receive your alerts in real-time using the [fink-client](https://github.com/astrolabsoftware/fink-client).
