@@ -1,40 +1,37 @@
-# Science in Fink
+# Science Roadmap
 
-**Science**: [![pypi](https://img.shields.io/pypi/v/fink-science.svg)](https://pypi.python.org/pypi/fink-science)
-[![Sentinel](https://github.com/astrolabsoftware/fink-science/workflows/Sentinel/badge.svg)](https://github.com/astrolabsoftware/fink-science/actions?query=workflow%3ASentinel)
-[![PEP8](https://github.com/astrolabsoftware/fink-science/workflows/PEP8/badge.svg)](https://github.com/astrolabsoftware/fink-science/actions?query=workflow%3APEP8)
-[![codecov](https://codecov.io/gh/astrolabsoftware/fink-science/branch/master/graph/badge.svg)](https://codecov.io/gh/astrolabsoftware/fink-science)
+Each night, telescopes are sending raw alerts, with minimal information such as sky location, flux of the transient, and sometimes historical data at this location. The main role of Fink is to enrich these alerts with additional information to identify interesting candidates for follow-up observations or further scientific processing.
 
-## What is a scientific added value?
+![Screenshot](../img/fink-cartoon.png)
 
-Each night, telescopes are sending raw alerts, with minimal information such as sky location, flux of the transient, and sometimes historical data at this location. The main role of brokers is to enrich these alerts by adding new information to identify interesting candidates for follow-up observations or further scientific processing.
-
-In Fink, the information is provided by the broker services (e.g. identification from the CDS cross-match service) and by user-defined science modules (e.g. machine learning classification, or feature extraction algorithms).
+In Fink, this additional information is provided by the broker services (e.g. identification from the CDS cross-match service) and by user-defined science modules (e.g. machine learning classification, or feature extraction algorithms).
 
 ## Fink science cases
 
-In Fink, we currently focus on several topics:
+We currently focus on several areas:
 
-* Detection of supernovae: Ia, but not only!
-* Multi-messenger astronomy: Gamma Ray Bursts, gamma ray, X, gravitational waves, neutrino, ...
-* Study of Solar System objects
-* Study of micro-lensing: compact objects, exoplanets, ...
-* Study of man-made objects, such as satellites or debris orbiting around the Earth
+* Solar System objects
+* Microlensing: compact objects, exoplanets, ...
+* Young stellar objects
+* Supernovae: Ia, but not only!
+* Pair-instability Supernovae
+* Active galactic nuclei
+* Multi-messenger astronomy: Gamma Ray Bursts, gamma ray, X, gravitational waves counterparts, neutrino, ...
 * Anomaly detection: unravelling the unknown
+* Impact of man-made objects, such as satellites or debris orbiting around the Earth
 
-There are several modules deployed to probe these science cases, to annotate and flag potential sky alerts that need further attention or inspection.
+There are several modules deployed to probe these science cases, to annotate and flag potential sky alerts that need further attention or inspection. Have a look at our [publications](https://fink-broker.org/papers/) for example, or the [SN Ia candidates](https://www.wis-tns.org/search?&discovered_period_value=1&discovered_period_units=years&unclassified_at=0&classified_sne=0&include_frb=0&name=&name_like=0&isTNS_AT=all&public=all&ra=&decl=&radius=&coords_unit=arcsec&reporting_groupid%5B%5D=null&groupid%5B%5D=null&classifier_groupid%5B%5D=null&objtype%5B%5D=null&at_type%5B%5D=null&date_start%5Bdate%5D=&date_end%5Bdate%5D=&discovery_mag_min=&discovery_mag_max=&internal_name=&discoverer=Fink&classifier=&spectra_count=&redshift_min=&redshift_max=&hostname=&ext_catid=&ra_range_min=&ra_range_max=&decl_range_min=&decl_range_max=&discovery_instrument%5B%5D=null&classification_instrument%5B%5D=null&associated_groups%5B%5D=null&official_discovery=0&official_classification=0&at_rep_remarks=&class_rep_remarks=&frb_repeat=all&frb_repeater_of_objid=&frb_measured_redshift=0&frb_dm_range_min=&frb_dm_range_max=&frb_rm_range_min=&frb_rm_range_max=&frb_snr_range_min=&frb_snr_range_max=&frb_flux_range_min=&frb_flux_range_max=&num_page=50&display%5Bredshift%5D=1&display%5Bhostname%5D=1&display%5Bhost_redshift%5D=1&display%5Bsource_group_name%5D=1&display%5Bclassifying_source_group_name%5D=1&display%5Bdiscovering_instrument_name%5D=0&display%5Bclassifing_instrument_name%5D=0&display%5Bprograms_name%5D=0&display%5Binternal_name%5D=1&display%5BisTNS_AT%5D=0&display%5Bpublic%5D=1&display%5Bend_pop_period%5D=0&display%5Bspectra_count%5D=1&display%5Bdiscoverymag%5D=1&display%5Bdiscmagfilter%5D=1&display%5Bdiscoverydate%5D=1&display%5Bdiscoverer%5D=1&display%5Bremarks%5D=0&display%5Bsources%5D=0&display%5Bbibcode%5D=0&display%5Bext_catalogs%5D=0) sent every night to the Transient Name Server!
 
 We are open to contributions in those science cases, but also to new contributions that are not listed here. If you have a science proposal and you would like to integrate it with the broker, contact [us](mailto:contact@fink-broker.org).
 
 ## ZTF alert stream
 
-To design the broker and test the science modules while waiting for LSST data, we use the [ZTF](https://www.ztf.caltech.edu/) alert stream. The ZTF alert data (full, unfiltered, 5-sigma alert stream) is publicly available through their [web portal](https://ztf.uw.edu/alerts/public/), and you can find all information about ZTF alerts [here](https://zwickytransientfacility.github.io/ztf-avro-alert/).
+We are currently operating on the [ZTF](https://www.ztf.caltech.edu/) public alert stream, which has constituted an excellent opportunity to engage projects with the scientific community while preparing the ground for the upcoming Rubin Observatory alert data. The ZTF alert data is an unfiltered, 5-sigma alert stream, and you can find all information about the content [here](https://zwickytransientfacility.github.io/ztf-avro-alert/). Alerts are coming from all over the sky, and here is for example a projection on the sky of alerts from 2019 to 2021:
 
-## How to include your science case in Fink?
+![Screenshot](../img/skymap.png)
 
-First let [us](mailto:contact@fink-broker.org) know about your science proposal! If you already have a working scientific module, we would be super happy to make the integration within the broker, otherwise we will design it together. The procedure is described in the [fink-science](https://github.com/astrolabsoftware/fink-science) repository or you can follow the [tutorial](../tutorials/create-science-module.md) on creating a science module. Keep in mind, the criteria for acceptance are:
+In this context we also have strong partnerships with other missions (e.g. [SVOM](https://www.svom.eu/en/home/)) or network of telescopes (e.g. [GRANDMA](https://grandma.ijclab.in2p3.fr/)).
 
-* The science module works ;-)
-* The execution time is not too long.
+## Rubin Observatory
 
-We want to process data as fast as possible, and long running times add delay for further follow-up observations. What execution time is acceptable? It depends, but in any case communicate early the extra time overhead, and we can have a look together on how to speed-up the process if needed.
+The Rubin Observatory is expected to start operations at the end of 2024. Recently, it [disclosed](https://www.lsst.org/scientists/alert-brokers) the Community brokers that will have unrestricted access to the complete alert stream for the next decade: [ALeRCE](https://alerce.science/), [AMPEL](https://github.com/AmpelProject), [ANTARES](https://antares.noirlab.edu/), BABAMUL, [Fink](https://fink-broker.org), [Lasair](https://lasair.roe.ac.uk/), and [Pitt-Google](https://github.com/mwvgroup/Pitt-Google-Broker). In the meantime, we are participating for example to the [DESC-ELAsTiCC alert challenge](https://portal.nersc.gov/cfs/lsst/DESC_TD_PUBLIC/ELASTICC/) to prepare for the deluge of data!
