@@ -79,7 +79,8 @@ These modules are being tested for Rubin era on the LSST-DESC ELAsTiCC data chal
 
 ## Create your ZTF science module
 
-This tutorial goes step-by-step for creating a science modules used to generate added values to ZTF alerts.
+This tutorial goes step-by-step for creating a science modules used to generate added values to ZTF alerts. Running entirely Fink just for testing a module might be an overwhelming task. Fink can be a complex system, but hopefully it is highly modular such that you do not need all the parts to test one part in particular. In principle, to test a module you only need Apache Spark installed, and alert data. Spark API exposes nearly the same methods for static or streaming DataFrame. Hence, to avoid complication due to streaming (e.g. creating streams with Kafka, reading streams, managing offsets, etc...), it is always best to prototype on static DataFrame. If the logic works for static, it will work for streaming.
+
 
 ### Set up your development environment
 
@@ -93,7 +94,7 @@ docker run -t -i --rm julienpeloton/fink-ci:prod bash
 The advantage of this method is that you have everything installed in it (Python and various frameworks). Alternatively, you can install everything on your machine. For Python packages, just use a virtual environment:
 
 ```bash
-conda create -n fink-science python=3.9
+conda create -n fink-env python=3.9
 BASEURL=https://raw.githubusercontent.com/astrolabsoftware/fink-broker/master/deps
 pip install -r $BASEURL/requirements.txt
 pip install -r $BASEURL/requirements-science.txt
@@ -121,7 +122,7 @@ Finally fork and clone the [fink-science](https://github.com/astrolabsoftware/fi
 
 ### Develop your science module
 
-A module contains necessary routines and classes to process the alert data, and add values. In this simple example, we explore a simple science module that takes magnitude measurements contained in each alert, and computes the change in magnitude between the last two measurements. The full example can be found at [https://github.com/astrolabsoftware/fink-science/tree/master/tutorial](https://github.com/astrolabsoftware/fink-science/tree/master/tutorial).
+A module contains necessary routines and classes to process the alert data, and add values. In this simple example, we explore a simple science module that takes magnitude measurements contained in each alert, and computes the change in magnitude between the last two measurements. A full example can be found at [https://github.com/astrolabsoftware/fink-science/tree/master/tutorial](https://github.com/astrolabsoftware/fink-science/tree/master/tutorial).
 
 A science module will typically contains two parts: the processor that contains the main routine called by Fink, and any other modules used by the processor. The processor will typically look like:
 
@@ -135,7 +136,7 @@ from mymodule import super_magic_funtion
 
 @pandas_udf(FloatType())
 def myprocessor(objectId: pd.Series, magpsf: pd.Series, anothercolumn: pd.Series) -> pd.Series:
-    """
+    """ Documentation please!
     """
     # your logic goes here
     output = super_magic_funtion(*args)
