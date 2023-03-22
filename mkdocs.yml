@@ -12,9 +12,9 @@ nav:
       - Alert Classification: science/classification.md
     - Services:
       - Summary: services/summary.md
-      - Livestream: services/fink-client.md
+      - Livestream: services/livestream.md
       - Science Portal and API: services/science_portal.md
-      - Data Transfer: services/science_portal.md
+      - Data Transfer: services/data_transfer.md
       # - Tutorials: tutorials/introduction.md
         #- Client:
         #- Connect to Fink streams: fink-client.md
