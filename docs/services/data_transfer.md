@@ -10,8 +10,8 @@ The Data Transfer service allows users to explore and transfer historical data a
 
 In Fink we had so far two main services to interact with the alert data:
 
-1. Fink livestream: based on Apache Kafka, to receive alert in real-time based on user-defined filters.
-2. Fink Science Portal: web application (and REST API) to access and display historical data.
+1. Fink Livestream: based on Apache Kafka, to receive alerts in real-time based on user-defined filters.
+2. Fink Science Portal: web application (and REST API) to access and display all processed data.
 
 The first service enables data transfer at scale, but you cannot request alerts from the past. The second service lets you query data from the beginning of the project (2019!), but the volume of data to transfer for each query is limited. **Hence, we were missing a service that would enable massive data transfer for historical data.**
 
