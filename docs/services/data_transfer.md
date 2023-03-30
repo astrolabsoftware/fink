@@ -189,7 +189,7 @@ In case of trouble, send us an email (contact@fink-broker.org) or [open an issue
 
 ### Timeout error
 
-If you get frequent timeouts while you know there are alerts to poll (especially if you are polling from outside of France where the servers are), try to increase the timeout (in seconds) in your configuration file:
+If you get frequent timeouts while you know there are alerts to poll (especially if you are polling from outside of Europe where the servers are), try to increase the timeout (in seconds) in your configuration file:
 
 ```bash
 # edit ~/.finkclient/credentials.yml
