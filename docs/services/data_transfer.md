@@ -9,6 +9,7 @@ This manual has been tested for `fink-client` version 4.4. In case of trouble, s
 The Data Transfer service allows users to explore and transfer historical data at scale: [https://fink-portal.org/download](https://fink-portal.org/download). This service lets users to select any observing nights between 2019 and now, apply filters, define the content of the output, and stream data directly to anywhere!
 
 In Fink we had so far two main services to interact with the alert data:
+
 1. Fink livestream: based on Apache Kafka, to receive alert in real-time based on user-defined filters.
 2. Fink Science Portal: web application (and REST API) to access and display historical data.
 
