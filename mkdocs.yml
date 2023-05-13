@@ -15,12 +15,8 @@ nav:
       - Livestream: services/livestream.md
       - Science Portal and API: services/science_portal.md
       - Data Transfer: services/data_transfer.md
-      # - Tutorials: tutorials/introduction.md
-        #- Client:
-        #- Connect to Fink streams: fink-client.md
-        #- Subscribe &#9889;: https://forms.gle/2td4jysT4e9pkf889
     - About:
-      # - Who is behind Fink?: who-is-fink.md
+      - Code source: code-source.md
       - Release Notes: release-notes.md
       - Contributing: contributing.md
 
