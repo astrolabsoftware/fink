@@ -1,4 +1,4 @@
-# Code source
+# Source code
 
 All Fink codes are open source and under Apache 2.0 license. They are available at [https://github.com/astrolabsoftware](https://github.com/astrolabsoftware).
 
