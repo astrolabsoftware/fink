@@ -49,7 +49,7 @@ In order to connect and poll alerts from Fink, you first need to get your creden
 fink_client_register \
 	-username <USERNAME> \ # given privately
 	-group_id <GROUP_ID> \ # given privately
-	-mytopics <topic1 topic2 etc> \ # see https://fink-broker.readthedocs.io/en/latest/topics/
+	-mytopics <topic1 topic2 etc> \ # see https://fink-broker.readthedocs.io/en/latest/science/filters/
 	-servers <SERVER> \ # given privately, comma separated if several
 	-maxtimeout 10 \ # in seconds
 	 --verbose
