@@ -1,8 +1,8 @@
 # Fink Data Transfer
 
-_date 26/01/2023_
+_date 11/09/2023_
 
-This manual has been tested for `fink-client` version 4.4. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
+This manual has been tested for `fink-client` version 7.0. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
 ## Purpose
 
@@ -32,13 +32,47 @@ We decided to _stream_ the output of each job. In practice, this means that the 
 
 ## Installation of fink-client
 
-To ease the consuming step, the users are recommended to use the [fink-client](https://github.com/astrolabsoftware/fink-client). From a terminal, you can install fink-client simply using `pip`:
+To ease the consuming step, the users are recommended to use the [fink-client](https://github.com/astrolabsoftware/fink-client). `fink_client` requires a version of Python 3.9+.
+
+### Install with pip
+
+From a terminal, you can install fink-client simply using `pip`:
 
 ```bash
 pip install fink-client --upgrade
 ```
 
-This should install all necessary dependencies.
+You will also need to install `fastavro==1.6.0` separately (versions above are not compatible with alert schema):
+
+```
+# fastavro 1.6.0 requires Cython<3
+pip install "Cython<3"
+pip install --no-build-isolation "fastavro==1.6.0"
+```
+
+### Use or develop in a controlled environment
+
+For usage:
+
+```bash
+conda env create -f https://raw.githubusercontent.com/astrolabsoftware/fink-client/master/environment.yml
+conda activate fink-client
+pip install "Cython<3"
+pip install --no-build-isolation "fastavro==1.6.0"
+pip install fink-client --upgrade
+```
+
+For development:
+
+```bash
+git clone https://github.com/astrolabsoftware/fink-client.git
+cd fink-client
+conda env create -f environment.yml
+conda activate fink-client
+pip install "Cython<3"
+pip install --no-build-isolation "fastavro==1.6.0"
+pip install -e .
+```
 
 ## Registering
 
@@ -175,13 +209,28 @@ fink_datatransfer \
 
 ### Multiprocessing
 
-### Apache Spark
+From version 7.0, we have introduced the functionality of simultaneous downloading from multiple partitions through the implementation of multi-processing technology, which is an approach that takes advantage of modern hardware resources to run multiple tasks in parallel.
+By using this strategy, the service is able to simultaneously access different partitions of the data stored in the Kafka server, enabling faster and more efficient transfer. The benefits of this approach are numerous, ranging from optimizing transfer times to making more efficient use of available hardware resources.
+
+By default, the client will use all available logical CPUs. You can also specify the number of CPUs to use, as well as the batch size from the command line:
+
+```bash
+fink_datatransfer \
+    -topic <topic name> \
+    -outdir <output directory> \
+    -partitionby finkclass \
+    -nconsumers 5 \
+    -batchsize 1000 \
+    --verbose
+```
+
+More details on the expected performances are given in this [post]().
 
 ## How is this done in practice?
 
 ![1](../img/datatransfer_archi.png)
 
-_(1) the user connects to the service and request a transfer by filling fields and hitting the submit button. (2) Dash callbacks build and upload the execution script to HDFS, and submit a job in the Fink [Apache Spark](https://spark.apache.org/) cluster using the [Livy](https://livy.apache.org/) service. (3) Necessary data is loaded from the distributed storage system containing Fink data and processed by the Spark cluster. (4) The resulting alerts are published to the Fink [Apache Kafka](https://kafka.apache.org/) cluster, and they are available up to 4 days by the user. (5) The user can retrieve the data using e.g. the Fink client, or any Kafka-based tool._
+_(1) the user connects to the service and request a transfer by filling fields and hitting the submit button. (2) Dash callbacks build and upload the execution script to HDFS, and submit a job in the Fink [Apache Spark](https://spark.apache.org/) cluster using the [Livy](https://livy.apache.org/) service. (3) Necessary data is loaded from the distributed storage system containing Fink data and processed by the Spark cluster. (4) The resulting alerts are published to the Fink [Apache Kafka](https://kafka.apache.org/) cluster, and they are available up to 7 days by the user. (5) The user can retrieve the data using e.g. the Fink client, or any Kafka-based tool._
 
 ## Troubleshooting
 

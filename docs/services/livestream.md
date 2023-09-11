@@ -1,8 +1,8 @@
 # Livestream
 
-_date 21/03/2023_
+_date 11/09/2023_
 
-This manual has been tested for `fink-client` version 4.4. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
+This manual has been tested for `fink-client` version 7.0. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
 ## Purpose
 
@@ -12,13 +12,47 @@ As Kafka can be somehow cumbersome, we developed a client to facilitate the stre
 
 ## Installation of fink-client
 
+To ease the consuming step, the users are recommended to use the [fink-client](https://github.com/astrolabsoftware/fink-client). `fink_client` requires a version of Python 3.9+.
+
+### Install with pip
+
 From a terminal, you can install fink-client simply using `pip`:
 
 ```bash
 pip install fink-client --upgrade
 ```
 
-This should install all necessary dependencies.
+You will also need to install `fastavro==1.6.0` separately (versions above are not compatible with alert schema):
+
+```
+# fastavro 1.6.0 requires Cython<3
+pip install "Cython<3"
+pip install --no-build-isolation "fastavro==1.6.0"
+```
+
+### Use or develop in a controlled environment
+
+For usage:
+
+```bash
+conda env create -f https://raw.githubusercontent.com/astrolabsoftware/fink-client/master/environment.yml
+conda activate fink-client
+pip install "Cython<3"
+pip install --no-build-isolation "fastavro==1.6.0"
+pip install fink-client --upgrade
+```
+
+For development:
+
+```bash
+git clone https://github.com/astrolabsoftware/fink-client.git
+cd fink-client
+conda env create -f environment.yml
+conda activate fink-client
+pip install "Cython<3"
+pip install --no-build-isolation "fastavro==1.6.0"
+pip install -e .
+```
 
 ## Registering
 
