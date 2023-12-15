@@ -54,6 +54,15 @@ Standard modules typically issue flags or aggregated information to ease the pro
 |:-----|:-------|:--------|:---------|
 | `roid` | int | Determine if the alert is a Solar System object | 2019/11 |
 | `nalerthist` | int | Number of detections contained in each alert (current+history). Upper limits are not taken into account. | 2019/11 |
+| `tracklet` | str | ID for fast moving objects, typically orbiting around the Earth. Of the format `YYYY-MM-DD hh:mm:ss` | 2020/08 |
+| `jd_first_real_det` | double | first variation time at 5 sigma contains in the alert history | 2023/12 |
+| `jdstarthist_dt` | double | delta time between `jd_first_real_det` and the first variation time at 3 sigma (`jdstarthist`). If `jdstarthist_dt` > 30 days then the first variation time at 5 sigma is False (accurate for fast transient). | 2023/12 |
+| `mag_rate` | double | magnitude rate (mag/day) | 2023/12 |
+| `sigma_rate` | double | magnitude rate error estimation (mag/day) | 2023/12 |
+| `lower_rate` | double | 5% percentile of the magnitude rate sampling used for the error computation (`sigma_rate`) | 2023/12 |
+| `upper_rate` | double | 95% percentile of the magnitude rate sampling used for the error computation (`sigma_rate`) | 2023/12 |
+| `delta_time` | double | delta time between the the two measurement used for the magnitude rate `mag_rate` | 2023/12 |
+| `from_upper` | bool | if True, the magnitude rate `mag_rate` has been computed using the last upper limit and the current measurement | 2023/12 |
 
 ### Notes
 
