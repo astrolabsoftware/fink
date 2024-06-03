@@ -1,8 +1,8 @@
 # Livestream
 
-_date 11/09/2023_
+_date 03/06/2024_
 
-This manual has been tested for `fink-client` version 7.0. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
+This manual has been tested for `fink-client` version 8.0. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
 ## Purpose
 
@@ -22,36 +22,17 @@ From a terminal, you can install fink-client simply using `pip`:
 pip install fink-client --upgrade
 ```
 
-You will also need to install `fastavro==1.6.0` separately (versions above are not compatible with alert schema):
-
-```
-# fastavro 1.6.0 requires Cython<3
-pip install "Cython<3"
-pip install --no-build-isolation "fastavro==1.6.0"
-```
-
 ### Use or develop in a controlled environment
 
-For usage:
-
-```bash
-conda env create -f https://raw.githubusercontent.com/astrolabsoftware/fink-client/master/environment.yml
-conda activate fink-client
-pip install "Cython<3"
-pip install --no-build-isolation "fastavro==1.6.0"
-pip install fink-client --upgrade
-```
-
-For development:
+For development, we recommend the use of a virtual environment:
 
 ```bash
 git clone https://github.com/astrolabsoftware/fink-client.git
 cd fink-client
-conda env create -f environment.yml
-conda activate fink-client
-pip install "Cython<3"
-pip install --no-build-isolation "fastavro==1.6.0"
-pip install -e .
+python -m venv .fc_env
+source .fc_env/bin/activate
+pip install -r requirements.txt
+pip install .
 ```
 
 ## Registering
@@ -116,7 +97,7 @@ fink_alert_viewer -filename alertDB/ZTF21aaqkqwq_1549473362115015004.avro
 of course, you can develop your own tools based on this one! Note Apache Avro is not something supported by default in Pandas for example, so we provide a small utilities to load alerts more easily:
 
 ```python
-from fink_client.avroUtils import AlertReader
+from fink_client.avro_utils import AlertReader
 
 # you can also specify one folder with several alerts directly
 r = AlertReader('alertDB/ZTF21aaqkqwq_1549473362115015004.avro')
@@ -133,6 +114,8 @@ You can write your own consumer to manipulate alerts upon receival. We give an s
 """ Poll the Fink servers only once at a time """
 from fink_client.consumer import AlertConsumer
 from fink_client.configuration import load_credentials
+
+from astropy.time import Time
 
 import time
 import tabulate
@@ -160,7 +143,7 @@ def poll_single_alert(myconfig, topics) -> None:
 		utc = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime())
 		table = [
 			[
-		 		alert['timestamp'],
+		 		Time(alert['candidate']['jd'], format='jd').iso,
 		 		utc,
 		 		topic,
 		 		alert['objectId'],
@@ -267,7 +250,20 @@ This error happens when the schema to decode the alert is not matching the alert
 fink_consumer [...] -schema [path_to_a_good_schema]
 ```
 
-In case you do not have replacement schemas, open an issue on the fink-client repository.
+In case you do not have replacement schemas, you can save the current (faulty) schema that is contained within an alert packet:
+
+```bash
+fink_consumer -limit 1 --dump_schema
+```
+
+You will see the traceback above, with the message:
+
+```
+Schema saved as schema_2024-06-03T11:12:36.855544+00:00.json
+```
+
+
+Then you can inspect the schema manually, or open an issue on the fink-client repository by attaching this schema to your message.
 
 ### Authentication error
 
