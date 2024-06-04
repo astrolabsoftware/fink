@@ -2,7 +2,7 @@
 
 _date 04/06/2024_
 
-This manual has been tested for `fink-client` version 8.1. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
+This manual has been tested for `fink-client` version 8.2. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
 ## Purpose
 
