@@ -1,12 +1,12 @@
 # Livestream
 
-_date 03/06/2024_
+_date 04/06/2024_
 
-This manual has been tested for `fink-client` version 8.0. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
+This manual has been tested for `fink-client` version 8.1. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
 ## Purpose
 
-The livestream service is based on the Fink filters. After each exposure, Fink processes the alerts sent by ZTF and the filters select alerts to be transmitted based on their content. These alerts are sent to the Fink [Apache Kafka](https://kafka.apache.org/) cluster, and substreams are produced (1 filter = 1 substream), identified by their _topic_ name. Each alert pushed is available 4 days in the queue, and consumers can replay streams indefinitely.
+The livestream service is based on the Fink filters. After each exposure, Fink processes the alerts sent by ZTF and the filters select alerts to be transmitted based on their content. These alerts are sent to the Fink [Apache Kafka](https://kafka.apache.org/) cluster, and substreams are produced (1 filter = 1 substream), identified by their _topic_ name. Each alert pushed is available 7 days in the queue, and consumers can replay streams indefinitely.
 
 As Kafka can be somehow cumbersome, we developed a client to facilitate the stream consuming part for Fink users: [fink-client](https://github.com/astrolabsoftware/fink-client). Users can connect to one or more topics, and new topics can be created via new Fink filters.
 
@@ -73,14 +73,14 @@ This will download the first available alert, and print some useful information.
 # create a folder to store alerts
 mkdir alertDB
 
-# access help using `fink_consumer-h`
+# access help using `fink_consumer -h`
 fink_consumer --display --save -outdir alertDB -limit 1
 ```
 
 This will download the next available alert, display some useful information on screen, and save it (Apache Avro format) on disk. Then if all works, then you can remove the limit, and let the consumer run for ever!
 
 ```bash
-# access help using `fink_consumer-h`
+# access help using `fink_consumer -h`
 fink_consumer --display --save -outdir alertDB
 ```
 
@@ -105,6 +105,66 @@ r = AlertReader('alertDB/ZTF21aaqkqwq_1549473362115015004.avro')
 # convert alert to Pandas DataFrame
 r.to_pandas()
 ```
+
+## Managing offsets
+
+### Checking offsets
+
+You might want to check where you are on the different queues, that is retrieving the offsets for each topic that you are polling:
+
+```bash
+fink_consumer --display_statistics
+
+Topic [Partition]                                   Committed        Lag
+========================================================================
+fink_sso_ztf_candidates_ztf  [4]                            1        972
+------------------------------------------------------------------------
+Total for fink_sso_ztf_candidates_ztf                       1        972
+------------------------------------------------------------------------
+
+Topic [Partition]                                   Committed        Lag
+========================================================================
+------------------------------------------------------------------------
+Total for fink_sso_fink_candidates_ztf                      0          2
+------------------------------------------------------------------------
+```
+
+In this example, I have two topic, `fink_sso_ztf_candidates_ztf` and `fink_sso_fink_candidates_ztf`. 
+
+For the first topic, there is one active partition on the remote Kafka cluster that served data (number `[4]`). I polled 1 alert (`Committed`), and there are `972` remaining alerts to be polled (`Lag`). As there is only one active partition on the remote Kafka cluster, the total is the same (there could be up to 10 active partitions). For the second topic, I did not start polling as `0` alert has been `Committed`.
+
+### Resetting offsets
+
+Sometimes you might want to poll again alerts, that is restarting to poll from the beginning of a queue. For this, you can use:
+
+```bash
+fink_consumer --display -start_at earliest
+Resetting offsets to BEGINNING
+...
+assign TopicPartition{topic=fink_sso_fink_candidates_ztf,partition=0,offset=0,leader_epoch=None,error=None}
+...
+assign TopicPartition{topic=fink_sso_ztf_candidates_ztf,partition=0,offset=0,leader_epoch=None,error=None}
+...
+# poll restarts at the first offset
+```
+
+All your topic partitions will be reset to the starting offset (`0` in this case). Similarly, you can empty all topics, and restarting polling from the last offset:
+
+```bash
+fink_consumer --display -start_at latest
+...
+assign TopicPartition{topic=fink_sso_fink_candidates_ztf,partition=0,offset=0,leader_epoch=None,error=None}
+...
+assign TopicPartition{topic=fink_sso_fink_candidates_ztf,partition=4,offset=2,leader_epoch=None,error=None}
+...
+assign TopicPartition{topic=fink_sso_ztf_candidates_ztf,partition=4,offset=973,leader_epoch=None,error=None}
+...
+No alerts the last 10 seconds
+...
+```
+
+Empty partitions will have `offset=0`, but others will have their offset to the latest one. The client will then wait for new data to come. Note that the reset will be actually triggered on the next poll. Hence the command `fink_consumer --display_statistics` will not right away display the reset offsets.
+This is particularly useful after a bug in the topic (malformed alerts pushed), and you want a fresh restart.
 
 ## Write your own consumer
 
@@ -176,7 +236,6 @@ if __name__ == "__main__":
 
     # to fill
     myconfig = {
-        'username': '',
         'bootstrap.servers': '',
         'group_id': ''
     }
