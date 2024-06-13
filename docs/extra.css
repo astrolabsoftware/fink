@@ -1,0 +1,12 @@
+/*.wy-side-nav-search, .wy-nav-top {
+    background: linear-gradient(90deg, rgba(21,40,79,1) 20%, rgba(245,98,46,1) 100%);
+}*/
+
+.wy-side-nav-search, .wy-nav-top {
+    background: linear-gradient(90deg, #272525 20%, rgba(245,98,46,1) 100%);
+}
+
+a {
+    color: rgba(245,98,46,1)
+}
+
