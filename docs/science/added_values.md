@@ -90,10 +90,12 @@ First make sure you are working in the correct environment. You can either use t
 
 ```bash
 # pull and run the image used for ZTF processing
-docker run -t -i --rm julienpeloton/fink-ci:prod bash
+docker run -t -i --rm julienpeloton/fink-ci:latest bash
 ```
 
-The advantage of this method is that you have everything installed in it (Python and various frameworks). Alternatively, you can install everything on your machine. For Python packages, just use a virtual environment:
+The advantage of this method is that you have everything installed in it (Python and various frameworks). 
+
+Alternatively, you can install everything on your machine. For Python packages, just use a virtual environment:
 
 ```bash
 conda create -n fink-env python=3.9
