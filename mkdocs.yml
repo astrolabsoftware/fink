@@ -25,4 +25,4 @@ extra_css: [extra.css]
 markdown_extensions:
   - admonition
 
-copyright: Copyright &copy; 2018-24 <a href="https://astrolabsoftware.github.io/">AstroLab Software</a>.
+copyright: Copyright &copy; 2018-24 <a href="https://fink-broker.org">Fink team</a>.
