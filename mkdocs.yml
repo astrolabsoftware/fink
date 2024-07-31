@@ -5,11 +5,11 @@ edit_uri: ""
 nav:
     - Home: index.md
     - Broker:
-      - Science Roadmap: science/introduction.md
+      - Science Roadmap: broker/roadmap.md
       - Technological consideration: broker/introduction.md
-      - Fink science modules: science/added_values.md
-      - Fink filters: science/filters.md
-      - Alert Classification: science/classification.md
+      - Fink science modules: broker/science_modules.md
+      - Fink filters: broker/filters.md
+      - Alert Classification: broker/classification.md
     - Services:
       - Summary: services/summary.md
       - Livestream: services/livestream.md
