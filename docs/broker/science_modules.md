@@ -7,11 +7,20 @@
 
 In addition to the information contained in the incoming raw alerts, Fink deploys science modules whose task is to add further details to better characterise the event.
 
-![Screenshot](../img/science-modules.png)
+``` mermaid
+graph LR
+  A(RA, DEC, flux) --> B((Science \n module #1));
+  B -..-> C((Science \n module #N));
+  C --> D(RA, DEC, flux, \n labels + ML scores + flags, ...);
+```
+
+<!-- ![Screenshot](../img/science-modules.png#only-light)
+![Screenshot](../img/science-modules-alt.png#only-dark) -->
 
 The science modules are provided by the scientific community and encompass a dozen modules that focus on a wide range of scientific cases, from Solar System science to galactic and extragalactic studies. These modules can share information, allowing the input of one module to utilize the output of one or more other modules.
 
-Each science module provides added values in form of extra fields inside the alert packet, and these fields are freely accessible by anyone. The code sources of science modules can be found at [https://github.com/astrolabsoftware/fink-science](https://github.com/astrolabsoftware/fink-science).
+!!! info "Open source and open data"
+	Each science module provides added values in form of extra fields inside the alert packet, and these fields are freely accessible by anyone. The code sources of science modules can be found at [https://github.com/astrolabsoftware/fink-science](https://github.com/astrolabsoftware/fink-science).
 
 ## ZTF science modules
 

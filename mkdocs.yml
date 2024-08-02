@@ -1,28 +1,109 @@
-site_name: Fink
+site_name: "" #Fink
 repo_url: https://github.com/astrolabsoftware/fink-broker
+repo_name: fink-broker
 edit_uri: ""
 
 nav:
     - Home: index.md
     - Broker:
       - Science Roadmap: broker/roadmap.md
-      - Technological consideration: broker/introduction.md
+      - Technological consideration: broker/infrastructure.md
       - Fink science modules: broker/science_modules.md
       - Fink filters: broker/filters.md
       - Alert Classification: broker/classification.md
-    - Services:
-      - Summary: services/summary.md
-      - Livestream: services/livestream.md
-      - Science Portal and API: services/science_portal.md
-      - Data Transfer: services/data_transfer.md
+      - Accessing alert data: broker/services_summary.md
+    - Science Portal:
+      - Getting started: services/search/getting_started.md
+      - Retrieving data:
+        - Search by name: services/search/objectid.md
+        - Search by class: toto.md
+        - Conesearch: toto.md
+        - Image data: toto.md
+        - Statistics: toto.md
+        - Resolving names: toto.md
+        - Draw random objects: toto.md
+        - Column & class definition: toto.md
+      - Solar System objects: toto.md
+      - Multi-messenger: toto.md
+      - Space awarness: toto.md
+    - Data Transfer: services/data_transfer.md
+    - Livestream: services/livestream.md
+    # - Services:
+    #   - Livestream: services/livestream.md
+    #   - Science Portal and API: services/science_portal.md
+    #   - Data Transfer: services/data_transfer.md
+    - Developer corner:
+      - Alert schemas: developers/schemas.md
+      - Designing a science module: developers/science_module_tutorial.md
+      - Designing a filter: developers/filter_tutorial.md
+      - Testing Fink: developers/testing_fink.md
     - About:
       - Source code: source-code.md
       - Release Notes: release-notes.md
       - Contributing: contributing.md
 
-theme: readthedocs
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - navigation.sections
+    - content.code.annotate
+      # - navigation.tabs
+  logo: img/Fink_PrimaryLogo_WEB.png
+  favicon: img/favicon.ico
+  icon:
+    annotation: material/plus-circle
+  palette:
+
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch light/dark mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: dark blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+#extra:
+#  alternate:
+#    - name: English
+#      link: /en/
+#      lang: en
+#    - name: French
+#      link: /fr/
+#      lang: fr
+
 extra_css: [extra.css]
+
 markdown_extensions:
   - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+
 
 copyright: Copyright &copy; 2018-24 <a href="https://fink-broker.org">Fink team</a>.

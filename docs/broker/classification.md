@@ -10,16 +10,24 @@ Following the analysis of alerts, we can identify three primary sources of infor
 
 The challenge now lies in integrating these fields to derive meaningful scientific insights. There is no definitive ground truth in this context, and the possibilities for combinations are limitless, varying based on the specific target. 
 
+!!! tip "Alert vs object classification"
+
+	An astronomical object on the sky can emit several alerts as its flux evolves, and based on available information on each alert, the classification can vary from one alert to another. We do not provide an _object_ classification, but rather classification for each alert. You will for example find the evolution of the classification in the Science Portal (e.g. [ZTF23aabqqoi](https://fink-portal.org/ZTF23aabqqoi)) just above the lightcurve:
+
+	![Screenshot](../img/fink-classification.png)
+
+	This is up to the user to decide on the nature of the object based on the list of alert classifications.
+
 ## Designing a specific classification
 
-To facilitate the identification of noteworthy events, users can create filters that combine multiple alert fields, allowing them to generate meaningful tags tailored to their research needs. For instance, one of the filters designed for [Kilonova candidates](https://github.com/astrolabsoftware/fink-filters/blob/be30474e10d041afe8da992ac1fe37da71db230f/fink_filters/filter_kn_candidates/filter.py#L84-L94), utilized within the [GRANDMA network](https://grandma.ijclab.in2p3.fr/), is based on the following outputs:
+To facilitate the identification of noteworthy events, users can create filters that combine multiple alert fields, allowing them to generate meaningful tags tailored to their research needs. For instance, one of the [filters](/broker/filters) designed for [Kilonova candidates](https://github.com/astrolabsoftware/fink-filters/blob/be30474e10d041afe8da992ac1fe37da71db230f/fink_filters/filter_kn_candidates/filter.py#L84-L94), utilized within the [GRANDMA network](https://grandma.ijclab.in2p3.fr/), is based on the following outputs:
 
 - The results from a [Kilonova classifier](https://github.com/astrolabsoftware/fink-science/tree/master/fink_science/kilonova)
 - Tags obtained from cross-referencing with the SIMBAD database
 - Tags derived from cross-referencing with the Minor Planet Center database
 - Fundamental parameters such as emission time, real-bogus score, and star-galaxy score.
 
-This particular combination serves to identify kilonova-like events, but alternative approaches could also be employed to achieve similar results. 
+This particular combination serves to identify [kilonova-like events](https://fink-portal.org/?action=class&class=Kilonova%20candidate), but alternative approaches could also be employed to achieve similar results. 
 
 ## Provided classification scheme by the Fink team
 
@@ -41,12 +49,3 @@ While the first two categories depend on established sources of information (wit
 
 Note that the definition of this classification is subject to change over time, as we learn new things or when new filters are created. The classification method is versioned ([fink-filters](https://github.com/astrolabsoftware/fink-filters) version), so that users can track the changes. Note that not all the filters are considered for the classification.
 
-## Alert vs object classification
-
-An object on the sky can emit several alerts, and based on available information on each alert, the classification can vary from one alert to another. We do not provide an _object_ classification, but rather classification for each alert. You will for example find the evolution of the classification in the Science Portal (e.g. [ZTF23aabqqoi](https://fink-portal.org/ZTF23aabqqoi)) just above the lightcurve:
-
-![Screenshot](../img/fink-classification.png)
-
-This is up to the user to decide on the nature of the object based on the list of alert classifications.
-
-![Screenshot](../img/alert_classification.png)

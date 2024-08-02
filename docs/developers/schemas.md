@@ -1,0 +1,1 @@
+(see [ZTF alerts schema](https://zwickytransientfacility.github.io/ztf-avro-alert/schema.html))
