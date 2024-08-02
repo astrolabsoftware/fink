@@ -17,7 +17,7 @@ docker pull julienpeloton/fink-ci:latest
 
 # Assuming you are in /path/to/fink-science
 docker run -t -i --rm -v \
-  $PWD:/home/libs/fink-science \ # (1)
+  $PWD:/home/libs/fink-science \ # (1)!
   julienpeloton/fink-ci:latest bash
 ```
 
@@ -40,7 +40,7 @@ A science module will typically contains two parts: the processor that contains 
 ├── fink_science
 │   ├── dyson_sphere_classifier
 │   │   ├── __init__.py
-│   │   ├── processor.py # (1)
+│   │   ├── processor.py # (1)!
 │   │   └── mymodule.py
 ```
 
@@ -49,7 +49,7 @@ A science module will typically contains two parts: the processor that contains 
 The processor will typically look like:
 
 ```python
-from line_profiler import profile # (1)
+from line_profiler import profile # (1)!
 
 from pyspark.sql.functions import pandas_udf
 from pyspark.sql.types import FloatType
@@ -154,7 +154,7 @@ if __name__ == "__main__":
 
     globs = globals()
 
-    custom_path = 'file:///data/ftransfer_ztf_2024-07-16_682277'
+    custom_path = "file:///data/ftransfer_ztf_2024-07-16_682277"
     globs["custom_path"] = custom_path
 
     ...

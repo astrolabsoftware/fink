@@ -16,16 +16,17 @@ nav:
       - Getting started: services/search/getting_started.md
       - Retrieving data:
         - Search by name: services/search/objectid.md
-        - Search by class: toto.md
-        - Conesearch: toto.md
-        - Image data: toto.md
-        - Statistics: toto.md
-        - Resolving names: toto.md
-        - Draw random objects: toto.md
-        - Column & class definition: toto.md
-      - Solar System objects: toto.md
-      - Multi-messenger: toto.md
-      - Space awarness: toto.md
+        - Search by class: services/search/classsearch.md
+        - Conesearch: services/search/conesearch.md
+        - Image data: services/search/imagesearch.md
+        - Statistics: services/search/statistics.md
+        - Resolving names: services/search/resolver.md
+        - Draw random objects: services/search/random.md
+        - Columns & classes definition: services/search/definitions.md
+      - Space awareness: services/search/tracklet.md
+      - Solar System objects: services/search/solar_system.md
+      - Multi-messenger: services/search/gw.md
+      - Anomaly detection: services/search/anomaly_detection.md
     - Data Transfer: services/data_transfer.md
     - Livestream: services/livestream.md
     # - Services:
@@ -96,6 +97,7 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.superfences
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

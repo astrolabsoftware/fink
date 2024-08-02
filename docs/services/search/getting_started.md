@@ -1,5 +1,7 @@
 The Science Portal is a web application ([https://fink-portal.org](https://fink-portal.org)) to query and visualise Fink processed data. You can run simple queries and quickly display results. After each night, the alert data are aggregated and pushed to HBase tables. This means that you will not only access alert data, but _object_ data, that is all the alerts emitted from day zero for a given object on the sky will be available directly (while in individual alert packet only 30 days of data in the past is available).
 
+point to test suite in the portal
+
 
 ## REST API
 

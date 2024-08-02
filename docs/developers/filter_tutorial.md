@@ -18,7 +18,7 @@ docker pull julienpeloton/fink-ci:latest
 
 # Assuming you are in /path/to/fink-filters
 docker run -t -i --rm -v \
-  $PWD:/home/libs/fink-filters \ # (1)
+  $PWD:/home/libs/fink-filters \ # (1)!
   julienpeloton/fink-ci:latest bash
 ```
 
@@ -41,7 +41,7 @@ A filter will typically contains two parts: the filter module that contains the 
 ├── fink_filter
 │   ├── filter_dyson_sphere
 │   │   ├── __init__.py
-│   │   ├── filter.py # (1)
+│   │   ├── filter.py # (1)!
 │   │   └── mymodule.py
 ```
 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 
     globs = globals()
 
-    custom_path = 'file:///data/ftransfer_ztf_2024-07-16_682277'
+    custom_path = "file:///data/ftransfer_ztf_2024-07-16_682277"
     globs["custom_path"] = custom_path
 
     ...

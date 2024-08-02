@@ -84,7 +84,7 @@ vt = votable.parse(io.BytesIO(r.content))
         "https://fink-portal.org/api/v1/objects",
         json={
             "objectId": "ZTF21aaxtctv",
-            "columns": "i:jd,i:magpsf,i:sigmapsf" # (1)
+            "columns": "i:jd,i:magpsf,i:sigmapsf" # (1)!
         }
     )
     ```
@@ -186,7 +186,7 @@ r = requests.post(
   "https://fink-portal.org/api/v1/objects",
   json={
     "objectId": "ZTF21aaxtctv",
-    "withcutouts": True # (1)
+    "withcutouts": True # (1)!
   }
 )
 
