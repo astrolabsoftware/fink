@@ -23,16 +23,13 @@ nav:
         - Resolving names: services/search/resolver.md
         - Draw random objects: services/search/random.md
         - Columns & classes definition: services/search/definitions.md
+        - Troubleshooting: services/search/troubleshooting.md
       - Space awareness: services/search/tracklet.md
       - Solar System objects: services/search/solar_system.md
       - Multi-messenger: services/search/gw.md
       - Anomaly detection: services/search/anomaly_detection.md
     - Data Transfer: services/data_transfer.md
     - Livestream: services/livestream.md
-    # - Services:
-    #   - Livestream: services/livestream.md
-    #   - Science Portal and API: services/science_portal.md
-    #   - Data Transfer: services/data_transfer.md
     - Developer corner:
       - Alert schemas: developers/schemas.md
       - Designing a science module: developers/science_module_tutorial.md

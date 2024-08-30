@@ -1,11 +1,10 @@
 ## Installation and general tests (experts only)
 
-Installing Fink is not too complicated but might be an overwhelming task. Fink can be a complex system, but hopefully it is highly modular such that you do not need all the parts to test one part in particular. If you want to test it fully though, we recommend using the available Docker images, which contain all you need to start (Apache Spark, Apache Kafka, Apache HBase, plus Fink components). You can find these either in the [fink-docker](https://github.com/astrolabsoftware/fink-docker) repository (soon deprecated), or in the [fink-broker](https://github.com/astrolabsoftware/fink-broker/blob/master/doc/devel.adoc) repository (kubernetes support as well)
-
+Installing Fink is not too complicated but might be an overwhelming task. Fink can be a complex system, but hopefully it is highly modular such that you do not need all the parts to test one part in particular. If you want to test it fully though, we recommend using the available Docker images, which contain all you need to start (Apache Spark, Apache Kafka, Apache HBase, plus Fink components). You can find these either in the [fink-docker](https://github.com/astrolabsoftware/fink-docker) repository, or in the [fink-broker](https://github.com/astrolabsoftware/fink-broker/tree/master/doc) repository for kubernetes support.
 
 ### Running the test suite with Docker
 
-In general, you can follow what is done for the [continuous integration](https://github.com/astrolabsoftware/fink-broker/blob/master/.github/workflows/test.yml). Once the image is pulled, you need to set the `PYTHONPATH` and `PATH` to use the tools:
+In general, you can follow what is done for the [continuous integration](https://github.com/astrolabsoftware/fink-broker/blob/master/.github/workflows/test.yml). Once the image `julienpeloton/fink-ci:latest` (DockerHub) is pulled, fire a container and set the `PYTHONPATH` and `PATH` to use the tools:
 
 ```bash
 # in your ~/.bash_profile
@@ -14,22 +13,14 @@ export PYTHONPATH=$FINK_HOME:$PYTHONPATH
 export PATH=$FINK_HOME/bin:$PATH
 ```
 
-The fink-broker repository contains some alerts from the ZTF experiment required for the test suite in the folder `datasim`. If you need to download more alerts data, go to the datasim directory and execute the download script:
+The fink-broker repository contains some alerts from the ZTF experiment required for the test suite in the folder `datasim`. Make sure the test suite is running fine. Just execute:
 
 ```bash
-cd datasim
-./download_ztf_alert_data.sh
-cd ..
+fink_test -c conf/fink.conf.dev --stream-integration --db-integration --mm-offline --unit-tests
 ```
 
-Make sure the test suite is running fine. Just execute:
-
-```bash
-fink_test [--without-integration] [-h]
-```
-
-You should see plenty of Spark logs (and yet we have shut most of them!), but no failures hopefully! Success is silent, and the coverage is printed on screen at the end. You can disable integration tests by specifying the argument `--without-integration`. Note for docker users: you need to install fink-science and fink-filters (either mounted inside the container, or installed via pip) prior running the test suite. See above for more information.
+You should see plenty of Spark logs (and yet we have shut most of them!), but no failures hopefully! Success is silent, and the coverage is printed on screen at the end.
 
 ### Tests with Kubernetes
 
-To come.
+You will find at [fink-broker/doc/e2e.md](https://github.com/astrolabsoftware/fink-broker/blob/master/doc/e2e.md) all the steps to deploy Fink on Kubernetes, and test the real-time components (DB operations are not tested here).
