@@ -1,12 +1,14 @@
 ## Known Solar System objects
 
+### API
+
 !!! info "List of arguments"
     The list of arguments for retrieving known SSO data can be found at [https://fink-portal.org/api/v1/sso](https://fink-portal.org/api/v1/sso)
 
 The numbers or designations are taken from the MPC archive. When searching for a particular asteroid or comet, it is best to use the IAU number, as in 8467 for asteroid "8467 Benoitcarry". You can also try for numbered comet (e.g. 10P), or interstellar object (none so far...). If the number does not yet exist, you can search for designation. Here are some examples of valid queries:
 
 * Asteroids by number (default)
-    * Asteroids (Main Belt): 8467, 1922
+    * Asteroids (Main Belt): 8467, 1922, 33803
     * Asteroids (Hungarians): 18582, 77799
     * Asteroids (Jupiter Trojans): 4501, 1583
     * Asteroids (Mars Crossers): 302530
@@ -107,6 +109,7 @@ Where first columns are fields returned from Miriade (beware it adds few seconds
     - Color ephemerides are returned only for asteroids
     - Temporary designations (C/... or YYYY...) do not have ephemerides available
 
+
 You can also query several objects at the same time:
 
 ```python
@@ -204,6 +207,33 @@ r = requests.post(
     Downloading cutouts for SSO is time-consuming, and heavy for the server because (a) data is indexed against `objectId` and not `ssnamenr` and (b) decoding each binary gzipped FITS file has a cost. On average, it takes 0.5 second per alert.
 
 For more information about the ZTF stamps, see [https://irsa.ipac.caltech.edu/data/ZTF/docs/ztf_explanatory_supplement.pdf](https://irsa.ipac.caltech.edu/data/ZTF/docs/ztf_explanatory_supplement.pdf)
+
+### Science Portal
+
+On the portal, you can easily access to SSO data by name:
+
+![screenshot](../../img/sso_search_name.png)
+
+or by number:
+
+![screenshot](../../img/sso_search_partial.png)
+
+
+!!! warning "Partial search"
+
+    Because we run a partial number search, the query can return data for the wrong number. E.g. if you search for `8467`, it will propose closest matches, but return data for `84673`... We are working on it, but in the meantime, if you know exactly the number, prefix your query with `sso=`. In this case it will perform an exact search
+
+    ![screenshot](../../img/sso_search_exact.png)
+
+
+ selecting the `Solar System` tab on any alert associated to a known SSO objects in the MPC gives you access to its lightcurve with ephemerides:
+
+![screenshot](../../img/sso_lc.png)
+
+You can inspect its astrometry, as well as phase curve modeling including the latest model including spin parameters from [Carry et al 2024](https://doi.org/10.1051/0004-6361/202449789):
+
+![screenshot](../../img/sso_phase.png)
+
 
 ## SSoFT: Solar System object Fink Table
 

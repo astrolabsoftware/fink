@@ -1,5 +1,7 @@
 ## Cross-match with LIGO/Virgo sky maps
 
+### API
+
 !!! info "List of arguments"
     The list of arguments for retrieving object data can be found at [https://fink-portal.org/api/v1/bayestar](https://fink-portal.org/api/v1/bayestar)
 
@@ -149,3 +151,12 @@ r = requests.post(
 
 pdf = pd.read_json(io.BytesIO(r.content))
 ```
+
+### Science Portal
+
+On the portal, go to [https://fink-portal.org/gw](https://fink-portal.org/gw), enter an event name from the O3 or O4 runs (e.g. S230709bi), choose the credible level, and hit the button `Search`:
+
+![screenshot](../../img/gw_front.png)
+
+
+The crossmatch is not super fast, but results are cached. Hence if you hit a timeout, relaunched the query, and you should get results the next time.

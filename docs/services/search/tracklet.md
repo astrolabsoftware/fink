@@ -7,6 +7,10 @@
 In this service, we give access to satellite glints -- rapid flashes produced by reflections of a sunlight from flat surfaces of rotating satellites -- found on ZTF alert data. For that, we implemented a simple routine that detects, in a single exposure, a series of repeated flashes along the trajectories of otherwise invisible satellites. These objects usually leave discrete tracks (several connected dots), that we call `tracklets`. The magnitude is rather low, and can oscillate (e.g. rotating objects). This is somehow similar to solar system object, expect that these objects are mainly man-made, they are fast moving, and they typically orbit around the Earth (this
 is also tighted to the detection method we use).
 
+![screenshot](../../img/tracklet_sky.png)
+![screenshot](../../img/tracklet_lightcurve.png)
+
+
 In order to get tracklet data, you need to specify the date in the format `YYYY-MM-DD hh:mm:ss`.
 Note you can also specify bigger interval, e.g. `YYYY-MM-DD` to get all tracklets for one day,
 or `YYYY-MM-DD hh` to get all tracklets for one hour.

@@ -155,3 +155,8 @@ print(FEATURES_COLS) # (1)!
   'mean_variance', 'anderson_darling_normal', 'chi2', 'skew', 'stetson_K'
 ]
 ```
+
+!!! tip "Search anomaly on the Science Portal"
+
+    On the Science Portal, you can access all alerts selected as anomalous
+    using the class search: `class=Anomaly`
