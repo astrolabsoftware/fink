@@ -38,7 +38,7 @@ Because HBase table have a unique index column, the main table is not great to r
 ## Class definition
 
 !!! info "What are the available astronomical classes in Fink?"
-    The list of Fink class can be found at [https://fink-portal.org/api/v1/classes](https://fink-portal.org/api/v1/classes). We recommend also to read how the [classification scheme](/broker/classification) is built.
+    The list of Fink class can be found at [https://fink-portal.org/api/v1/classes](https://fink-portal.org/api/v1/classes). We recommend also to read how the [classification scheme](../../broker/classification.md) is built.
 
     You can programmatically access the list of all the Fink classes using e.g.:
 

@@ -60,7 +60,7 @@ import pandas as pd
 pdf = pd.read_json(io.BytesIO(r.content))
 ```
 
-And you get a DataFrame (table) whose each row is an alert emitted by the object, and the columns are the available fields (see the [schema page](...)). More options for this endpoint are discussed at [Search by name](objectid.md).
+And you get a DataFrame (table) whose each row is an alert emitted by the object, and the columns are the available fields (see the [schema page](../../developers/schemas.md)). More options for this endpoint are discussed at [Search by name](objectid.md).
 
 Do not hesitate to explore all ways to query the data using the left bar of this documentation website! You will find other working examples on how to use the API using its [test suite](https://github.com/astrolabsoftware/fink-science-portal/tree/master/tests), and there are many tutorials at [https://github.com/astrolabsoftware/fink-tutorials](https://github.com/astrolabsoftware/fink-tutorials).
 

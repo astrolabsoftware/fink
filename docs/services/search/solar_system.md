@@ -188,7 +188,7 @@ array = r.json()[0]["b:cutoutScience_stampData"] # (1)!
 
 ![sso_example](https://github.com/user-attachments/assets/ade5fd85-3b75-4281-8933-b2ae62ee53eb)
 
-Note that by default, the `Science` cutouts are downloaded (see also [Image data](/services/search/imagesearch)). You can also ask for the `Template` or the `Difference` stamps:
+Note that by default, the `Science` cutouts are downloaded (see also [Image data](imagesearch.md)). You can also ask for the `Template` or the `Difference` stamps:
 
 ```python
 # get data for object 8467

@@ -54,7 +54,7 @@ pdf = pd.read_json(io.BytesIO(r.content))
 ```
 
 !!! warning "Do not abuse!"
-    Although the REST API gives you access to hundreds of millions of alerts, it is not designed to massively download data. If you have hundreds of objects to query, you probably want to select only a subset of columns (see below), or you can use the [Data Transfer service](services/data_transfer).
+    Although the REST API gives you access to hundreds of millions of alerts, it is not designed to massively download data. If you have hundreds of objects to query, you probably want to select only a subset of columns (see below), or you can use the [Data Transfer service](../data_transfer.md).
 
 You can also get a votable:
 

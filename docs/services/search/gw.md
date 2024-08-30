@@ -126,7 +126,7 @@ hp.graticule()
 plt.show()
 ```
 
-![gw](/img/gw.png)
+![gw](../../img/gw.png)
 
 You can also find this tutorial in the [fink-tutorials repository](https://github.com/astrolabsoftware/fink-tutorials/blob/main/MMA/gravitational_waves.ipynb).
 Note that you can also use any map with the same structure than LVK skymaps:

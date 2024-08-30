@@ -7,13 +7,13 @@
 
     ---
 
-    [Fink](https://fink-broker.org) is an astronomical alert broker that serves as an intermediary between alert issuers and the scientific community analyzing the alert data. It provides [services](broker/services_summary) designed to assist scientists in efficiently analyzing alert data from telescopes and surveys.
+    [Fink](https://fink-broker.org) is an astronomical alert broker that serves as an intermediary between alert issuers and the scientific community analyzing the alert data. It provides [services](broker/services_summary.md) designed to assist scientists in efficiently analyzing alert data from telescopes and surveys.
 
 -   __What Fink does?__
 
     ---
 
-    Among its various functions, Fink collects and stores alert data, [enriches](broker/science_modules) it with information from other surveys and catalogs, as well as user-defined enhancements like machine-learning classification scores. It also [redistributes](broker/filters) the most promising events for further analysis, including follow-up observations.
+    Among its various functions, Fink collects and stores alert data, [enriches](broker/science_modules.md) it with information from other surveys and catalogs, as well as user-defined enhancements like machine-learning classification scores. It also [redistributes](broker/filters.md) the most promising events for further analysis, including follow-up observations.
 
 
 -   __Who is behind Fink?__

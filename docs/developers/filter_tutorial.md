@@ -32,7 +32,7 @@ pip uninstall -y fink-filters
 
 ## Filter design
 
-A filter is typically a Python routine that selects which alerts need to be sent based on user-defined criteria. Criteria are based on the alert entries: position, flux, properties, ... plus all the added-values from the Fink science modules. We recommend users to check [schemas](developers/schemas) before starting.
+A filter is typically a Python routine that selects which alerts need to be sent based on user-defined criteria. Criteria are based on the alert entries: position, flux, properties, ... plus all the added-values from the Fink science modules. We recommend users to check [schemas](schemas.md) before starting.
 
 A filter will typically contains two parts: the filter module that contains the main routine called by Fink, and any other modules used by the filter:
 

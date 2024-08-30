@@ -20,7 +20,7 @@ The challenge now lies in integrating these fields to derive meaningful scientif
 
 ## Designing a specific classification
 
-To facilitate the identification of noteworthy events, users can create filters that combine multiple alert fields, allowing them to generate meaningful tags tailored to their research needs. For instance, one of the [filters](/broker/filters) designed for [Kilonova candidates](https://github.com/astrolabsoftware/fink-filters/blob/be30474e10d041afe8da992ac1fe37da71db230f/fink_filters/filter_kn_candidates/filter.py#L84-L94), utilized within the [GRANDMA network](https://grandma.ijclab.in2p3.fr/), is based on the following outputs:
+To facilitate the identification of noteworthy events, users can create filters that combine multiple alert fields, allowing them to generate meaningful tags tailored to their research needs. For instance, one of the [filters](filters.md) designed for [Kilonova candidates](https://github.com/astrolabsoftware/fink-filters/blob/be30474e10d041afe8da992ac1fe37da71db230f/fink_filters/filter_kn_candidates/filter.py#L84-L94), utilized within the [GRANDMA network](https://grandma.ijclab.in2p3.fr/), is based on the following outputs:
 
 - The results from a [Kilonova classifier](https://github.com/astrolabsoftware/fink-science/tree/master/fink_science/kilonova)
 - Tags obtained from cross-referencing with the SIMBAD database

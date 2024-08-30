@@ -29,7 +29,7 @@ The idea behind it is to process data streams as a series of small batch jobs, c
 	* **distribution**: redistribute alerts to users based on user-defined filters (Kafka topics).
 	* **archive**: store alerts containing scientific added values.
 
-You can install and test all of these components in local mode, with moderate resources required (see [testing Fink](/developers/testing_fink)).
+You can install and test all of these components in local mode, with moderate resources required (see [testing Fink](../developers/testing_fink.md)).
 
 ## Can Fink do everything?
 
