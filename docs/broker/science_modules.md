@@ -32,7 +32,7 @@ For each alert, we look for counterparts in various databases or catalogs (spati
 
 | Field in Fink alerts | Type | Contents | Available from |
 |:-----|:-------|:--------|:---------|
-|`cdsxmatch` | string | Counterpart (cross-match) from any CDS catalog or database using the [CDS xmatch service](http://cdsxmatch.u-strasbg.fr/xmatch) if exists within 1.5 arcsec. | 2019/11 |
+|`cdsxmatch` | string | Counterpart (cross-match) from the SIMBAD database using the [CDS xmatch service](http://cdsxmatch.u-strasbg.fr/xmatch) if exists within 1.5 arcsec. Labels can be found at [http://simbad.u-strasbg.fr/simbad/sim-display?data=otypes](http://simbad.u-strasbg.fr/simbad/sim-display?data=otypes) | 2019/11 |
 | `gcvs` | string | Counterpart (cross-match) to the [General Catalog of Variable Stars](http://www.sai.msu.su/groups/cluster/gcvs/gcvs/) if exists within 1.5 arcsec. | 2022/07 |
 | `vsx` | string | Counterpart (cross-match) to the [International Variable Star Index](https://www.aavso.org/vsx/) if exists within 1.5 arcsec. | 2022/07 |
 | `Plx` | float | Absolute stellar parallax (in milli-arcsecond) of the closest source from Gaia catalog; if exists within 1 arcsec. | 2022/07 |
@@ -41,10 +41,14 @@ For each alert, we look for counterparts in various databases or catalogs (spati
 | `x4lac` | string | Counterpart (cross-match) to the [4LAC DR3](https://fermi.gsfc.nasa.gov/ssc/data/access/lat/4LACDR3/) catalog if exists within 1 arcminute. | 2023/01 |
 | `x3hsp` | string | Counterpart (cross-match) to the [3HSP](https://www.ssdc.asi.it/3hsp/) catalog if exists within 1 arcminute. | 2023/01 |
 | `mangrove` | dic[str, str] | Counterpart (cross-match) to the [Mangrove](https://mangrove.lal.in2p3.fr/index.php) catalog if exists within 1 arcminute. | 2023/01 |
+| `spicy_id` | int | Unique source designation of closest source from the [SPICY catalog](https://vizier.cds.unistra.fr/viz-bin/VizieR-3?-source=J/ApJS/254/33/table1) hosted at CDS; if exists within 1.2 arcsec. | 2024/01 |
+| `spicy_class` | str | Class name of closest source from the [SPICY catalog](https://vizier.cds.unistra.fr/viz-bin/VizieR-3?-source=J/ApJS/254/33/table1) hosted at CDS; if exists within 1.2 arcsec. | 2024/01 |
+
+Please feel free to suggest any other catalogs. If they are available at CDS, we can integrate them directly. For external catalogs, depending on their size, we can consider hosting them ourselves.
 
 ### Machine and deep learning
 
-In Fink, you can upload pre-trained models, and each alert will receive a score. We have binary models focusing on specific class of transients (e.g. SN Ia vs the rest of the world), or broad classifier that output a vector of probabilities for a variety of classes.
+In Fink, you can upload pre-trained models, and each alert will receive a score. We have binary models focusing on specific class of transients (e.g. SN Ia vs the rest of the world), or broad classifiers that output a vector of probabilities for a variety of classes.
 
 | Field in Fink alerts | Type | Contents | Available from |
 |:-----|:-------|:--------|:---------|
@@ -65,7 +69,6 @@ Standard modules typically issue flags or aggregated information to ease the pro
 |:-----|:-------|:--------|:---------|
 | `roid` | int | Determine if the alert is a Solar System object | 2019/11 |
 | `nalerthist` | int | Number of detections contained in each alert (current+history). Upper limits are not taken into account. | 2019/11 |
-| `tracklet` | str | ID for fast moving objects, typically orbiting around the Earth. Of the format `YYYY-MM-DD hh:mm:ss` | 2020/08 |
 | `jd_first_real_det` | double | first variation time at 5 sigma contains in the alert history | 2023/12 |
 | `jdstarthist_dt` | double | delta time between `jd_first_real_det` and the first variation time at 3 sigma (`jdstarthist`). If `jdstarthist_dt` > 30 days then the first variation time at 5 sigma is False (accurate for fast transient). | 2023/12 |
 | `mag_rate` | double | magnitude rate (mag/day) | 2023/12 |
@@ -81,7 +84,7 @@ There are also modules applied after the observing night:
 
 | Field name | Type | Contents | Available from |
 |:-----|:-------|:--------|:---------|
-| `tracklet` | string | Tracklet ID in the Fink database. Tracklets are typically  derelict satellites or rocket bodies, collision debris, or spacecraft payloads. See [2202.05719](https://arxiv.org/pdf/2202.05719) and [2310.17322](https://arxiv.org/pdf/2310.17322) for more information. | N/A |
+| `tracklet` | string | Tracklet ID in the Fink database. Tracklets are typically  derelict satellites or rocket bodies, collision debris, or spacecraft payloads. See [2202.05719](https://arxiv.org/pdf/2202.05719) and [2310.17322](https://arxiv.org/pdf/2310.17322) for more information. | 2020/08 |
 | `kstest_static` | float | Determine if an alert is hostless (based on [2404.18165](https://arxiv.org/abs/2404.18165)) | 2024/07
 
 ## DESC-ELAsTiCC science modules

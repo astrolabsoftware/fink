@@ -4,11 +4,11 @@
 
 Following the analysis of alerts, we can identify three primary sources of information:
 
-1. The original alert parameters received by Fink, such as magnitude, position, emission time, and so on.
-2. Supplementary data obtained from cross-referencing with external databases or catalogs, including SIMBAD, TNS, Gaia, VSX, 4LAC, PanSTARRS, and others.
-3. Additional information derived from user-defined processing, which may include statistical features, tags, machine learning scores, and more.
+1. The original alert parameters received from surveys (ZTF/LSST), such as magnitude, position, emission time, and so on.
+2. Supplementary data obtained from cross-referencing in Fink with external databases or catalogs, including SIMBAD, TNS, Gaia, VSX, 4LAC, PanSTARRS, and others.
+3. Additional information derived from user-defined processing in Fink, which may include statistical features, tags, machine learning scores, and more.
 
-The challenge now lies in integrating these fields to derive meaningful scientific insights. There is no definitive ground truth in this context, and the possibilities for combinations are limitless, varying based on the specific target. 
+The challenge now lies in integrating these fields to derive meaningful scientific insights. There is no definitive ground truth in this context, and the possibilities for combinations are limitless, varying based on the specific target.
 
 !!! tip "Alert vs object classification"
 
@@ -27,7 +27,7 @@ To facilitate the identification of noteworthy events, users can create filters 
 - Tags derived from cross-referencing with the Minor Planet Center database
 - Fundamental parameters such as emission time, real-bogus score, and star-galaxy score.
 
-This particular combination serves to identify [kilonova-like events](https://fink-portal.org/?action=class&class=Kilonova%20candidate), but alternative approaches could also be employed to achieve similar results. 
+This particular combination serves to identify [kilonova-like events](https://fink-portal.org/?action=class&class=Kilonova%20candidate), but alternative approaches could also be employed to achieve similar results.
 
 ## Provided classification scheme by the Fink team
 
@@ -47,5 +47,5 @@ While the first two categories depend on established sources of information (wit
 4. if an alert has been flagged by one user-defined filter, its classification is given by the filter (`Early SN Ia candidate`, `KN candidate`, `SSO candidate`, etc.)
 5. if an alert has been flagged by more than one user-defined filter, it is tagged as `Ambiguous`.
 
-Note that the definition of this classification is subject to change over time, as we learn new things or when new filters are created. The classification method is versioned ([fink-filters](https://github.com/astrolabsoftware/fink-filters) version), so that users can track the changes. Note that not all the filters are considered for the classification.
+Note that the definition of this classification is subject to change over time, as we learn new things or when new filters are created. The classification method is versioned (see [fink-filters release](https://github.com/astrolabsoftware/fink-filters/releases)), so that users can track the changes. Note that not all the filters are considered for the classification.
 

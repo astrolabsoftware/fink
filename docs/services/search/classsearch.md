@@ -44,7 +44,7 @@ r = requests.post(
 pdf = pd.read_json(io.BytesIO(r.content))
 ```
 
-1. This the maximum number of _alerts_ to retrieve. There could lead to several times the same _object_.
+1. This the maximum number of _alerts_ to retrieve. It can lead to several times the same _object_ though.
 
 You can also specify `startdate` and `stopdate` for your search:
 

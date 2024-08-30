@@ -4,7 +4,7 @@ Whether you have a concrete plan or you want to brainstorm, feel free to contact
 
 ## Issues & Pull Requests
 
-Feel free to submit ideas, issues and enhancement requests.
+Feel free to submit ideas, issues and enhancement requests. You will find the code source for all Fink projects in GitHub at [https://github.com/astrolabsoftware](https://github.com/astrolabsoftware).
 
 ## Contributing
 
