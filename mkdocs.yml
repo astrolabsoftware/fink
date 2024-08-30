@@ -70,7 +70,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: dark blue #deep orange
+      primary: deep orange
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
