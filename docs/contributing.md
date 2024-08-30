@@ -1,8 +1,10 @@
 # Contributing to Fink
 
+Whether you have a concrete plan or you want to brainstorm, feel free to contact us at contact(at)fink-broker.org, and we will get in touch with you.
+
 ## Issues & Pull Requests
 
-Feel free to submit ideas, issues and enhancement requests.
+Feel free to submit ideas, issues and enhancement requests. You will find the code source for all Fink projects in GitHub at [https://github.com/astrolabsoftware](https://github.com/astrolabsoftware).
 
 ## Contributing
 
