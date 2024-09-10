@@ -46,6 +46,9 @@ For each alert, we look for counterparts in various databases or catalogs (spati
 
 Please feel free to suggest any other catalogs. If they are available at CDS, we can integrate them directly. For external catalogs, depending on their size, we can consider hosting them ourselves.
 
+!!! warning "Fail XXX"
+    If there is a failure with the xmatch service from CDS, the fields can have values `Fail XXX`. `XXX` is a 3-digit number corresponding to the failure type (see the [troubleshooting](../services/search/troubleshooting.md) section). Note that the next time the object emits an alert, if the xmatch service is up, these values will be updated with their correct values.
+
 ### Machine and deep learning
 
 In Fink, you can upload pre-trained models, and each alert will receive a score. We have binary models focusing on specific class of transients (e.g. SN Ia vs the rest of the world), or broad classifiers that output a vector of probabilities for a variety of classes.
