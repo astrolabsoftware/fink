@@ -11,7 +11,7 @@ In addition to the information contained in the incoming raw alerts, Fink deploy
 graph LR
   A(RA, DEC, flux) --> B((Science \n module #1));
   B -..-> C((Science \n module #N));
-  C --> D(RA, DEC, flux, \n labels + ML scores + flags, ...);
+  C --> D(RA, DEC, flux, labels + ML scores + flags, ...);
 ```
 
 <!-- ![Screenshot](../img/science-modules.png#only-light)
