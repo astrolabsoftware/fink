@@ -9,8 +9,8 @@ In addition to the information contained in the incoming raw alerts, Fink deploy
 
 ``` mermaid
 graph LR
-  A(RA, DEC, flux) --> B((Science \n module #1));
-  B -..-> C((Science \n module #N));
+  A(RA, DEC, flux) --> B((Science module #1));
+  B -..-> C((Science module #N));
   C --> D(RA, DEC, flux, labels + ML scores + flags, ...);
 ```
 

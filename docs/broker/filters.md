@@ -12,7 +12,7 @@ Each night, telescopes are sending raw alerts and the broker enriches these aler
 graph LR
   A(N incoming alerts) ==> B(((Fink filter)));
   B --> D(M << N outgoing alerts);
-  D --> E((Telegram/Slack \n & fink-client))
+  D --> E((Telegram/Slack and fink-client))
 ```
 
 <!-- ![Screenshot](../img/fink-filters.png#only-light)
