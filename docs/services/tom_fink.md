@@ -1,4 +1,4 @@
-# Fink TOM
+# TOM Fink
 
 Target and Observation Managers (TOMs) are meant to facilitate collaborative astronomical observing projects. A typical TOM allows its users to curate target lists, request observations of those targets at various observatories as well as manage and organize their data. [Read more](https://tom-toolkit.readthedocs.io/en/stable/introduction/about.html) about TOMs.
 
@@ -14,7 +14,7 @@ pip install tom-fink
 
 ## Polling data from the REST API
 
-As of `tom-fink` version 0.4, the module simply uses the [Fink REST API](https://fink-broker.readthedocs.io/en/latest/services/science_portal/) to retrieve alerts. Note that the Fink databases are updated **once a day** with the previous night alert data (hence you do not get live alerts for the moment). Users can perform:
+As of `tom-fink` version 0.4, the module simply uses the [Fink REST API](search/getting_started.md) to retrieve alerts. Note that the Fink databases are updated **once a day** with the previous night alert data (hence you do not get live alerts for the moment). Users can perform:
 - Search by ZTF object ID
 - Cone Search
 - Search by Date
@@ -39,7 +39,7 @@ and finally relaunch your TOM:
 
 ## Polling data from the Fink livestream service
 
-Alternatively from `tom_fink` version 0.6.0, users can poll Fink substreams in real-time, using the [livestream service](https://fink-broker.readthedocs.io/en/latest/services/livestream/). First you need to add `tom_alertstreams` and `tom_fink` to your `INSTALLED_APPS` setting in your project `settings.py`:
+Alternatively from `tom_fink` version 0.6.0, users can poll Fink substreams in real-time, using the [livestream service](livestream.md). First you need to add `tom_alertstreams` and `tom_fink` to your `INSTALLED_APPS` setting in your project `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -126,7 +126,7 @@ and the program will continue. Probably we should group these in the future, ins
 
 and you should have access to your targets, that are accessible from their topic name:
 
-![targets](.github/livestream_targets.png)
+![targets](../img/livestream_targets.png)
 
 ### Testing & debugging the connection
 
