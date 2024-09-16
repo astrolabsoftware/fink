@@ -34,5 +34,11 @@ Now that we discussed the various components of Fink, it is time to access the d
 
     The [Data Transfer service](../services/data_transfer.md) allows you to perform bulk download of alert data (not aggregated objects), run complex queries, and exotic analyses. Data source is from the Fink Data Lake (different from the Database), and new data is available a few hours after the observing night has finished. Login required (see [fink-client](https://github.com/astrolabsoftware/fink-client)).
 
+-   __TOM Fink__
+
+    ---
+
+    The [TOM Fink](../services/tom_fink.md) module allows you to easily connect Fink and [Target and Observation Managers](https://tom-toolkit.readthedocs.io/en/stable/introduction/about.html) (TOMs). Data source is either from the Fink Data Lake (through the Livestream service), or from the Fink Database (through the REST API).
+
 </div>
 
