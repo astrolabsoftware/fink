@@ -405,3 +405,70 @@ Depending on `kind`, you would get information on:
 - `lightcurves`: photometry of objects related to candidate orbits
 - `orbParams`: orbital parameters for orbit candidates
 
+## Adding more parameters from the BFT
+
+The SSOFT of Fink contains only the parameters from the phase curve modeling.
+However you can easily join this table with the [BFT]() table provided by [IMCCE]().
+This table contains physical and dynamical parameters for all known objects.
+Here is an example on joining the two tables:
+
+```python
+import io
+import requests
+import pandas as pd
+
+# Get the SSOFT
+r0 = requests.post(
+  "https://fink-portal.org/api/v1/ssoft",
+  json={
+    "output-format": "parquet"
+  }
+)
+
+ssoft = pd.read_parquet(io.BytesIO(r0.content))
+
+# Get the BFT
+r1 = requests.get("https://ssp.imcce.fr/data/ssoBFT-latest_Asteroid.parquet")
+bft = pd.read_parquet(io.BytesIO(r1.content))
+
+# Join the two
+combined = ssoft.merge(bft, left_on="name", right_on="sso_name", how="left")
+```
+
+Each row of the `combined` table will contain all information from Fink and all
+information from the BFT for an object! Beware though that the tables are quite 
+big each, and you will need a lot of RAM to hold it in memory. In practice, choose
+only the columns you need before the merge. For example:
+
+```
+cols = [
+    "sso_number",
+    "sso_name",
+    "sso_class",
+    "orbital_elements.semi_major_axis.value",
+    "orbital_elements.eccentricity.value",
+    "orbital_elements.inclination.value",
+    "orbital_elements.node_longitude.value",
+    "orbital_elements.perihelion_argument.value",
+    "orbital_elements.mean_anomaly.value",
+    "orbital_elements.mean_motion.value",
+    "family.family_number",
+    "family.family_name",
+    "proper_elements.proper_semi_major_axis.value",
+    "proper_elements.proper_eccentricity.value",
+    "proper_elements.proper_inclination.value",
+    "proper_elements.proper_sine_inclination.value",
+    "tisserand_parameters.Jupiter.value",
+    "albedo.value",
+    "absolute_magnitude.value",
+    "diameter.value",
+    "taxonomy.class",
+    "taxonomy.complex",
+    "taxonomy.waverange",
+    "taxonomy.scheme",
+    "taxonomy.technique",
+]
+bft = pd.read_parquet(io.BytesIO(r1.content), columns=cols)
+
+combined = ssoft.merge(bft, left_on="name", right_on="sso_name", how="left")
+```

@@ -49,3 +49,36 @@ While the first two categories depend on established sources of information (wit
 
 Note that the definition of this classification is subject to change over time, as we learn new things or when new filters are created. The classification method is versioned (see [fink-filters release](https://github.com/astrolabsoftware/fink-filters/releases)), so that users can track the changes. Note that not all the filters are considered for the classification.
 
+## Tags from TNS
+
+In our database, we index data according to their tag in TNS, but this is not (yet) used to compute the classification in Fink. In other words you can search for data with a specific label in TNS (either from the Science Portal or from the API), but the TNS tag will not appear in the resulting classification (`v:classification`). We intend to add the TNS labels inside the Fink classification in the future.
+
+In the meantime, if you want to know if an object has been labeled in TNS from your search (other than searching for a TNS specific tag), you can use the [TNS resolver](../services/search/resolver.md):
+
+```python
+import requests
+
+# Get latests 100 Early SN Ia candidates ID from Fink
+r = requests.post(
+    "https://fink-portal.org/api/v1/latests",
+    json={
+        "class": "Early SN Ia candidate",
+        "columns": "i:objectId",
+        "n": "100"
+    }
+)
+
+# Get the Fink resolver to search for 
+# counterparts in TNS for each ZTF ID:
+for obj in r.json():
+    r0 = requests.post(
+        "https://fink-portal.org/api/v1/resolver",
+        json={
+            "resolver": "tns",
+            "reverse": True,
+            "name": obj["i:objectId"]
+        }
+    )
+    if r0.json() != []:
+        print(obj["i:objectId"], r0.json())
+```
