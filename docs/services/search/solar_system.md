@@ -2,25 +2,13 @@
 
 ### API
 
+
+#### Basic
+
 !!! info "List of arguments"
     The list of arguments for retrieving known SSO data can be found at [https://fink-portal.org/api/v1/sso](https://fink-portal.org/api/v1/sso)
 
-The numbers or designations are taken from the MPC archive. When searching for a particular asteroid or comet, it is best to use the IAU number, as in 8467 for asteroid "8467 Benoitcarry". You can also try for numbered comet (e.g. 10P), or interstellar object (none so far...). If the number does not yet exist, you can search for designation. Here are some examples of valid queries:
-
-* Asteroids by number (default)
-    * Asteroids (Main Belt): 8467, 1922, 33803
-    * Asteroids (Hungarians): 18582, 77799
-    * Asteroids (Jupiter Trojans): 4501, 1583
-    * Asteroids (Mars Crossers): 302530
-* Asteroids by designation (if number does not exist yet)
-    * 2010JO69, 2017AD19, 2012XK111
-* Comets by number (default)
-    * 10P, 249P, 124P
-* Comets by designation (if number does no exist yet)
-    * C/2020V2, C/2020R2
-
-!!! note "Designation"
-    Note for designation, you can also use space (2010 JO69 or C/2020 V2).
+You can enter any name (e.g. Lucretia, JulienPeloton), number (e.g. 8467, 18582, 302530), or designation (e.g. 2010 JO69, 2017 AD19) of asteroids. Under the hood, we resolve the name using the [quaero](https://ssp.imcce.fr/webservices/ssodnet/api/quaero/) service from SsODNet. You can also search for comets (e.g. 10P or C/2020 V2), but note that we have far less comets than asteroids.
 
 In a unix shell, you would simply use
 
@@ -62,6 +50,8 @@ r = ...
 
 t = Table(r.json())
 ```
+
+#### Adding ephemerides from Miriade
 
 You can also attach the ephemerides provided by the [Miriade ephemeride service](https://ssp.imcce.fr/webservices/miriade/api/ephemcc/):
 
@@ -109,6 +99,7 @@ Where first columns are fields returned from Miriade (beware it adds few seconds
     - Color ephemerides are returned only for asteroids
     - Temporary designations (C/... or YYYY...) do not have ephemerides available
 
+#### Querying several objects at once
 
 You can also query several objects at the same time:
 
@@ -150,7 +141,9 @@ pdf = pd.read_json(io.BytesIO(r.content))
 
     Note that the fields should be comma-separated. Unknown field names are ignored.
 
-Finally you can query stamps for all alerts using the argument `withcutouts`:
+#### Getting image stamps
+
+You can query stamps for all alerts using the argument `withcutouts`:
 
 ```python
 import requests
@@ -208,6 +201,30 @@ r = requests.post(
 
 For more information about the ZTF stamps, see [https://irsa.ipac.caltech.edu/data/ZTF/docs/ztf_explanatory_supplement.pdf](https://irsa.ipac.caltech.edu/data/ZTF/docs/ztf_explanatory_supplement.pdf)
 
+#### Getting lightcurve residuals
+
+We have several phase curve models implemented in Fink (see the SSOFT section below). You can retrieve the residuals (`obs - model`) using the sHG1G2 model (Carry et al. 2024):
+
+```python
+import requests
+import pandas as pd
+
+# get data for object 8467
+r = requests.post(
+  "https://fink-portal.org/api/v1/sso",
+  json={
+    "n_or_d": "8467",
+    "withResiduals": True,
+    "output-format": "json"
+  }
+)
+
+# Format output in a DataFrame
+pdf = pd.read_json(io.BytesIO(r.content))
+```
+
+There will be a column named `residuals_shg1g2` with the residuals. If the parameters of the model cannot be estimated (e.g. not enough measurements, or the solver did not converge), the column will contain `NaN`.
+
 ### Science Portal
 
 On the portal, you can easily access to SSO data by name:
@@ -233,6 +250,14 @@ or by number:
 You can inspect its astrometry, as well as phase curve modeling including the latest model including spin parameters from [Carry et al 2024](https://doi.org/10.1051/0004-6361/202449789):
 
 ![screenshot](../../img/sso_phase.png)
+
+Note that you can easily download data in CSV, JSON or VOTable format using the right tab:
+
+![screenshot](../../img/download_sso.png)
+
+The button `?` will give you access to snippets of code to download data programmatically:
+
+![screenshot](../../img/download_sso_2.png)
 
 
 ## SSoFT: Solar System object Fink Table
