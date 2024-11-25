@@ -158,3 +158,24 @@ r = requests.post(
 
 array = r.json()["b:cutoutScience_stampData"]
 ```
+
+Note that you can get the 3 cutouts in one call now by specifying `kind=All`:
+
+```python
+import requests
+
+# get data for ZTF21aaxtctv
+r = requests.post(
+    'https://fink-portal.org/api/v1/cutouts',
+    json={
+        'objectId': 'ZTF21aaxtctv',
+        'kind': 'All',
+        'output-format': 'array'
+    }
+)
+
+data = r.json()
+data.keys()
+# dict_keys(['b:cutoutDifference_stampData', 'b:cutoutScience_stampData', 'b:cutoutTemplate_stampData'])
+```
+
