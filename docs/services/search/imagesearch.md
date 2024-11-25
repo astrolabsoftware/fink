@@ -156,5 +156,5 @@ r = requests.post(
     }
 )
 
-array = r.json()[0]["b:cutoutScience_stampData"]
+array = r.json()["b:cutoutScience_stampData"]
 ```
