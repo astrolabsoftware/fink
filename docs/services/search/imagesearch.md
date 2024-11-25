@@ -159,7 +159,7 @@ r = requests.post(
 array = r.json()["b:cutoutScience_stampData"]
 ```
 
-Note that you can get the 3 cutouts in one call now by specifying `kind=All`:
+Note there has been a change of syntax recently ([2024-11-25-cutout-handling](https://fink-broker.readthedocs.io/en/latest/migration/#2024-11-25-cutout-handling)). You can also request the 3 cutouts in one call now by specifying `kind=All`:
 
 ```python
 import requests
