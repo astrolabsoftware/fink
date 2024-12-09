@@ -56,7 +56,7 @@ where `<USERNAME>`, `<GROUP_ID>`, and `<SERVER>` have been sent to you privately
 cat ~/.finkclient/credentials.yml
 ```
 
-For the list of available topics, see [https://fink-broker.readthedocs.io/en/latest/science/filters](https://fink-broker.readthedocs.io/en/latest/science/filters/).
+For the list of available topics, see [https://fink-broker.readthedocs.io/en/latest/broker/filters/#available-topics](https://fink-broker.readthedocs.io/en/latest/broker/filters/#available-topics).
 
 ## First steps: testing the connection
 
