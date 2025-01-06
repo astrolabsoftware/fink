@@ -1,4 +1,4 @@
-The Science Portal is a web application ([https://fink-portal.org](https://fink-portal.org)) designed for querying and visualizing Fink-processed data. You can run simple queries and quickly display the results. After each night, the alert data is aggregated and pushed to HBase tables. This means you will not only have access to alert data, but also to object data; all alerts emitted from day zero for a given object in the sky will be available directly (whereas individual alert packets only contain 30 days of past data). Under the hood, it utilizes a publicly exposed REST API that you can use to programmatically access the data.
+The Science Portal is a web application ([https://fink-portal.org](https://fink-portal.org)) designed for querying and visualizing Fink-processed data. You can run simple queries and quickly display the results. After each night, the alert data is aggregated and pushed to HBase tables. This means you will not only have access to alert data, but also to object data; all alerts emitted from day zero for a given object in the sky will be available directly (whereas individual alert packets only contain 30 days of past data). Under the hood, it utilizes a publicly exposed REST API ([https://api.fink-portal.org](https://api.fink-portal.org)) that you can use to programmatically access the data.
 
 ## Quick start Portal
 
@@ -61,6 +61,9 @@ pdf = pd.read_json(io.BytesIO(r.content))
 ```
 
 And you get a DataFrame (table) whose each row is an alert emitted by the object, and the columns are the available fields (see the [schema page](../../developers/schemas.md)). More options for this endpoint are discussed at [Search by name](objectid.md).
+
+!!! info "API documentation"
+    We expose at [https://api.fink-portal.org](https://api.fink-portal.org) a user interface to visualize and interact with the API’s resources without having any of the implementation logic in place. It is automatically generated from our OpenAPI Specification, with the visual documentation making it easy for back end implementation and client side consumption. Try it out!
 
 Do not hesitate to explore all ways to query the data using the left bar of this documentation website! You will find other working examples on how to use the API using its [test suite](https://github.com/astrolabsoftware/fink-science-portal/tree/master/tests), and there are many tutorials at [https://github.com/astrolabsoftware/fink-tutorials](https://github.com/astrolabsoftware/fink-tutorials).
 
