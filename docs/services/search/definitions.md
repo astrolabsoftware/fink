@@ -7,13 +7,13 @@ To give you a more practical view, a long-lived variable object that emits alert
 ## Fields definition
 
 !!! info "What are the available fields in Fink?"
-    The list of available fields through the API can be found at [https://fink-portal.org/api/v1/columns](https://fink-portal.org/api/v1/columns).
+    The list of available fields through the API can be found at [https://api.fink-portal.org/api/v1/schema](https://api.fink-portal.org/api/v1/schema).
 
     You can programmatically access the list of all the fields using e.g.:
 
     ```bash
     curl -H "Content-Type: application/json" -X GET \
-        https://fink-portal.org/api/v1/columns -o finkcolumns.json
+        https://api.fink-portal.org/api/v1/schema -o fink_schema.json
     ```
 
 ### Prefix meaning (i:, d:, ...)
@@ -21,9 +21,9 @@ To give you a more practical view, a long-lived variable object that emits alert
 The fields are all prefixed with a letter determining the provenance of the data:
 
 - `i:` original data from ZTF ([schema](https://zwickytransientfacility.github.io/ztf-avro-alert/schema.html))
-- `d:` added values from [Fink Science modules](../../broker/science_modules.md) ([schema](https://fink-portal.org/api/v1/columns))
-- `v:` added values from Fink generated at the query runtime ([schema](https://fink-portal.org/api/v1/columns))
-- `b:` cutout data ([schema](https://fink-portal.org/api/v1/columns))
+- `d:` added values from [Fink Science modules](../../broker/science_modules.md) ([schema](https://api.fink-portal.org/api/v1/schema))
+- `v:` added values from Fink generated at the query runtime ([schema](https://api.fink-portal.org/api/v1/schema))
+- `b:` cutout data ([schema](https://api.fink-portal.org/api/v1/schema))
 
 These are called column families.
 
@@ -38,11 +38,11 @@ Because HBase table have a unique index column, the main table is not great to r
 ## Class definition
 
 !!! info "What are the available astronomical classes in Fink?"
-    The list of Fink class can be found at [https://fink-portal.org/api/v1/classes](https://fink-portal.org/api/v1/classes). We recommend also to read how the [classification scheme](../../broker/classification.md) is built.
+    The list of Fink class can be found at [https://api.fink-portal.org/api/v1/classes](https://api.fink-portal.org/api/v1/classes). We recommend also to read how the [classification scheme](../../broker/classification.md) is built.
 
     You can programmatically access the list of all the Fink classes using e.g.:
 
     ```bash
     curl -H "Content-Type: application/json" -X GET \
-        https://fink-portal.org/api/v1/classes -o finkclass.json
+        https://api.fink-portal.org/api/v1/classes -o finkclass.json
     ```

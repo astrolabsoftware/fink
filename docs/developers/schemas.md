@@ -8,13 +8,13 @@ The different services in Fink serve data from different sources, hence the sche
 
     ---
 
-    The [Science Portal](https://fink-portal.org) relies on a REST API that queries the Fink Database, which contains aggregated data organized into [column families](../services/search/definitions.md) based on data provenance. For more details, you can refer to the [DB schema](https://fink-portal.org/api/v1/columns).
+    The [Science Portal](https://fink-portal.org) relies on a REST API that queries the Fink Database, which contains aggregated data organized into [column families](../services/search/definitions.md) based on data provenance. For more details, you can refer to the [DB schema](https://api.fink-portal.org/api/v1/schema).
 
 -   __REST API__
 
     ---
 
-    The [REST API](../services/search/getting_started.md) queries the Fink Database, which contains aggregated data organized into [column families](../services/search/definitions.md) based on data provenance. For more details, you can refer to the [DB schema](https://fink-portal.org/api/v1/columns).
+    The [REST API](../services/search/getting_started.md) queries the Fink Database, which contains aggregated data organized into [column families](../services/search/definitions.md) based on data provenance. For more details, you can refer to the [DB schema](https://api.fink-portal.org/api/v1/schema).
 
 -   __Livestream__
 

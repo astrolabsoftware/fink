@@ -1,7 +1,7 @@
 ## Retrieve object data
 
 !!! info "List of arguments"
-    The list of arguments for retrieving object data can be found at [https://fink-portal.org/api/v1/objects](https://fink-portal.org/api/v1/objects)
+    The list of arguments for retrieving object data can be found at [https://api.fink-portal.org](https://api.fink-portal.org)
 
 Alerts emitted by the same astronomical object share the same `objectId` identifier. This identifier typically starts with `ZTF` followed by the year of the first discovery, and a sequence of letters. The main table in Fink database is indexed against this identifier, and you can efficiently query all alerts from the same `objectId`. In a unix shell, you would simply use
 
@@ -9,10 +9,10 @@ Alerts emitted by the same astronomical object share the same `objectId` identif
 # Get data for ZTF21aaxtctv and save it in a CSV file
 curl -H "Content-Type: application/json" -X POST \
     -d '{"objectId":"ZTF21aaxtctv", "output-format":"csv"}' \
-    https://fink-portal.org/api/v1/objects -o ZTF21aaxtctv.csv
+    https://api.fink-portal.org/api/v1/objects -o ZTF21aaxtctv.csv
 
 # you can also specify parameters in the URL, e.g. with wget:
-wget "https://fink-portal.org/api/v1/objects?objectId=ZTF21aaxtctv&output-format=json" -O ZTF21aaxtctv.json
+wget "https://api.fink-portal.org/api/v1/objects?objectId=ZTF21aaxtctv&output-format=json" -O ZTF21aaxtctv.json
 ```
 
 In python, you would use
@@ -24,7 +24,7 @@ import pandas as pd
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-  "https://fink-portal.org/api/v1/objects",
+  "https://api.fink-portal.org/api/v1/objects",
   json={
     "objectId": "ZTF21aaxtctv",
     "output-format": "json"
@@ -42,7 +42,7 @@ mylist = ["ZTF21aaxtctv", "ZTF21abfmbix", "ZTF21abfaohe"]
 
 # get data for many objects
 r = requests.post(
-  "https://fink-portal.org/api/v1/objects",
+  "https://api.fink-portal.org/api/v1/objects",
   json={
     "objectId": ",".join(mylist),
     "output-format": "json"
@@ -65,7 +65,7 @@ from astropy.io import votable
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-  "https://fink-portal.org/api/v1/objects",
+  "https://api.fink-portal.org/api/v1/objects",
   json={
     "objectId": "ZTF21aaxtctv",
     "output-format": "votable"
@@ -76,12 +76,12 @@ vt = votable.parse(io.BytesIO(r.content))
 ```
 
 !!! tip "Optimisation: selecting a subset of columns"
-    By default, we transfer all available data fields (original ZTF fields and Fink science module outputs). But you can also choose to transfer only a subset of the fields (see [https://fink-portal.org/api/v1/columns](https://fink-portal.org/api/v1/columns) for the list of available fields):
+    By default, we transfer all available data fields (original ZTF fields and Fink science module outputs). But you can also choose to transfer only a subset of the fields (see [https://api.fink-portal.org/api/v1/schema](https://api.fink-portal.org/api/v1/schema) for the list of available fields):
 
     ```python
     # select only jd, magpsf and sigmapsf
     r = requests.post(
-        "https://fink-portal.org/api/v1/objects",
+        "https://api.fink-portal.org/api/v1/objects",
         json={
             "objectId": "ZTF21aaxtctv",
             "columns": "i:jd,i:magpsf,i:sigmapsf" # (1)!
@@ -113,7 +113,7 @@ sns.set_context("talk")
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-    "https://fink-portal.org/api/v1/objects",
+    "https://api.fink-portal.org/api/v1/objects",
     json={"objectId": "ZTF21aaxtctv", "withupperlim": "True"},
 )
 
@@ -183,7 +183,7 @@ import matplotlib.pyplot as plt
 
 # transfer cutout data
 r = requests.post(
-  "https://fink-portal.org/api/v1/objects",
+  "https://api.fink-portal.org/api/v1/objects",
   json={
     "objectId": "ZTF21aaxtctv",
     "withcutouts": True # (1)!
@@ -212,7 +212,7 @@ plt.show()
 ```python
 # transfer only science cutout data
 r = requests.post(
-  "https://fink-portal.org/api/v1/objects",
+  "https://api.fink-portal.org/api/v1/objects",
   json={
     "objectId": "ZTF21aaxtctv",
     "withcutouts": True,

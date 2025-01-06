@@ -1,5 +1,5 @@
 !!! info "List of arguments"
-    The list of arguments for retrieving cutout data can be found at [https://fink-portal.org/api/v1/cutouts](https://fink-portal.org/api/v1/cutouts)
+    The list of arguments for retrieving cutout data can be found at [https://api.fink-portal.org](https://api.fink-portal.org)
 
 ### PNG
 
@@ -9,10 +9,10 @@ In a unix shell, you can retrieve the last cutout of an object by simply using
 curl -H "Content-Type: application/json" \
     -X POST -d \
     '{"objectId":"ZTF21aaxtctv", "kind":"Science"}' \
-    https://fink-portal.org/api/v1/cutouts -o cutoutScience.png
+    https://api.fink-portal.org/api/v1/cutouts -o cutoutScience.png
 
 # you can also specify parameters in the URL, e.g. with wget:
-wget "https://fink-portal.org/api/v1/cutouts?objectId=ZTF21aaxtctv&kind=Science" -O ZTF21aaxtctv_Science.png
+wget "https://api.fink-portal.org/api/v1/cutouts?objectId=ZTF21aaxtctv&kind=Science" -O ZTF21aaxtctv_Science.png
 ```
 
 This will retrieve the `Science` image and save it on `cutoutScience.png`.
@@ -25,7 +25,7 @@ from PIL import Image as im
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-    'https://fink-portal.org/api/v1/cutouts',
+    'https://api.fink-portal.org/api/v1/cutouts',
     json={
         'objectId': 'ZTF21aaxtctv',
         'kind': 'Science',
@@ -49,7 +49,7 @@ from PIL import Image as im
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-    'https://fink-portal.org/api/v1/cutouts',
+    'https://api.fink-portal.org/api/v1/cutouts',
     json={
         'objectId': 'ZTF21aaxtctv',
         'kind': 'Science', # (1)!
@@ -83,7 +83,7 @@ from PIL import Image as im
 
 # Get all candidate ID with JD for ZTF21aaxtctv
 r = requests.post(
-    'https://fink-portal.org/api/v1/objects',
+    'https://api.fink-portal.org/api/v1/objects',
     json={
         'objectId': 'ZTF21aaxtctv',
         'columns': 'i:candid,i:jd'
@@ -95,7 +95,7 @@ pdf_candid = pd.read_json(r.content)
 # get image for the first alert
 first_alert = pdf_candid['i:candid'].to_numpy()[-1]
 r = requests.post(
-    'https://fink-portal.org/api/v1/cutouts',
+    'https://api.fink-portal.org/api/v1/cutouts',
     json={
         'objectId': 'ZTF21aaxtctv',
         'kind': 'Science',
@@ -115,7 +115,7 @@ You can also retrieve the original FITS file stored in the alert:
 curl -H "Content-Type: application/json" \
     -X POST -d \
     '{"objectId":"ZTF21aaxtctv", "kind":"Science", "output-format": "FITS"}' \
-    https://fink-portal.org/api/v1/cutouts -o cutoutScience.fits
+    https://api.fink-portal.org/api/v1/cutouts -o cutoutScience.fits
 ```
 
 or equivalently in Python:
@@ -127,7 +127,7 @@ from astropy.io import fits
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-    'https://fink-portal.org/api/v1/cutouts',
+    'https://api.fink-portal.org/api/v1/cutouts',
     json={
         'objectId': 'ZTF21aaxtctv',
         'kind': 'Science',
@@ -148,7 +148,7 @@ import requests
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-    'https://fink-portal.org/api/v1/cutouts',
+    'https://api.fink-portal.org/api/v1/cutouts',
     json={
         'objectId': 'ZTF21aaxtctv',
         'kind': 'Science',
@@ -166,7 +166,7 @@ import requests
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-    'https://fink-portal.org/api/v1/cutouts',
+    'https://api.fink-portal.org/api/v1/cutouts',
     json={
         'objectId': 'ZTF21aaxtctv',
         'kind': 'All',

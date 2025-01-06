@@ -3,7 +3,7 @@
 ### API
 
 !!! info "List of arguments"
-    The list of arguments for retrieving object data can be found at [https://fink-portal.org/api/v1/bayestar](https://fink-portal.org/api/v1/bayestar)
+    The list of arguments for retrieving object data can be found at [https://api.fink-portal.org](https://api.fink-portal.org)
 
 Let's assume you want get all alerts falling inside a given LIGO/Virgo/Kagra credible region sky map. Just use the event name:
 
@@ -20,7 +20,7 @@ credible_level = 0.2
 
 # Query Fink
 r = requests.post(
-    "https://fink-portal.org/api/v1/bayestar",
+    "https://api.fink-portal.org/api/v1/skymap",
     json={
         "event_name": "S230709bi",
         "credible_level": credible_level,
@@ -48,7 +48,7 @@ data = requests.get("https://gracedb.ligo.org/api/superevents/S230709bi/files/ba
 
 # Query Fink
 r = requests.post(
-    "https://fink-portal.org/api/v1/bayestar",
+    "https://api.fink-portal.org/api/v1/skymap",
     json={
         "bayestar": str(data.content),
         "credible_level": 0.2,
@@ -93,7 +93,7 @@ skymap = urlopen("https://gracedb.ligo.org/api/superevents/S230709bi/files/bayes
 
 # Query Fink
 r = requests.post(
-    "https://fink-portal.org/api/v1/bayestar",
+    "https://api.fink-portal.org/api/v1/skymap",
     json={
         "bayestar": str(skymap),
         "credible_level": 0.2,
@@ -141,7 +141,7 @@ fn = "my.fits.gz"
 # Query Fink
 data = open(fn, "rb").read()
 r = requests.post(
-    "https://fink-portal.org/api/v1/bayestar",
+    "https://api.fink-portal.org/api/v1/skymap",
     json={
         "bayestar": str(data),
         "credible_level": credible_level,

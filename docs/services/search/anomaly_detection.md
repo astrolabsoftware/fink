@@ -1,5 +1,5 @@
 !!! info "List of arguments"
-    The list of arguments for retrieving anomalous alerts can be found at [https://fink-portal.org/api/v1/resolver](https://fink-portal.org/api/v1/resolver)
+    The list of arguments for retrieving anomalous alerts can be found at [https://api.fink-portal.org](https://api.fink-portal.org)
 
 This service lets you query the information about anomalous objects in Fink. Each night, Fink selects and stores the top 10 alerts with the most anomalous scores. The Science module was deployed and start producing scores on 2023-01-25.
 
@@ -11,7 +11,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/anomaly",
+  "https://api.fink-portal.org/api/v1/anomaly",
   json={
     "n": int, # (1)!
     "start_date": str, # (2)!
@@ -39,7 +39,7 @@ import pandas as pd
 
 # retrieve all anomalies
 r = requests.post(
-  "https://fink-portal.org/api/v1/anomaly",
+  "https://api.fink-portal.org/api/v1/anomaly",
   json={
     "n": 10000, # on purpose large
     "stop_date": "2023-05-22",
@@ -100,7 +100,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/anomaly",
+  "https://api.fink-portal.org/api/v1/anomaly",
   json={
     "n": 10,
     "columns": "i:objectId"
@@ -112,7 +112,7 @@ oids = [i["i:objectId"] for i in r.json()]
 
 # retrieve full objects data
 r = requests.post(
-  "https://fink-portal.org/api/v1/objects",
+  "https://api.fink-portal.org/api/v1/objects",
   json={
     "objectId": ",".join(oids),
     "columns": "i:objectId,i:magpsf,i:sigmapsf,d:anomaly_score,d:cdsxmatch,d:lc_features_g,d:lc_features_r",

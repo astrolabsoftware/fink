@@ -11,7 +11,7 @@ import requests
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-    'https://fink-portal.org/api/v1/cutouts',
+    'https://api.fink-portal.org/api/v1/cutouts',
     json={
         'objectId': 'ZTF21aaxtctv',
         'kind': 'All',
@@ -34,7 +34,7 @@ This is not available for FITS or PNG formats.
 
     # get data for ZTF21aaxtctv
     r = requests.post(
-        'https://fink-portal.org/api/v1/cutouts',
+        'https://api.fink-portal.org/api/v1/cutouts',
         json={
             'objectId': 'ZTF21aaxtctv',
             'kind': 'Science',

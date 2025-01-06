@@ -1,5 +1,5 @@
 !!! info "List of arguments"
-    The list of arguments for accessing statistics can be found at [https://fink-portal.org/api/v1/stats](https://fink-portal.org/api/v1/stats).
+    The list of arguments for accessing statistics can be found at [https://api.fink-portal.org](https://api.fink-portal.org).
 
 The [statistics](https://fink-portal.org/stats) page makes use of the REST API.
 If you want to further explore Fink statistics, get numbers for a talk, or create your own dashboard based on Fink data, you can do all of these yourself using the REST API. Here is an example using Python:
@@ -11,7 +11,7 @@ import pandas as pd
 
 # get stats for all the year 2021
 r = requests.post(
-  "https://fink-portal.org/api/v1/statistics",
+  "https://api.fink-portal.org/api/v1/statistics",
   json={
     "date": "2021",
     "output-format": "json"
