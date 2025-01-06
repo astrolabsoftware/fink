@@ -6,7 +6,7 @@
 #### Basic
 
 !!! info "List of arguments"
-    The list of arguments for retrieving known SSO data can be found at [https://fink-portal.org/api/v1/sso](https://fink-portal.org/api/v1/sso)
+    The list of arguments for retrieving known SSO data can be found at [https://api.fink-portal.org](https://api.fink-portal.org)
 
 You can enter any name (e.g. Lucretia, JulienPeloton), number (e.g. 8467, 18582, 302530), or designation (e.g. 2010 JO69, 2017 AD19) of asteroids. Under the hood, we resolve the name using the [quaero](https://ssp.imcce.fr/webservices/ssodnet/api/quaero/) service from SsODNet. You can also search for comets (e.g. 10P or C/2020 V2), but note that we have far less comets than asteroids.
 
@@ -14,10 +14,10 @@ In a unix shell, you would simply use
 
 ```bash
 # Get data for the asteroid 8467 and save it in a CSV file
-curl -H "Content-Type: application/json" -X POST -d '{"n_or_d":"8467", "output-format":"csv"}' https://fink-portal.org/api/v1/sso -o 8467.csv
+curl -H "Content-Type: application/json" -X POST -d '{"n_or_d":"8467", "output-format":"csv"}' https://api.fink-portal.org/api/v1/sso -o 8467.csv
 
 # you can also specify parameters in the URL, e.g. with wget:
-wget "https://fink-portal.org/api/v1/sso?n_or_d=8467&output-format=json" -O 8467.json
+wget "https://api.fink-portal.org/api/v1/sso?n_or_d=8467&output-format=json" -O 8467.json
 ```
 
 In python, you would use
@@ -29,7 +29,7 @@ import pandas as pd
 
 # get data for object 8467
 r = requests.post(
-  "https://fink-portal.org/api/v1/sso",
+  "https://api.fink-portal.org/api/v1/sso",
   json={
     "n_or_d": "8467",
     "output-format": "json"
@@ -61,7 +61,7 @@ import pandas as pd
 
 # get data for object 8467
 r = requests.post(
-  "https://fink-portal.org/api/v1/sso",
+  "https://api.fink-portal.org/api/v1/sso",
   json={
     "n_or_d": "8467",
     "withEphem": True,
@@ -110,7 +110,7 @@ import pandas as pd
 
 # get data for object 8467 and 1922
 r = requests.post(
-  "https://fink-portal.org/api/v1/sso",
+  "https://api.fink-portal.org/api/v1/sso",
   json={
     "n_or_d": "8467,1922",
     "output-format": "json"
@@ -131,7 +131,7 @@ pdf = pd.read_json(io.BytesIO(r.content))
     ```python
     # select only jd, and magpsf
     r = requests.post(
-        "https://fink-portal.org/api/v1/sso",
+        "https://api.fink-portal.org/api/v1/sso",
         json={
             "n_or_d": "8467",
             "columns": "i:jd,i:magpsf"
@@ -150,7 +150,7 @@ import requests
 
 # get data for object 8467
 r = requests.post(
-  "https://fink-portal.org/api/v1/sso",
+  "https://api.fink-portal.org/api/v1/sso",
   json={
     "n_or_d": "8467",
     "withcutouts": True,
@@ -186,7 +186,7 @@ Note that by default, the `Science` cutouts are downloaded (see also [Image data
 ```python
 # get data for object 8467
 r = requests.post(
-  "https://fink-portal.org/api/v1/sso",
+  "https://api.fink-portal.org/api/v1/sso",
   json={
     "n_or_d": "8467",
     "withcutouts": True,
@@ -211,7 +211,7 @@ import pandas as pd
 
 # get data for object 8467
 r = requests.post(
-  "https://fink-portal.org/api/v1/sso",
+  "https://api.fink-portal.org/api/v1/sso",
   json={
     "n_or_d": "8467",
     "withResiduals": True,
@@ -263,7 +263,7 @@ The button `?` will give you access to snippets of code to download data program
 ## SSoFT: Solar System object Fink Table
 
 !!! info "List of arguments"
-    The list of arguments for retrieving alert data can be found at [https://fink-portal.org/api/v1/ssoft](https://fink-portal.org/api/v1/ssoft), and the schema of the table (json) can be found at [https://fink-portal.org/api/v1/ssoft?schema](https://fink-portal.org/api/v1/ssoft?schema)
+    The list of arguments for retrieving alert data can be found at [https://api.fink-portal.org/api/v1/ssoft](https://api.fink-portal.org/api/v1/ssoft), and the schema of the table (json) can be found at [https://api.fink-portal.org/api/v1/ssoft?schema](https://api.fink-portal.org/api/v1/ssoft?schema)
 
 This service lets you query the table containing aggregated parameters for known Solar System objects in Fink. This table is updated once a month, with all data in Fink.
 
@@ -277,7 +277,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/ssoft",
+  "https://api.fink-portal.org/api/v1/ssoft",
   json={
     "output-format": "parquet"
   }
@@ -292,7 +292,7 @@ or e.g. with curl:
 ```bash
 curl -H "Content-Type: application/json" -X POST \
     -d '{"output-format":"parquet"}' \
-    https://fink-portal.org/api/v1/ssoft -o ssoft.parquet
+    https://api.fink-portal.org/api/v1/ssoft -o ssoft.parquet
 ```
 
 This table contains basic statistics (e.g. coverage in time for each object, name, number, ...),
@@ -304,7 +304,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/ssoft",
+  "https://api.fink-portal.org/api/v1/ssoft",
   json={
     "schema": True
   }
@@ -313,7 +313,7 @@ r = requests.post(
 schema = r.json()["args"]
 ```
 
-or view it in your browser at [https://fink-portal.org/api/v1/ssoft?schema](https://fink-portal.org/api/v1/ssoft?schema).
+or view it in your browser at [https://api.fink-portal.org/api/v1/ssoft?schema](https://api.fink-portal.org/api/v1/ssoft?schema).
 
 ### Single object
 
@@ -321,10 +321,10 @@ You can also retrieve information about a single object, using its name or IAU n
 
 ```bash
 # using name
-curl -H "Content-Type: application/json" -X POST -d '{"output-format":"json", "sso_name": "Autonoma"}' https://fink-portal.org/api/v1/ssoft
+curl -H "Content-Type: application/json" -X POST -d '{"output-format":"json", "sso_name": "Autonoma"}' https://api.fink-portal.org/api/v1/ssoft
 
 # using number
-curl -H "Content-Type: application/json" -X POST -d '{"output-format":"json", "sso_number": "1465"}' https://fink-portal.org/api/v1/ssoft
+curl -H "Content-Type: application/json" -X POST -d '{"output-format":"json", "sso_number": "1465"}' https://api.fink-portal.org/api/v1/ssoft
 ```
 
 or in Python:
@@ -335,7 +335,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/ssoft",
+  "https://api.fink-portal.org/api/v1/ssoft",
   json={
     "sso_name": "Autonoma",
     "output-format": "parquet"
@@ -361,7 +361,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/ssoft",
+  "https://api.fink-portal.org/api/v1/ssoft",
   json={
     "flavor": "HG",
     "output-format": "parquet"
@@ -369,7 +369,7 @@ r = requests.post(
 )
 ```
 
-Idem for the schema of the table: [https://fink-portal.org/api/v1/ssoft?flavor=HG&schema](https://fink-portal.org/api/v1/ssoft?flavor=HG&schema).
+Idem for the schema of the table: [https://api.fink-portal.org/api/v1/ssoft?flavor=HG&schema](https://api.fink-portal.org/api/v1/ssoft?flavor=HG&schema).
 
 ### Version
 
@@ -381,7 +381,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/ssoft",
+  "https://api.fink-portal.org/api/v1/ssoft",
   json={
     "version": "2023.07",
     "output-format": "parquet"
@@ -394,7 +394,7 @@ By default (that is `version` unspecified), the service will return the latest o
 ## Candidate Solar System objects
 
 !!! info "List of arguments"
-    The list of arguments for retrieving SSO candidate data can be found at [https://fink-portal.org/api/v1/ssocand](https://fink-portal.org/api/v1/ssocand)
+    The list of arguments for retrieving SSO candidate data can be found at [https://api.fink-portal.org/api/v1/ssocand](https://api.fink-portal.org/api/v1/ssocand)
 
 This service lets you query the information about candidate Solar System objects found by [fink-fat](https://github.com/FusRoman/fink-fat) (see [Enabling discoveries of Solar System objects in large alert data streams](https://www.aanda.org/articles/aa/full_html/2023/12/aa46905-23/aa46905-23.html)). In python, you would use
 
@@ -404,7 +404,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  "https://fink-portal.org/api/v1/ssocand",
+  "https://api.fink-portal.org/api/v1/ssocand",
   json={
     "kind": str, # (1)!
     "ssoCandId": int, # (2)!
@@ -444,7 +444,7 @@ import pandas as pd
 
 # Get the SSOFT
 r0 = requests.post(
-  "https://fink-portal.org/api/v1/ssoft",
+  "https://api.fink-portal.org/api/v1/ssoft",
   json={
     "output-format": "parquet"
   }

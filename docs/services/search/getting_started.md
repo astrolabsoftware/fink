@@ -33,8 +33,8 @@ r = requests.post(ENDPOINT, json=ARGS)
 
 `ENDPOINT` is a specific URL (Uniform Resource Locator) where you can access data. Each endpoint corresponds to a particular function or resource in the API, allowing you to perform different types of queries. For example
 
-- `ENDPOINT = https://fink-portal.org/api/v1/objects` gives you access to objects based on their name
-- `ENDPOINT = https://fink-portal.org/api/v1/latests` gives you access to objects based on their classification.
+- `ENDPOINT = https://api.fink-portal.org/api/v1/objects` gives you access to objects based on their name
+- `ENDPOINT = https://api.fink-portal.org/api/v1/latests` gives you access to objects based on their classification.
 
 `ARGS` is a dictionary with the different arguments to your query. Each endpoint will have its own set of arguments that you can easily access by just navigating to the endpoint on your web browser. For example, let's access the data for the object ID `ZTF21aaxtctv`:
 
@@ -43,7 +43,7 @@ import requests
 
 # get data for ZTF21aaxtctv
 r = requests.post(
-  "https://fink-portal.org/api/v1/objects",
+  "https://api.fink-portal.org/api/v1/objects",
   json={
     "objectId": "ZTF21aaxtctv",
     "output-format": "json"
@@ -51,7 +51,7 @@ r = requests.post(
 )
 ```
 
-We use the endpoint `https://fink-portal.org/api/v1/objects` with two parameters: the name of the desired object, and the format of the output. The result is encapsulated inside `r`. You can access it using various methods such as `r.json()` and `r.content`, but for convenience you can also use Pandas to nicely format the output:
+We use the endpoint `https://api.fink-portal.org/api/v1/objects` with two parameters: the name of the desired object, and the format of the output. The result is encapsulated inside `r`. You can access it using various methods such as `r.json()` and `r.content`, but for convenience you can also use Pandas to nicely format the output:
 
 ```python
 import io

@@ -33,7 +33,7 @@ This particular combination serves to identify [kilonova-like events](https://fi
 
 Although creating filters aimed at specific events is ideal for targeted scientific inquiries and real-time requirements, we also aim to establish a comprehensive classification scheme. This scheme would facilitate preliminary searches in the Fink database, help users develop intuition, and allow for exploration of the sky without preconceived notions.
 
-In this respect, we established a basic alert classification scheme, based on the various sources of information listed above. Hundreds of classes have been infered, and they can be browsed at [https://fink-portal.org/api/v1/classes](https://fink-portal.org/api/v1/classes). They belong to 3 broad categories:
+In this respect, we established a basic alert classification scheme, based on the various sources of information listed above. Hundreds of classes have been infered, and they can be browsed at [https://api.fink-portal.org/api/v1/classes](https://api.fink-portal.org/api/v1/classes). They belong to 3 broad categories:
 
 1. Tags obtained from spatially cross-referencing with the SIMBAD database (e.g. `EB*`, `Blazar`, `gammaBurst`, `LensedQ`, etc.)
 2. Tags obtained from spatially cross-referencing with the TNS database (e.g. `SN Ia`, `TDE`, etc.)
@@ -60,7 +60,7 @@ import requests
 
 # Get latests 100 Early SN Ia candidates ID from Fink
 r = requests.post(
-    "https://fink-portal.org/api/v1/latests",
+    "https://api.fink-portal.org/api/v1/latests",
     json={
         "class": "Early SN Ia candidate",
         "columns": "i:objectId",
@@ -72,7 +72,7 @@ r = requests.post(
 # counterparts in TNS for each ZTF ID:
 for obj in r.json():
     r0 = requests.post(
-        "https://fink-portal.org/api/v1/resolver",
+        "https://api.fink-portal.org/api/v1/resolver",
         json={
             "resolver": "tns",
             "reverse": True,

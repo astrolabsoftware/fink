@@ -1,5 +1,5 @@
 !!! info "List of arguments"
-    The list of arguments for resolving names can be found at [https://fink-portal.org/api/v1/resolver](https://fink-portal.org/api/v1/resolver)
+    The list of arguments for resolving names can be found at [https://api.fink-portal.org](https://api.fink-portal.org)
 
 Naming objects is a complex endeavor, often resulting in multiple names or designations for the same object. In the era of big data, this challenge becomes even more pronounced, as the need to quickly assign names to millions of objects can lead to non-intuitive designation processes.
 
@@ -17,7 +17,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  'https://fink-portal.org/api/v1/resolver',
+  'https://api.fink-portal.org/api/v1/resolver',
   json={
     'resolver': 'tns',
     'name': 'SN 2023vwy'
@@ -44,7 +44,7 @@ d:declination  d:fullname d:internalname       d:ra  d:redshift d:type       key
     import pandas as pd
 
     r = requests.post(
-    'https://fink-portal.org/api/v1/resolver',
+    'https://api.fink-portal.org/api/v1/resolver',
     json={
         'resolver': 'tns',
         'name': '',
@@ -84,7 +84,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  'https://fink-portal.org/api/v1/resolver',
+  'https://api.fink-portal.org/api/v1/resolver',
   json={
     'resolver': 'tns',
     'reverse': True,
@@ -114,7 +114,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  'https://fink-portal.org/api/v1/resolver',
+  'https://api.fink-portal.org/api/v1/resolver',
   json={
     'resolver': 'simbad',
     'name': 'Markarian 2'
@@ -127,7 +127,7 @@ if r.json() != []:
     print()
 
     r = requests.post(
-      'https://fink-portal.org/api/v1/explorer',
+      'https://api.fink-portal.org/api/v1/explorer',
       json={
         'ra': r.json()[0]['jradeg'],
         'dec': r.json()[0]['jdedeg'],
@@ -176,7 +176,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  'https://fink-portal.org/api/v1/resolver',
+  'https://api.fink-portal.org/api/v1/resolver',
   json={
     'resolver': 'simbad',
     'reverse': True,
@@ -209,7 +209,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  'https://fink-portal.org/api/v1/resolver',
+  'https://api.fink-portal.org/api/v1/resolver',
   json={
     'resolver': 'ssodnet',
     'name': '624188'
@@ -236,7 +236,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  'https://fink-portal.org/api/v1/sso',
+  'https://api.fink-portal.org/api/v1/sso',
   json={
     'n_or_d': ','.join(pdf['i:ssnamenr'].to_numpy()),
     'columns': 'i:objectId,i:ra,i:dec,i:magpsf,i:sigmapsf,i:ssnamenr'
@@ -291,7 +291,7 @@ sso = pd.read_json(io.BytesIO(r.content)) # (1)!
     import pandas as pd
 
     r = requests.post(
-    'https://fink-portal.org/api/v1/resolver',
+    'https://api.fink-portal.org/api/v1/resolver',
     json={
         'resolver': 'ssodnet',
         'name': '33'
@@ -325,7 +325,7 @@ sso = pd.read_json(io.BytesIO(r.content)) # (1)!
     import pandas as pd
 
     r = requests.post(
-    'https://fink-portal.org/api/v1/resolver',
+    'https://api.fink-portal.org/api/v1/resolver',
     json={
         'resolver': 'ssodnet',
         'name': '33',
@@ -353,7 +353,7 @@ import requests
 import pandas as pd
 
 r = requests.post(
-  'https://fink-portal.org/api/v1/resolver',
+  'https://api.fink-portal.org/api/v1/resolver',
   json={
     'resolver': 'ssodnet',
     'reverse': True,
@@ -367,7 +367,7 @@ if r.json() != []:
     print()
 
     r2 = requests.post(
-      'https://fink-portal.org/api/v1/resolver',
+      'https://api.fink-portal.org/api/v1/resolver',
       json={
         'resolver': 'ssodnet',
         'name': name,
