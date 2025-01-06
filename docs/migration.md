@@ -2,13 +2,13 @@
 
 This page guides you through the API change in Fink.
 
-#### 2024-01-06: /api/v1/columns become /api/v1/schema
+#### 2025-01-06: /api/v1/columns become /api/v1/schema
 
 The endpoint `/api/v1/columns` has been renamed `/api/v1/schema` with the new API URL (see below). This means `https://fink-portal.org/api/v1/columns` becomes `https://api.fink-portal.org/api/v1/schema`.
 
 We encourage all users to update the URL as soon as possible and report any problems.
 
-#### 2024-01-06: Deprecated endpoints
+#### 2025-01-06: Deprecated endpoints
 
 As part of the API migration (see below), we deprecated two endpoints:
 - `/api/v1/xmatch`
@@ -21,7 +21,7 @@ The endpoint `/api/v1/random` was never used as far as we know. If you were a us
 Note that these endpoints are still accessible from the old API URL until January 31, 2025.
 
 
-#### 2024-01-06: Migration to new API URL
+#### 2025-01-06: Migration to new API URL
 
 As part of the transition to a new system for Rubin, the URL to access the API will change from `https://fink-portal.org/api/v1/<endpoint>` to `https://api.fink-portal.org/api/v1/<endpoint>`. Both URLs will be valid until January 31, 2025, at which point only `https://api.fink-portal.org/api/v1/<endpoint>` will be valid. We encourage all users to update the URL as soon as possible and report any problems.
 
