@@ -22,7 +22,6 @@ nav:
         - Image data: services/search/imagesearch.md
         - Statistics: services/search/statistics.md
         - Resolving names: services/search/resolver.md
-        - Draw random objects: services/search/random.md
         - Columns & classes definition: services/search/definitions.md
         - Troubleshooting: services/search/troubleshooting.md
       - Space awareness: services/search/tracklet.md
