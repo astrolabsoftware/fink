@@ -4,9 +4,7 @@ This page guides you through the API change in Fink.
 
 #### 2024-01-06: /api/v1/columns become /api/v1/schema
 
-The endpoint `/api/v1/columns` has been renamed `/api/v1/schema` with the new API URL (see below). This means:
-- `https://fink-portal.org/api/v1/columns` is valid (until January 31, 2025)
-- `https://api.fink-portal.org/api/v1/schema` is valid (from now on)
+The endpoint `/api/v1/columns` has been renamed `/api/v1/schema` with the new API URL (see below). This means `https://fink-portal.org/api/v1/columns` becomes `https://api.fink-portal.org/api/v1/schema`.
 
 We encourage all users to update the URL as soon as possible and report any problems.
 
