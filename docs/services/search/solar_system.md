@@ -263,7 +263,7 @@ The button `?` will give you access to snippets of code to download data program
 ## SSoFT: Solar System object Fink Table
 
 !!! info "List of arguments"
-    The list of arguments for retrieving alert data can be found at [https://api.fink-portal.org/api/v1/ssoft](https://api.fink-portal.org/api/v1/ssoft), and the schema of the table (json) can be found at [https://api.fink-portal.org/api/v1/ssoft?schema](https://api.fink-portal.org/api/v1/ssoft?schema)
+    The list of arguments for retrieving alert data can be found at [https://api.fink-portal.org](https://api.fink-portal.org) (`/api/v1/ssoft` endpoint), and the schema of the table (json) can be found at [https://api.fink-portal.org/api/v1/ssoft?schema=True](https://api.fink-portal.org/api/v1/ssoft?schema=True)
 
 This service lets you query the table containing aggregated parameters for known Solar System objects in Fink. This table is updated once a month, with all data in Fink.
 
@@ -310,10 +310,10 @@ r = requests.post(
   }
 )
 
-schema = r.json()["args"]
+schema = r.json()
 ```
 
-or view it in your browser at [https://api.fink-portal.org/api/v1/ssoft?schema](https://api.fink-portal.org/api/v1/ssoft?schema).
+or view it in your browser at [https://api.fink-portal.org/api/v1/ssoft?schema=True](https://api.fink-portal.org/api/v1/ssoft?schema=True).
 
 ### Single object
 
@@ -369,7 +369,7 @@ r = requests.post(
 )
 ```
 
-Idem for the schema of the table: [https://api.fink-portal.org/api/v1/ssoft?flavor=HG&schema](https://api.fink-portal.org/api/v1/ssoft?flavor=HG&schema).
+Idem for the schema of the table: [https://api.fink-portal.org/api/v1/ssoft?flavor=HG&schema=True](https://api.fink-portal.org/api/v1/ssoft?flavor=HG&schema=True).
 
 ### Version
 

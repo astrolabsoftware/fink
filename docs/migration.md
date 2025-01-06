@@ -18,10 +18,13 @@ As part of the API migration (see below), we deprecated two endpoints:
 
 - `/api/v1/xmatch`
 - `/api/v1/random`
+- `/api/v1/explorer`
 
 The endpoint `/api/v1/xmatch` was a wrapper around `/api/v1/conesearch` and did not provide any additional performance benefits. To reduce maintenance costs, it has been deprecated. It may be reintroduced if significant performance improvements are achieved.
 
 The endpoint `/api/v1/random` was never used as far as we know. If you were a user of it, please let us know, and it will be re-introduced.
+
+The endpoint `/api/v1/explorer` has been replaced by `/api/v1/conesearch`.
 
 Note that these endpoints are still accessible from the old API URL until January 31, 2025.
 

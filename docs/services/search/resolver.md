@@ -127,7 +127,7 @@ if r.json() != []:
     print()
 
     r = requests.post(
-      'https://api.fink-portal.org/api/v1/explorer',
+      'https://api.fink-portal.org/api/v1/conesearch',
       json={
         'ra': r.json()[0]['jradeg'],
         'dec': r.json()[0]['jdedeg'],

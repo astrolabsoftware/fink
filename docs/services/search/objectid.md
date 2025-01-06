@@ -125,7 +125,7 @@ fig = plt.figure(figsize=(15, 6))
 colordic = {1: "C0", 2: "C1"}
 namedic = {1: "g", 2: "r"}
 
-for filt in pdf["i:fid"].unique():
+for filt in [1, 2]:
     mask_filt = pdf["i:fid"] == filt
 
     # The column `d:tag` is used to check data type
