@@ -36,7 +36,7 @@ r = requests.post(ENDPOINT, json=ARGS)
 - `ENDPOINT = https://api.fink-portal.org/api/v1/objects` gives you access to objects based on their name
 - `ENDPOINT = https://api.fink-portal.org/api/v1/latests` gives you access to objects based on their classification.
 
-`ARGS` is a dictionary with the different arguments to your query. Each endpoint will have its own set of arguments that you can easily access by just navigating to the endpoint on your web browser. For example, let's access the data for the object ID `ZTF21aaxtctv`:
+`ARGS` is a dictionary with the different arguments to your query. Each endpoint will have its own set of arguments that you can easily access by just navigating to the endpoint definition at [https://api.fink-portal.org](https://api.fink-portal.org). For example, let's access the data for the object ID `ZTF21aaxtctv`:
 
 ```python
 import requests
@@ -60,10 +60,10 @@ import pandas as pd
 pdf = pd.read_json(io.BytesIO(r.content))
 ```
 
-And you get a DataFrame (table) whose each row is an alert emitted by the object, and the columns are the available fields (see the [schema page](../../developers/schemas.md)). More options for this endpoint are discussed at [Search by name](objectid.md).
+And you get a DataFrame (table) whose each row is an alert emitted when the object varies, and the columns are the available fields (see the [schema page](../../developers/schemas.md)). More options for this endpoint are discussed at [Search by name](objectid.md).
 
 !!! info "API documentation"
-    We expose at [https://api.fink-portal.org](https://api.fink-portal.org) a user interface to visualize and interact with the API’s resources without having any of the implementation logic in place. It is automatically generated from our OpenAPI Specification, with the visual documentation making it easy for back end implementation and client side consumption. Try it out!
+    We expose at [https://api.fink-portal.org](https://api.fink-portal.org) a user interface to visualize and interact with the API's resources. It is automatically generated from our OpenAPI Specification, with the visual documentation making it easy for back end implementation and client side consumption. Try it out!
 
 Do not hesitate to explore all ways to query the data using the left bar of this documentation website! You will find other working examples on how to use the API using its [test suite](https://github.com/astrolabsoftware/fink-science-portal/tree/master/tests), and there are many tutorials at [https://github.com/astrolabsoftware/fink-tutorials](https://github.com/astrolabsoftware/fink-tutorials).
 
