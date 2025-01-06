@@ -24,6 +24,8 @@ r = requests.post(
     json={
         "event_name": "S230709bi",
         "credible_level": credible_level,
+        "n_day_before": 1,
+        "n_day_after": 6,
         "output-format": "json"
     }
 )
