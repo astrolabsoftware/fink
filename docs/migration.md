@@ -14,7 +14,7 @@ We encourage all users to update the URL as soon as possible and report any prob
 
 #### 2025-01-06: Deprecated endpoints
 
-As part of the API migration (see below), we deprecated two endpoints:
+As part of the API migration (see below), we deprecated three endpoints:
 
 - `/api/v1/xmatch`
 - `/api/v1/random`
