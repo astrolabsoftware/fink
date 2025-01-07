@@ -14,6 +14,7 @@ nav:
       - Alert Classification: broker/classification.md
       - Accessing alert data: broker/services_summary.md
     - Science Portal:
+      - Cheat Sheet: services/search/cheatsheet.md
       - Getting started: services/search/getting_started.md
       - Retrieving data:
         - Search by name: services/search/objectid.md
