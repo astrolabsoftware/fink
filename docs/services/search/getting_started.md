@@ -22,6 +22,8 @@ In case you notice something is not working, or you would like to add more featu
 
 ## Quick start API
 
+![Screenshot](../../img/API_description.png)
+
 The Science Portal utilizes the Fink REST API to communicate with the database. You can also use this API to access data programmatically, regardless of the programming language you choose. In practice, we will provide examples in Python, as it is the most widely used language among the Fink community of users. The structure of a request is always the same:
 
 ```python
