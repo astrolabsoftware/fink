@@ -4,6 +4,10 @@ This page guides you through the API change in Fink.
 
 ---
 
+#### 2025-02-14: new option trend available to class search
+
+The class search can be combined with a trend, such as rising or fading. More information in the [alert trends page](services/search/classsearch.md#alert-trends).
+
 #### 2025-01-06: /api/v1/columns becomes /api/v1/schema
 
 The endpoint `/api/v1/columns` has been renamed `/api/v1/schema` with the new API URL (see below). This means `https://fink-portal.org/api/v1/columns` becomes `https://api.fink-portal.org/api/v1/schema`.
@@ -64,7 +68,7 @@ This is not available for FITS or PNG formats.
 
 !!! warning "Return type for 2D array"
     We changed the return type from list to dictionary:
-    
+
     ```python
     import requests
 
