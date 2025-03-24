@@ -1,8 +1,8 @@
 # Fink Data Transfer
 
-_date 11/09/2023_
+_date 24/03/2025_
 
-This manual has been tested for `fink-client` version 7.1. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
+This manual has been tested for `fink-client` version 8.8. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
 ## Purpose
 
@@ -65,7 +65,7 @@ fink_client_register \
 	-username <USERNAME> \ # given privately
 	-group_id <GROUP_ID> \ # given privately
 	-mytopics <topic1 topic2 etc> \ # see https://fink-broker.readthedocs.io/en/latest/science/filters/
-	-servers <SERVER> \ # given privately, comma separated if several
+	-servers kafka-ztf.fink-broker.org:24499 \
 	-maxtimeout 10 \ # in seconds
 	 --verbose
 ```
@@ -228,9 +228,8 @@ maxtimeout: 30
 
 ### Known bugs
 
-1. Data from 2019/2020/2021 and 2022/2023 are not compatible (different schemas). We will resolve the problem soon, but in the meantime, do not mix data from the two periods in a single query.
-2. With version 4.0, you wouldn't have the partitioning column when reading in a dataframe. This has been corrected in 4.1.
-3. With version 7.0, files were overwritten because they were sharing the same names, hence leading to fewer alerts than expected. This has been corrected in 7.1.
+1. With version 4.0, you wouldn't have the partitioning column when reading in a dataframe. This has been corrected in 4.1.
+2. With version 7.0, files were overwritten because they were sharing the same names, hence leading to fewer alerts than expected. This has been corrected in 7.1.
 
 ## What is next?
 

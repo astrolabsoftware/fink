@@ -1,8 +1,8 @@
 # Livestream
 
-_date 04/06/2024_
+_date 24/03/2025_
 
-This manual has been tested for `fink-client` version 8.2. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
+This manual has been tested for `fink-client` version 8.8. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
 ## Purpose
 
@@ -45,7 +45,7 @@ fink_client_register \
 	-username <USERNAME> \ # given privately
 	-group_id <GROUP_ID> \ # given privately
 	-mytopics <topic1 topic2 etc> \ # see https://fink-broker.readthedocs.io/en/latest/science/filters/
-	-servers <SERVER> \ # given privately, comma separated if several
+	-servers kafka-ztf.fink-broker.org:24499 \
 	-maxtimeout 10 \ # in seconds
 	 --verbose
 ```
@@ -329,7 +329,7 @@ Then you can inspect the schema manually, or open an issue on the fink-client re
 If you try to poll the servers and get:
 
 ```
-%3|1634555965.502|FAIL|rdkafka#consumer-1| [thrd:sasl_plaintext://134.158.74.95:24499/bootstrap]: sasl_plaintext://134.158.74.95:24499/bootstrap: SASL SCRAM-SHA-512 mechanism handshake failed: Broker: Request not valid in current SASL state: broker's supported mechanisms:  (after 18ms in state AUTH_HANDSHAKE)
+%3|1634555965.502|FAIL|rdkafka#consumer-1| [thrd:sasl_plaintext://xx.xx.xx.xx:yy/bootstrap]: sasl_plaintext://xx.xx.xx.xx:yy/bootstrap: SASL SCRAM-SHA-512 mechanism handshake failed: Broker: Request not valid in current SASL state: broker's supported mechanisms:  (after 18ms in state AUTH_HANDSHAKE)
 ```
 
 You are likely giving a password when instantiating the consumer. Check your `~/.finkclient/credentials.yml`, it should contain

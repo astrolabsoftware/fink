@@ -1,14 +1,22 @@
 # Migration
 
-This page guides you through the API change in Fink.
+This page guides you through the main change in Fink tools.
 
----
+--- 
 
-#### 2025-02-14: new option trend available to class search
+#### 2025-03-24: [Livestream & Data Transfer] Kafka address change
+
+We migrated our Fink Kafka cluster for ZTF. The new address is now `kafka-ztf.fink-broker.org`. The [livestream][services/livestream.md] and [datatransfer][services/data_transfer.md] services documentation have been updated to reflect this change.
+
+#### 2025-03-21: [API] DNS change
+
+We had to migrate our database and web services to another network. While this is mostly hidden to users (underlying IP changed, but URLs remain unchanged), you might notice slower query time than usual for a few days. This is due to database rebalancing operations.
+
+#### 2025-02-14: [API] new option trend available to class search
 
 The class search can be combined with a trend, such as rising or fading. More information in the [alert trends page](services/search/classsearch.md#alert-trends).
 
-#### 2025-01-06: /api/v1/columns becomes /api/v1/schema
+#### 2025-01-06: [API] /api/v1/columns becomes /api/v1/schema
 
 The endpoint `/api/v1/columns` has been renamed `/api/v1/schema` with the new API URL (see below). This means `https://fink-portal.org/api/v1/columns` becomes `https://api.fink-portal.org/api/v1/schema`.
 
@@ -16,7 +24,7 @@ We encourage all users to update the URL as soon as possible and report any prob
 
 ---
 
-#### 2025-01-06: Deprecated endpoints
+#### 2025-01-06: [API] Deprecated endpoints
 
 As part of the API migration (see below), we deprecated three endpoints:
 
@@ -34,7 +42,7 @@ Note that these endpoints are still accessible from the old API URL until Januar
 
 ---
 
-#### 2025-01-06: Migration to new API URL
+#### 2025-01-06: [API] Migration to new API URL
 
 As part of the transition to a new system for Rubin, the URL to access the API will change from `https://fink-portal.org/api/v1/<endpoint>` to `https://api.fink-portal.org/api/v1/<endpoint>`. Both URLs will be valid until January 30, 2025, at which point only `https://api.fink-portal.org/api/v1/<endpoint>` will be valid. We encourage all users to update the URL as soon as possible and report any problems.
 
@@ -42,7 +50,7 @@ Note that the underlying code has been improved for better performance, and in a
 
 ---
 
-#### 2024-11-25: Cutout handling
+#### 2024-11-25: [API] Cutout handling
 
 When requesting arrays, you can now ask to download all 3 cutouts at once:
 
