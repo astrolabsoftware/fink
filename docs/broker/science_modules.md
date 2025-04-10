@@ -70,7 +70,7 @@ Standard modules typically issue flags or aggregated information to ease the pro
 
 | Field in Fink alerts | Type | Contents | Available from |
 |:-----|:-------|:--------|:---------|
-| `roid` | int | Determine if the alert is a Solar System object ([taxonomy](https://github.com/astrolabsoftware/fink-science/tree/master/fink_science/asteroids)) | 2019/11 |
+| `roid` | int | Determine if the alert is a Solar System object ([taxonomy](https://github.com/astrolabsoftware/fink-science/tree/master/fink_science/ztf/asteroids)) | 2019/11 |
 | `nalerthist` | int | Number of detections contained in each alert (current+history). Upper limits are not taken into account. | 2019/11 |
 | `jd_first_real_det` | double | first variation time at 5 sigma contains in the alert history | 2023/12 |
 | `jdstarthist_dt` | double | delta time between `jd_first_real_det` and the first variation time at 3 sigma (`jdstarthist`). If `jdstarthist_dt` > 30 days then the first variation time at 5 sigma is False (accurate for fast transient). | 2023/12 |
