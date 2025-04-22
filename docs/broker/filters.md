@@ -24,7 +24,7 @@ Note that if the filters reduce the size of the stream, they do not filter the c
 
 ### Real-time filters
 
-As we process alerts, interesting alerts are automatically picked up by filters and [Apache Kafka](https://kafka.apache.org/) queues are populated. Each stream subset from a particular filter is identified by a topic name. This stream can be accessed outside via its topic, and several users can poll the data from the same topic. All topics can be accessed using the [Fink client](https://github.com/astrolabsoftware/fink-client), which is a wrapper around Kafka consumer functionalities.
+As we process alerts, interesting alerts are automatically picked up by filters and [Apache Kafka](https://kafka.apache.org/) queues are populated. Each stream subset from a particular filter is identified by a topic name. This stream can be accessed outside via its topic, and several users can poll the data from the same topic. All topics can be accessed using the [Fink client](https://github.com/astrolabsoftware/fink-client), which is a wrapper around Kafka consumer functionalities (see [online documentation](https://fink-broker.readthedocs.io/en/latest/services/livestream)).
 
 In addition, for some filters, we redirect the data to instant messaging services such as Telegram or Slack (just ask for it if you need other platforms!). Below we summarise the widely used Fink topics, with their availability on Slack and Telegram (for Telegram, you can directly subscribe using the link or the QR code):
 
