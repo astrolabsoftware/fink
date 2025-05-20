@@ -61,7 +61,7 @@ In Fink, you can upload pre-trained models, and each alert will receive a score.
 | `mulens`| float | Probability score to be a microlensing event by [LIA](https://github.com/dgodinez77/LIA) | 2019/11 |
 | `rf_kn_vs_nonkn` | float | Probability of an alert to be a kilonova using a Random Forest Classifier (1 is KN). Based on [2210.17433](https://arxiv.org/abs/2210.17433).| 2019/11 |
 | `t2` | dic[str, float] | Vector of probabilities (class, prob) using Transformers ([arxiv:2105.06178](https://arxiv.org/abs/2105.06178)) | 2023/01 |
-| `lc_*` | dict[int, array<double>] | Numerous [light curve features](https://arxiv.org/pdf/2012.01419.pdf#section.A1) used in astrophysics. | 2023/01 |
+| `lc_*` | dict[int, array<double>] | Numerous [light curve features](https://arxiv.org/pdf/2012.01419.pdf#section.A1) used in astrophysics. Fields are detailed in the [science module](https://github.com/astrolabsoftware/fink-science/tree/master/fink_science/ztf/ad_features)| 2023/01 |
 | `anomaly_score` | float | Probability of an alert to be anomalous (lower values mean more anomalous observations) based on `lc_*` | 2023/01 |
 
 ### Standard modules
