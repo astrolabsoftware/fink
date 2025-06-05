@@ -6,7 +6,7 @@ This page guides you through the main change in Fink tools.
 
 #### 2025-03-24: [Livestream & Data Transfer] Kafka address change
 
-We migrated our Fink Kafka cluster for ZTF. The new address is now `kafka-ztf.fink-broker.org`. The [livestream][services/livestream.md] and [datatransfer][services/data_transfer.md] services documentation have been updated to reflect this change.
+We migrated our Fink Kafka cluster for ZTF. The new address is now `kafka-ztf.fink-broker.org`. The [livestream](services/livestream.md) and [datatransfer](services/data_transfer.md) services documentation have been updated to reflect this change.
 
 #### 2025-03-21: [API] DNS change
 
