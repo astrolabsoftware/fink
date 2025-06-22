@@ -1,6 +1,6 @@
 # Fink Data Transfer
 
-_date 18/06/2025_
+_date 22/06/2025_
 
 This manual has been tested for `fink-client` version 9.0. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
@@ -84,6 +84,7 @@ First choose the data source: ZTF or ELASTICC synthetic lightcurves. Then choose
 ![2](../img/download_filters.png)
 
 For ZTF or Rubin, you can further filter the data in three ways:
+
 1. You can choose the class(es) of interest. By default, you will receive all alerts between the chosen dates, regardless of their classification in Fink. By using the dropdown button, you can also select one or more classes to be streamed.
 2. You can choose to add a filter use in real-time during the night. This is useful if you want to replay an analysis on a previous night.
 3. Optionally, you can also impose extra conditions on the alerts you want to retrieve based on their content. You will simply specify the name of the parameter with the condition (SQL syntax). If you have several conditions, put one condition per line, ending with semi-colon. Example of valid conditions:
