@@ -201,6 +201,16 @@ fink_datatransfer \
     --restart_from_beginning
 ```
 
+Note that you can also partition by time (`year/month/day`) instead of partitioning by `finkclass`:
+
+```bash
+fink_datatransfer \
+    -topic <topic name> \
+    -outdir <output directory> \
+    -partitionby time \
+    --verbose
+```
+
 Finally you can inspect the schema of the alerts using the option `--dump_schema`:
 
 
@@ -258,6 +268,16 @@ If you get frequent timeouts while you know there are alerts to poll (especially
 # edit ~/.finkclient/credentials.yml
 maxtimeout: 30
 ```
+
+### UNKNOWN_TOPIC_OR_PART
+
+If you launch the download too early, the queue is not yet filled and you will likely get this error:
+
+```bash
+cimpl.KafkaException: KafkaError{code=UNKNOWN_TOPIC_OR_PART,val=3,str="Broker: Unknown topic or partition"}
+```
+
+Wait a minute, and retry. If the error persists, contact Julien.
 
 ### Known fink-client bugs
 
