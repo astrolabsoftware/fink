@@ -5,7 +5,7 @@ edit_uri: ""
 
 nav:
     - Home: index.md
-    - Migration: migration.md
+    - Troubleshooting: troubleshooting.md
     - Broker:
       - Science Roadmap: broker/roadmap.md
       - Technological consideration: broker/infrastructure.md
