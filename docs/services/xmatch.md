@@ -32,7 +32,7 @@ o poll data.
 
 ## Fink xmatch service
 
-The Fink xmatch service is accessible from the Science Portal at https://fink-portal.org/xmatch. This is a guided process, very similar to the Data Transfer service. First, the user has the possibility to upload a catalog of sources:
+The Fink xmatch service is accessible from the Science Portal at [https://fink-portal.org/xmatch](https://fink-portal.org/xmatch). This is a guided process, very similar to the Data Transfer service. First, the user has the possibility to upload a catalog of sources:
 
 ![2](../img/catalog.png)
 
