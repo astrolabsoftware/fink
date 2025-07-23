@@ -29,8 +29,10 @@ nav:
       - Solar System objects: services/search/solar_system.md
       - Multi-messenger: services/search/gw.md
       - Anomaly detection: services/search/anomaly_detection.md
+    - fink-client: services/fink_client.md
     - Data Transfer: services/data_transfer.md
     - Livestream: services/livestream.md
+    - Xmatch: services/xmatch.md
     - TOM Fink: services/tom_fink.md
     - Developer corner:
       - Alert schemas: developers/schemas.md
