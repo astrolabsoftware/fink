@@ -1,6 +1,6 @@
 # Livestream
 
-_date 24/03/2025_
+_date 22/07/2025_
 
 This manual has been tested for `fink-client` version 8.8. Other versions might work. In case of trouble, send us an email (contact@fink-broker.org) or [open an issue](https://github.com/astrolabsoftware/fink-client/issues).
 
@@ -12,49 +12,8 @@ As Kafka can be somehow cumbersome, we developed a client to facilitate the stre
 
 ## Installation of fink-client
 
-To ease the consuming step, the users are recommended to use the [fink-client](https://github.com/astrolabsoftware/fink-client). `fink_client` requires a version of Python 3.9+.
-
-### Install with pip
-
-From a terminal, you can install fink-client simply using `pip`:
-
-```bash
-pip install fink-client --upgrade
-```
-
-### Use or develop in a controlled environment
-
-For development, we recommend the use of a virtual environment:
-
-```bash
-git clone https://github.com/astrolabsoftware/fink-client.git
-cd fink-client
-python -m venv .fc_env
-source .fc_env/bin/activate
-pip install -r requirements.txt
-pip install .
-```
-
-## Registering
-
-In order to connect and poll alerts from Fink, you first need to get your credentials. Subscribe by filling this [form](https://forms.gle/2td4jysT4e9pkf889). After filling the form, we will send your credentials. Register them on your laptop by simply running on a terminal:
-
-```bash
-# access help using `fink_client_register -h`
-fink_client_register \
-	-username <USERNAME> \ # given privately
-	-group_id <GROUP_ID> \ # given privately
-	-mytopics <topic1 topic2 etc> \ # see https://fink-broker.readthedocs.io/en/latest/science/filters/
-	-servers kafka-ztf.fink-broker.org:24499 \
-	-maxtimeout 10 \ # in seconds
-	 --verbose
-```
-
-where `<USERNAME>`, `<GROUP_ID>`, and `<SERVER>` have been sent to you privately. By default, the credentials are installed in the home:
-
-```bash
-cat ~/.finkclient/credentials.yml
-```
+To ease the consuming step, the users are recommended to use the [fink-client](https://github.com/astrolabsoftware/fink-client), which is a wrapper around Apache Kafka. `fink_client` requires a version of Python 3.9+. Documentation to install the client can be found at [services/fink_client](fink_client.md). Note that you need to be registered in order t
+o poll data.
 
 For the list of available topics, see [https://fink-broker.readthedocs.io/en/latest/broker/filters/#available-topics](https://fink-broker.readthedocs.io/en/latest/broker/filters/#available-topics).
 
